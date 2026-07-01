@@ -4,10 +4,12 @@
 #   overlays — top-level overlays (applied to pkgs directly)
 #   module   — NixOS module for config.overlays.haskell
 let
-  lib = import (builtins.fetchGit {
-    url = "https://github.com/jonringer/nix-lib.git";
-    rev = "c19c816e39d14a60dd368d601aa9b389b09d0bbb";
-  });
+  lib = import (
+    builtins.fetchGit {
+      url = "https://github.com/jonringer/nix-lib.git";
+      rev = "c19c816e39d14a60dd368d601aa9b389b09d0bbb";
+    }
+  );
 
   pkgsOverlay = lib.mkAutoCalledPackageDir ./pkgs;
   haskellOverrides = import ./haskell-packages.nix;
@@ -16,7 +18,8 @@ let
   #   { pkgs, lib, callPackage }: self: { ... }
   # We convert it to an overlay (final: prev:) by using the pkgs and lib
   # that make-package-set.nix exposes on the set.
-  hackagePackagesOverlay = final: prev:
+  hackagePackagesOverlay =
+    final: prev:
     import ./hackage-packages.nix {
       inherit (prev) pkgs lib callPackage;
     } final;
