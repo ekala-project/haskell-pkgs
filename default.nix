@@ -33,6 +33,7 @@ let
   ];
 
   toplevelOverlay = import ./top-level.nix;
+  aliasesOverlay = import ./aliases.nix;
 in
 
 # Continuation passing style of import
@@ -55,6 +56,7 @@ coreRepo (
   {
     overlays = [
       toplevelOverlay
+      aliasesOverlay
     ]
     ++ overlays;
 
