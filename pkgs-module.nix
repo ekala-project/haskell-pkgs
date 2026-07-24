@@ -1,17 +1,10 @@
 # pkgs-module.nix — Expose haskell-packages overlays for capstone repo consumption.
 #
-# Returns an attrset with:
-#   overlays — top-level overlays (applied to pkgs directly)
-#   module   — NixOS module for config.overlays.haskell
-let
-  lib = import (
-    builtins.fetchGit {
-      url = "https://github.com/jonringer/nix-lib.git";
-      rev = "c19c816e39d14a60dd368d601aa9b389b09d0bbb";
-    }
-  );
+# Returns an attrset meant to be passed as a `modules` argument to corepkgs
+{ lib, ... }:
 
-  pkgsOverlay = lib.mkAutoCalledPackageDir ./pkgs;
+let
+  pkgsOverlay = lib.packageSets.mkAutoCalledPackageDir ./pkgs;
   haskellOverrides = import ./haskell-packages.nix;
 
   # The generated hackage-packages.nix has signature:
@@ -31,11 +24,11 @@ let
   ];
 
   toplevelOverlay = import ./top-level.nix;
+  aliasesOverlay = import ./aliases.nix;
 in
 {
-  overlays = [ toplevelOverlay ];
-  module = { ... }: {
-    _file = "haskell-packages/pkgs-module.nix";
-    config.overlays.haskell = [ haskellOverlay ];
+  config.overlays = {
+    haskell = [ haskellOverlay ];
+    pkgs = [ toplevelOverlay aliasesOverlay ];
   };
 }
