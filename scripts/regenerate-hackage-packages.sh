@@ -15,7 +15,8 @@ set -euo pipefail
 
 REPO_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 NIXPKGS_PATH="${NIXPKGS_PATH:-/home/jon/projects/nixpkgs}"
-HACKAGE2EKAPKGS_PATH="${HACKAGE2EKAPKGS_PATH:-/home/jon/projects/hackage2ekapkgs}"
+HACKAGE2EKAPKGS_URL="https://github.com/ekala-project/hackage2ekapkgs.git"
+HACKAGE2EKAPKGS_SRC=""
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
@@ -24,14 +25,14 @@ while [[ $# -gt 0 ]]; do
       shift 2
       ;;
     --hackage2ekapkgs)
-      HACKAGE2EKAPKGS_PATH="$2"
+      HACKAGE2EKAPKGS_SRC="$2"
       shift 2
       ;;
     --help|-h)
       echo "Usage: $0 [--nixpkgs PATH] [--hackage2ekapkgs PATH]"
       echo ""
       echo "  --nixpkgs PATH           Path to nixpkgs checkout (default: $NIXPKGS_PATH)"
-      echo "  --hackage2ekapkgs PATH   Path to hackage2ekapkgs checkout (default: $HACKAGE2EKAPKGS_PATH)"
+      echo "  --hackage2ekapkgs PATH   Local path to hackage2ekapkgs (default: fetched from GitHub)"
       exit 0
       ;;
     *)
@@ -47,12 +48,6 @@ if [[ ! -d "$NIXPKGS_PATH/pkgs" ]]; then
   exit 1
 fi
 
-if [[ ! -f "$HACKAGE2EKAPKGS_PATH/hackage2ekapkgs.cabal" ]]; then
-  echo "Error: hackage2ekapkgs not found at $HACKAGE2EKAPKGS_PATH"
-  echo "Set HACKAGE2EKAPKGS_PATH or use --hackage2ekapkgs"
-  exit 1
-fi
-
 CONFIG_DIR="$REPO_ROOT/configuration-hackage2nix"
 
 for f in main.yaml stackage.yaml broken.yaml transitive-broken.yaml; do
@@ -64,10 +59,23 @@ done
 
 echo "=== Step 1: Building hackage2ekapkgs ==="
 
-HACKAGE2EKAPKGS_BIN=$(nix-build --no-out-link -I nixpkgs="$NIXPKGS_PATH" -E "
-  let nixpkgs = import <nixpkgs> {};
-  in nixpkgs.haskellPackages.callCabal2nix \"hackage2ekapkgs\" $HACKAGE2EKAPKGS_PATH {}
-")/bin/hackage2ekapkgs
+if [[ -n "$HACKAGE2EKAPKGS_SRC" ]]; then
+  echo "  Using local source: $HACKAGE2EKAPKGS_SRC"
+  HACKAGE2EKAPKGS_BIN=$(nix-build --no-out-link -I nixpkgs="$NIXPKGS_PATH" -E "
+    let nixpkgs = import <nixpkgs> {};
+    in nixpkgs.haskellPackages.callCabal2nix \"hackage2ekapkgs\" $HACKAGE2EKAPKGS_SRC {}
+  ")/bin/hackage2ekapkgs
+else
+  echo "  Fetching from $HACKAGE2EKAPKGS_URL"
+  HACKAGE2EKAPKGS_BIN=$(nix-build --no-out-link -I nixpkgs="$NIXPKGS_PATH" -E "
+    let
+      nixpkgs = import <nixpkgs> {};
+      src = builtins.fetchGit {
+        url = \"$HACKAGE2EKAPKGS_URL\";
+      };
+    in nixpkgs.haskellPackages.callCabal2nix \"hackage2ekapkgs\" src {}
+  ")/bin/hackage2ekapkgs
+fi
 
 echo "  Using: $HACKAGE2EKAPKGS_BIN"
 
