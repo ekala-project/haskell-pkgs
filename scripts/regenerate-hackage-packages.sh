@@ -109,7 +109,7 @@ echo "  Compiler config: $COMPILER_CONFIG"
 echo "=== Step 4: Running hackage2ekapkgs ==="
 
 # Resolve the ekapkgs package set path for system dep resolution
-EKAPKGS_PATH=$(nix-instantiate --eval -E '(import ./pins.nix).corepkgs' 2>/dev/null | tr -d '"' || echo ".")
+EKAPKGS_PATH=$(nix-instantiate --eval --json -E '(import ./pins.nix).corepkgs.outPath' 2>/dev/null | tr -d '"' || echo ".")
 
 "$HACKAGE2EKAPKGS_BIN" \
   --hackage "$UNPACKED_HACKAGE" \

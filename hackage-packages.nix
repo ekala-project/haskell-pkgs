@@ -856,10 +856,6 @@ self: {
        executableToolDepends = [ emacs ];
        description = "A dependently typed functional programming language and proof assistant";
        license = lib.meta.getLicenseFromSpdxId "MIT";
-       maintainers = [
-         lib.maintainers.iblech lib.maintainers.ncfavier
-         lib.maintainers.turion
-       ];
      }) {inherit (pkgs) emacs;};
 
   Agda-executable = callPackage
@@ -1386,7 +1382,6 @@ self: {
        ];
        description = "Deriving Parsers and Quasi-Quoters from BNF Grammars";
        license = lib.licenses.gpl2Only;
-       maintainers = [ lib.maintainers.artem ];
      }) {};
 
   BPS = callPackage
@@ -19773,7 +19768,6 @@ self: {
        license = lib.licenses.gpl3Only;
        hydraPlatforms = lib.platforms.none;
        mainProgram = "shellcheck";
-       maintainers = [ lib.maintainers.zowoq ];
      }) {};
 
   ShellCheck = callPackage
@@ -19802,7 +19796,6 @@ self: {
        description = "Shell script analysis tool";
        license = lib.licenses.gpl3Only;
        mainProgram = "shellcheck";
-       maintainers = [ lib.maintainers.zowoq ];
      }) {};
 
   Shellac = callPackage
@@ -23369,7 +23362,6 @@ self: {
        ];
        description = "A binding to the X11 graphics library";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.slotThe ];
      }) {inherit (pkgs) libx11; inherit (pkgs) libxext; 
          inherit (pkgs) libxinerama; inherit (pkgs) libxrandr; 
          inherit (pkgs) libxrender; inherit (pkgs) libxscrnsaver;};
@@ -23441,7 +23433,6 @@ self: {
        libraryPkgconfigDepends = [ libxft ];
        description = "Bindings to the Xft and some Xrender parts";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
-       maintainers = [ lib.maintainers.slotThe ];
      }) {inherit (pkgs) libxft;};
 
   X11-xshape = callPackage
@@ -24497,7 +24488,6 @@ self: {
        description = "Linear algebra and interpolation using the Accelerate framework";
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   accelerate-bignum = callPackage
@@ -24711,7 +24701,6 @@ self: {
        description = "Accelerate frontend to the FFTW library (Fourier transform)";
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
-       maintainers = [ lib.maintainers.thielema ];
        broken = true;
      }) {};
 
@@ -24739,7 +24728,6 @@ self: {
        description = "Fast Fourier transform and convolution using the Accelerate framework";
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   accelerate-fourier-benchmark = callPackage
@@ -25036,7 +25024,6 @@ self: {
        description = "Utility functions for the Accelerate framework";
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
-       maintainers = [ lib.maintainers.thielema ];
        broken = true;
      }) {};
 
@@ -26654,7 +26641,6 @@ self: {
        ];
        description = "Better error messages when decoding JSON values";
        license = lib.licenses.mit;
-       maintainers = [ lib.maintainers.t4ccer ];
      }) {};
 
   aeson-bson = callPackage
@@ -28070,7 +28056,6 @@ self: {
        description = "Compiling Agda code to readable Haskell";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
        mainProgram = "agda2hs";
-       maintainers = [ lib.maintainers.ncfavier ];
      }) {};
 
   agda2lagda = callPackage
@@ -28776,7 +28761,6 @@ self: {
        libraryToolDepends = [ alex happy ];
        description = "Quasi-quoter for Alex lexers";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.artem ];
      }) {};
 
   alex-prelude = callPackage
@@ -29405,7 +29389,6 @@ self: {
        description = "Find relative time displacement of two recordings of the same music";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
        mainProgram = "align-audio";
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   align-equal = callPackage
@@ -29708,7 +29691,6 @@ self: {
        description = "Binding to the ALSA Library API (Exceptions)";
        license = lib.licenses.bsd3;
        platforms = lib.platforms.linux;
-       maintainers = [ lib.maintainers.thielema ];
      }) {inherit (pkgs) alsa-lib;};
 
   alsa-gui = callPackage
@@ -29783,7 +29765,6 @@ self: {
        description = "Binding to the ALSA Library API (PCM audio)";
        license = lib.licenses.bsd3;
        platforms = lib.platforms.linux;
-       maintainers = [ lib.maintainers.thielema ];
      }) {inherit (pkgs) alsa-lib;};
 
   alsa-pcm-tests = callPackage
@@ -29819,7 +29800,6 @@ self: {
        description = "Binding to the ALSA Library API (MIDI sequencer)";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
        platforms = lib.platforms.linux;
-       maintainers = [ lib.maintainers.thielema ];
      }) {inherit (pkgs) alsa-lib;};
 
   alsa-seq-tests = callPackage
@@ -30072,7 +30052,6 @@ self: {
        ];
        description = "Comprehensive Amazon Web Services SDK";
        license = lib.meta.getLicenseFromSpdxId "MPL-2.0";
-       maintainers = [ lib.maintainers.mpscholten ];
      }) {};
 
   amazonka-accessanalyzer = callPackage
@@ -37613,7 +37592,6 @@ self: {
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
        mainProgram = "annah";
-       maintainers = [ lib.maintainers.Gabriella439 ];
      }) {};
 
   annihilator = callPackage
@@ -39699,7 +39677,6 @@ self: {
        ];
        description = "Round a set of numbers while maintaining its sum";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   approveapi = callPackage
@@ -40073,7 +40050,6 @@ self: {
        ];
        description = "Automatic Rule-Based Time Tracker";
        license = lib.licenses.gpl2Only;
-       maintainers = [ lib.maintainers.rvl ];
      }) {};
 
   arcgrid = callPackage
@@ -40170,7 +40146,6 @@ self: {
        ];
        description = "Arch Linux official and AUR web interface binding";
        license = lib.meta.getLicenseFromSpdxId "MIT";
-       maintainers = [ lib.maintainers.berberman ];
      }) {};
 
   archive = callPackage
@@ -40617,7 +40592,6 @@ self: {
        description = "Run docker-compose with help from Nix/NixOS";
        license = lib.meta.getLicenseFromSpdxId "Apache-2.0";
        mainProgram = "arion";
-       maintainers = [ lib.maintainers.roberth ];
      }) {};
 
   arith-encode = callPackage
@@ -43794,7 +43768,6 @@ self: {
        ];
        description = "Interchange with the Audacity sound signal editor";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   audiovisual = callPackage
@@ -45844,7 +45817,6 @@ self: {
        description = "Extract recent daily AWS costs";
        license = lib.meta.getLicenseFromSpdxId "GPL-2.0-only";
        mainProgram = "aws-spend-summary";
-       maintainers = [ lib.maintainers.danielrolls ];
      }) {};
 
   aws-transcribe-ws = callPackage
@@ -48031,7 +48003,6 @@ self: {
        ];
        description = "Basic examples and functions for generics-sop";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.alexfmpe ];
      }) {};
 
   basics = callPackage
@@ -48307,7 +48278,6 @@ self: {
        description = "Compute number of possible arrangements in the battleship game";
        license = lib.licenses.bsd3;
        mainProgram = "battleship-combinatorics";
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   battleships = callPackage
@@ -48769,7 +48739,6 @@ self: {
        ];
        description = "DuckDB backend for Beam";
        license = lib.meta.getLicenseFromSpdxId "MIT";
-       maintainers = [ lib.maintainers.Ai-Ya-Ya ];
      }) {};
 
   beam-large-records = callPackage
@@ -49282,7 +49251,6 @@ self: {
        description = "Command-line benchmark tool";
        license = lib.licenses.bsd3;
        mainProgram = "bench";
-       maintainers = [ lib.maintainers.Gabriella439 ];
      }) {};
 
   bench-graph = callPackage
@@ -49821,7 +49789,6 @@ self: {
        libraryHaskellDepends = [ base latex parsec utility-ht ];
        description = "Parse, format and processing BibTeX files";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   bidi-icu = callPackage
@@ -51763,7 +51730,6 @@ self: {
        ];
        description = "Encode precise binary representations directly in types";
        license = lib.licenses.mit;
-       maintainers = [ lib.maintainers.raehik ];
      }) {};
 
   binrep-instances = callPackage
@@ -53497,7 +53463,6 @@ self: {
        ];
        description = "Auto-generated interface to Fortran BLAS via CArrays";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   blas-comfort-array = callPackage
@@ -53514,7 +53479,6 @@ self: {
        ];
        description = "Auto-generated interface to Fortran BLAS via comfort-array";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   blas-ffi = callPackage
@@ -53529,7 +53493,6 @@ self: {
        libraryPkgconfigDepends = [ blas ];
        description = "Auto-generated interface to Fortran BLAS";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.thielema ];
      }) {inherit (pkgs) blas;};
 
   blas-hs = callPackage
@@ -54090,7 +54053,6 @@ self: {
        testToolDepends = [ tasty-discover ];
        description = "blockfrost.io basic client";
        license = lib.meta.getLicenseFromSpdxId "Apache-2.0";
-       maintainers = [ lib.maintainers.sorki ];
      }) {};
 
   blockfrost-client-core = callPackage
@@ -54553,7 +54515,6 @@ self: {
        libraryHaskellDepends = [ bluefin-internal ];
        description = "The Bluefin effect system";
        license = lib.meta.getLicenseFromSpdxId "MIT";
-       maintainers = [ lib.maintainers.maralorn ];
      }) {};
 
   bluefin_0_5_1_0 = callPackage
@@ -54566,7 +54527,6 @@ self: {
        description = "The Bluefin effect system";
        license = lib.meta.getLicenseFromSpdxId "MIT";
        hydraPlatforms = lib.platforms.none;
-       maintainers = [ lib.maintainers.maralorn ];
      }) {};
 
   bluefin-algae = callPackage
@@ -54901,7 +54861,6 @@ self: {
        description = "Three games for inclusion in a web server";
        license = "GPL";
        mainProgram = "board-games";
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   boardgame = callPackage
@@ -55803,7 +55762,6 @@ self: {
        libraryPkgconfigDepends = [ botan ];
        description = "Raw Botan bindings";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
-       maintainers = [ lib.maintainers.mikatammi ];
      }) {botan = null;};
 
   botan-low = callPackage
@@ -55824,7 +55782,6 @@ self: {
        ];
        description = "Low-level Botan bindings";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
-       maintainers = [ lib.maintainers.mikatammi ];
      }) {};
 
   both = callPackage
@@ -56323,7 +56280,6 @@ self: {
        libraryHaskellDepends = [ base mtl transformers ];
        description = "Break from a loop";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.Gabriella439 ];
      }) {};
 
   breakout = callPackage
@@ -57582,7 +57538,6 @@ self: {
        description = "Read from stdin and write to stdout in large blocks";
        license = lib.licenses.bsd3;
        mainProgram = "buffer-pipe";
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   buffet = callPackage
@@ -58531,7 +58486,6 @@ self: {
        ];
        description = "Read strings describing a number of bytes like 2Kb and 0.5 MiB";
        license = lib.meta.getLicenseFromSpdxId "GPL-3.0-only";
-       maintainers = [ lib.maintainers.danielrolls ];
      }) {};
 
   byte-order = callPackage
@@ -58703,7 +58657,6 @@ self: {
        platforms = lib.platforms.x86;
        hydraPlatforms = lib.platforms.none;
        mainProgram = "bytepatch";
-       maintainers = [ lib.maintainers.raehik ];
        broken = true;
      }) {};
 
@@ -59408,7 +59361,6 @@ self: {
        ];
        description = "Bytestring builder with zero intermediate allocation";
        license = lib.licenses.mit;
-       maintainers = [ lib.maintainers.raehik ];
      }) {};
 
   bz2 = callPackage
@@ -60426,7 +60378,6 @@ self: {
        description = "Generate a FlatPak manifest from a Cabal package description";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
        mainProgram = "cabal-flatpak";
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   cabal-fmt = callPackage
@@ -60457,7 +60408,6 @@ self: {
        description = "Format .cabal files";
        license = "GPL-3.0-or-later AND BSD-3-Clause";
        mainProgram = "cabal-fmt";
-       maintainers = [ lib.maintainers.maralorn ];
      }) {};
 
   cabal-ghc-dynflags = callPackage
@@ -60515,7 +60465,6 @@ self: {
        description = "Formats package descriptions";
        license = lib.meta.getLicenseFromSpdxId "MIT";
        mainProgram = "cabal-gild";
-       maintainers = [ lib.maintainers.turion ];
      }) {};
 
   cabal-gild_1_8_4_1 = callPackage
@@ -60542,7 +60491,6 @@ self: {
        license = lib.meta.getLicenseFromSpdxId "MIT";
        hydraPlatforms = lib.platforms.none;
        mainProgram = "cabal-gild";
-       maintainers = [ lib.maintainers.turion ];
      }) {};
 
   cabal-graphdeps = callPackage
@@ -60693,7 +60641,6 @@ self: {
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
        hydraPlatforms = lib.platforms.none;
        mainProgram = "cabal";
-       maintainers = [ lib.maintainers.sternenseemann ];
        broken = true;
      }) {Cabal-QuickCheck = null; Cabal-described = null; 
          Cabal-tests = null; Cabal-tree-diff = null;};
@@ -60988,7 +60935,6 @@ self: {
        libraryHaskellDepends = [ base Cabal containers lens process ];
        description = "Make Cabal aware of pkg-config package versions";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
-       maintainers = [ lib.maintainers.roberth ];
      }) {};
 
   cabal-plan = callPackage
@@ -61036,7 +60982,6 @@ self: {
        description = "Derives cabal bounds from build plans";
        license = lib.meta.getLicenseFromSpdxId "BSD-2-Clause";
        mainProgram = "cabal-plan-bounds";
-       maintainers = [ lib.maintainers.nomeata ];
      }) {};
 
   cabal-progdeps = callPackage
@@ -61527,7 +61472,6 @@ self: {
        '';
        description = "Convert Cabal files into Nix build instructions";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.sternenseemann ];
      }) {};
 
   cabal2spec = callPackage
@@ -61550,7 +61494,6 @@ self: {
        description = "Convert Cabal files into rpm spec files";
        license = lib.licenses.gpl3Only;
        mainProgram = "cabal2spec";
-       maintainers = [ lib.maintainers.peti ];
      }) {};
 
   cabal2spec_2_8_0 = callPackage
@@ -61572,7 +61515,6 @@ self: {
        license = lib.licenses.gpl3Only;
        hydraPlatforms = lib.platforms.none;
        mainProgram = "cabal2spec";
-       maintainers = [ lib.maintainers.peti ];
      }) {};
 
   cabalQuery = callPackage
@@ -61931,7 +61873,6 @@ self: {
        testToolDepends = [ hspec-discover ];
        description = "Command-line client for Nix binary cache hosting https://cachix.org";
        license = lib.meta.getLicenseFromSpdxId "Apache-2.0";
-       maintainers = [ lib.maintainers.domenkozar ];
      }) {inherit (pkgs) nix;};
 
   cachix-api = callPackage
@@ -61955,7 +61896,6 @@ self: {
        testToolDepends = [ hspec-discover ];
        description = "Servant HTTP API specification for https://cachix.org";
        license = lib.meta.getLicenseFromSpdxId "Apache-2.0";
-       maintainers = [ lib.maintainers.domenkozar ];
      }) {};
 
   cacophony = callPackage
@@ -62435,7 +62375,6 @@ self: {
        description = "List years with the same calendars";
        license = lib.licenses.bsd3;
        mainProgram = "calendar-recycling";
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   calenderweek = callPackage
@@ -63431,7 +63370,6 @@ self: {
        benchmarkHaskellDepends = [ array base ];
        description = "A C-compatible array library";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   carte = callPackage
@@ -63798,7 +63736,6 @@ self: {
        libraryHaskellDepends = [ base text ];
        description = "Track string casing in its type";
        license = lib.licenses.mit;
-       maintainers = [ lib.maintainers.jb55 ];
      }) {};
 
   caseof = callPackage
@@ -64642,7 +64579,6 @@ self: {
        testToolDepends = [ hspec-discover ];
        description = "Cayenne Low Power Payload";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.sorki ];
      }) {};
 
   cayley-client = callPackage
@@ -66300,7 +66236,6 @@ self: {
        ];
        description = "A library of simple NLP algorithms";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.sternenseemann ];
      }) {};
 
   chatty = callPackage
@@ -66400,7 +66335,6 @@ self: {
        description = "Experimental markdown processor";
        license = lib.licenses.bsd3;
        mainProgram = "cheapskate";
-       maintainers = [ lib.maintainers.t4ccer ];
      }) {};
 
   cheapskate-highlight = callPackage
@@ -66506,7 +66440,6 @@ self: {
        description = "Check whether module and package imports conform to the PVP";
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   checked = callPackage
@@ -66629,7 +66562,6 @@ self: {
        libraryHaskellDepends = [ base explicit-exception utility-ht ];
        description = "Compute and verify checksums of ISBN, IBAN, etc";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   chell = callPackage
@@ -67934,7 +67866,6 @@ self: {
        benchmarkHaskellDepends = [ base criterion vector ];
        description = "Circular fixed-sized mutable vectors";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
-       maintainers = [ lib.maintainers.dschrempf ];
      }) {};
 
   circular-enum = callPackage
@@ -68052,7 +67983,6 @@ self: {
        ];
        description = "Generates citations and bibliography from CSL styles";
        license = lib.meta.getLicenseFromSpdxId "BSD-2-Clause";
-       maintainers = [ lib.maintainers.sternenseemann ];
      }) {};
 
   citeproc_0_13 = callPackage
@@ -68080,7 +68010,6 @@ self: {
        description = "Generates citations and bibliography from CSL styles";
        license = lib.meta.getLicenseFromSpdxId "BSD-2-Clause";
        hydraPlatforms = lib.platforms.none;
-       maintainers = [ lib.maintainers.sternenseemann ];
      }) {};
 
   citeproc-hs = callPackage
@@ -69245,7 +69174,6 @@ self: {
        testToolDepends = [ hspec-discover ];
        description = "CSS preprocessor as embedded Haskell";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.turion ];
      }) {};
 
   clckwrks = callPackage
@@ -70505,7 +70433,6 @@ self: {
        description = "CLI tool to easily spin up and control compute instances in various cloud environments";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
        mainProgram = "cloudy";
-       maintainers = [ lib.maintainers.cdepillabout ];
      }) {};
 
   cloudyfs = callPackage
@@ -72231,7 +72158,6 @@ self: {
        description = "Linear Programming using COIN-OR/CLP and comfort-array";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
        badPlatforms = [ "aarch64-linux" ];
-       maintainers = [ lib.maintainers.thielema ];
      }) {inherit (pkgs) clp; coinutils = null;};
 
   cointracking-imports = callPackage
@@ -72992,7 +72918,6 @@ self: {
        ];
        description = "Count, enumerate, rank and unrank combinatorial objects";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   combinatorial-problems = callPackage
@@ -73075,7 +73000,6 @@ self: {
        ];
        description = "Arrays where the index type is a function of the shape type";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   comfort-array-shape = callPackage
@@ -73099,7 +73023,6 @@ self: {
        doHaddock = false;
        description = "Additional shape types for the comfort-array package";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   comfort-blas = callPackage
@@ -73125,7 +73048,6 @@ self: {
        ];
        description = "Numerical Basic Linear Algebra using BLAS";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   comfort-fftw = callPackage
@@ -73148,7 +73070,6 @@ self: {
        ];
        description = "High-level interface to FFTW (Fast Fourier Transform) based on comfort-array";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   comfort-glpk = callPackage
@@ -73175,7 +73096,6 @@ self: {
        ];
        description = "Linear Programming using GLPK and comfort-array";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
-       maintainers = [ lib.maintainers.thielema ];
      }) {inherit (pkgs) glpk;};
 
   comfort-graph = callPackage
@@ -73195,7 +73115,6 @@ self: {
        ];
        description = "Graph structure with type parameters for nodes and edges";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   comic = callPackage
@@ -73548,7 +73467,6 @@ self: {
        libraryHaskellDepends = [ base containers ];
        description = "Commutative semigroups";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
-       maintainers = [ lib.maintainers.alexfmpe ];
      }) {};
 
   comonad = callPackage
@@ -75378,7 +75296,6 @@ self: {
        libraryHaskellDepends = [ base ];
        description = "MVars and Channels with distinguished input and output side";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   concurrent-st = callPackage
@@ -77657,7 +77574,6 @@ self: {
        libraryHaskellDepends = [ base base-unicode-symbols containers ];
        description = "Unicode alternatives for common functions and operators";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.t4ccer ];
      }) {};
 
   containers-verified = callPackage
@@ -79556,7 +79472,6 @@ self: {
        ];
        license = lib.licenses.bsd3;
        mainProgram = "cornelis";
-       maintainers = [ lib.maintainers.malo lib.maintainers.phijor ];
      }) {};
 
   coroutine-enumerator = callPackage
@@ -79885,7 +79800,6 @@ self: {
        testHaskellDepends = [ base hmatrix tasty tasty-hunit ];
        description = "Well-conditioned estimation of large-dimensional covariance matrices";
        license = lib.meta.getLicenseFromSpdxId "GPL-3.0-or-later";
-       maintainers = [ lib.maintainers.dschrempf ];
      }) {};
 
   covenant = callPackage
@@ -80279,7 +80193,6 @@ self: {
        testPkgconfigDepends = [ python3 ];
        description = "Bindings for libpython";
        license = lib.licenses.gpl3Only;
-       maintainers = [ lib.maintainers.sheepforce ];
      }) {inherit (pkgs) python3;};
 
   cql = callPackage
@@ -84039,7 +83952,6 @@ self: {
        testHaskellDepends = [ base hspec text ];
        description = "Currencies representation, pretty printing and conversion";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.mpscholten ];
      }) {};
 
   currency = callPackage
@@ -84551,7 +84463,6 @@ self: {
        description = "Cut files according to a position list";
        license = lib.licenses.bsd3;
        mainProgram = "cutter";
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   cv-combinators = callPackage
@@ -85576,7 +85487,6 @@ self: {
        libraryHaskellDepends = [ array base containers transformers ];
        description = "Utilities for accessing and manipulating fields of records";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   data-accessor-monadLib = callPackage
@@ -85631,7 +85541,6 @@ self: {
        libraryHaskellDepends = [ base data-accessor mtl ];
        description = "Use Accessor to access state in mtl State monad class";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   data-accessor-template = callPackage
@@ -85649,7 +85558,6 @@ self: {
        description = "Utilities for accessing and manipulating fields of records";
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
-       maintainers = [ lib.maintainers.thielema ];
        broken = true;
      }) {};
 
@@ -85662,7 +85570,6 @@ self: {
        libraryHaskellDepends = [ base data-accessor transformers ];
        description = "Use Accessor to access state in transformers State monad";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   data-array-byte = callPackage
@@ -86860,7 +86767,6 @@ self: {
        libraryHaskellDepends = [ base mtl template-haskell ];
        description = "Simple lenses, minimum dependencies";
        license = lib.licenses.mit;
-       maintainers = [ lib.maintainers.sorki ];
      }) {};
 
   data-lens-template = callPackage
@@ -87174,7 +87080,6 @@ self: {
        libraryHaskellDepends = [ base data-accessor stm transformers ];
        description = "Unify STRef and IORef in plain Haskell 98";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   data-reify = callPackage
@@ -87459,7 +87364,6 @@ self: {
        ];
        description = "ARM SVD and CubeMX XML parser and pretty printer for STM32 family";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.sorki ];
      }) {};
 
   data-store = callPackage
@@ -92004,7 +91908,6 @@ self: {
        description = "A configuration language guaranteed to terminate";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
        mainProgram = "dhall";
-       maintainers = [ lib.maintainers.Gabriella439 ];
      }) {};
 
   dhall-bash = callPackage
@@ -92029,7 +91932,6 @@ self: {
        description = "Compile Dhall to Bash";
        license = lib.licenses.bsd3;
        mainProgram = "dhall-to-bash";
-       maintainers = [ lib.maintainers.Gabriella439 ];
      }) {};
 
   dhall-check = callPackage
@@ -92117,7 +92019,6 @@ self: {
        description = "Generate HTML docs from a dhall package";
        license = lib.licenses.bsd3;
        mainProgram = "dhall-docs";
-       maintainers = [ lib.maintainers.Gabriella439 ];
      }) {};
 
   dhall-fly = callPackage
@@ -92184,7 +92085,6 @@ self: {
        ];
        description = "Convert between Dhall and JSON or YAML";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.Gabriella439 ];
      }) {};
 
   dhall-lex = callPackage
@@ -92237,9 +92137,6 @@ self: {
        description = "Language Server Protocol (LSP) server for Dhall";
        license = lib.licenses.mit;
        mainProgram = "dhall-lsp-server";
-       maintainers = [
-         lib.maintainers.dalpd lib.maintainers.Gabriella439
-       ];
      }) {};
 
   dhall-nix = callPackage
@@ -92264,7 +92161,6 @@ self: {
        description = "Dhall to Nix compiler";
        license = lib.licenses.bsd3;
        mainProgram = "dhall-to-nix";
-       maintainers = [ lib.maintainers.Gabriella439 ];
      }) {};
 
   dhall-nixpkgs = callPackage
@@ -92290,7 +92186,6 @@ self: {
        description = "Convert Dhall projects to Nix packages";
        license = lib.licenses.bsd3;
        mainProgram = "dhall-to-nixpkgs";
-       maintainers = [ lib.maintainers.Gabriella439 ];
      }) {};
 
   dhall-openapi = callPackage
@@ -92318,7 +92213,6 @@ self: {
        description = "Convert an OpenAPI specification to a Dhall package";
        license = lib.licenses.bsd3;
        mainProgram = "openapi-to-dhall";
-       maintainers = [ lib.maintainers.Gabriella439 ];
      }) {};
 
   dhall-recursive-adt = callPackage
@@ -92389,7 +92283,6 @@ self: {
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
        mainProgram = "dhall-to-text";
-       maintainers = [ lib.maintainers.Gabriella439 ];
        broken = true;
      }) {};
 
@@ -92500,7 +92393,6 @@ self: {
        ];
        description = "Convert between Dhall and YAML";
        license = lib.licenses.gpl3Only;
-       maintainers = [ lib.maintainers.Gabriella439 ];
      }) {};
 
   dhcp-lease-parser = callPackage
@@ -92822,7 +92714,6 @@ self: {
        doHaddock = false;
        description = "Embedded domain-specific language for declarative vector graphics";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.sternenseemann ];
      }) {};
 
   diagrams-boolean = callPackage
@@ -94757,7 +94648,6 @@ self: {
        testHaskellDepends = [ base hspec log-domain random vector ];
        description = "Multivariate Dirichlet distribution";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
-       maintainers = [ lib.maintainers.dschrempf ];
      }) {};
 
   dirstream = callPackage
@@ -94776,7 +94666,6 @@ self: {
        description = "Easily stream directory contents in constant memory";
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
-       maintainers = [ lib.maintainers.Gabriella439 ];
        broken = true;
      }) {};
 
@@ -95954,7 +95843,6 @@ self: {
        ];
        description = "Types and functions to manipulate the Nixpkgs distribution";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.sternenseemann ];
      }) {};
 
   distribution-opensuse = callPackage
@@ -97204,7 +97092,6 @@ self: {
        ];
        description = "Run doctest's in a Cabal.Test.exitcode-stdio environment";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   doctest-extract = callPackage
@@ -97226,7 +97113,6 @@ self: {
        description = "Alternative doctest implementation that extracts comments to modules";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
        mainProgram = "doctest-extract-0.1";
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   doctest-lib = callPackage
@@ -97238,7 +97124,6 @@ self: {
        libraryHaskellDepends = [ base ];
        description = "Parts of doctest exposed as library";
        license = lib.meta.getLicenseFromSpdxId "MIT";
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   doctest-parallel = callPackage
@@ -99017,7 +98902,6 @@ self: {
        testHaskellDepends = [ array base containers QuickCheck ];
        description = "Haskell Digital Signal Processing";
        license = lib.meta.getLicenseFromSpdxId "GPL-2.0-only";
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   dstring = callPackage
@@ -99224,7 +99108,6 @@ self: {
        description = "Automatically generate dual constructions";
        license = lib.meta.getLicenseFromSpdxId "AGPL-3.0-or-later";
        hydraPlatforms = lib.platforms.none;
-       maintainers = [ lib.maintainers.sellout ];
        broken = true;
      }) {};
 
@@ -99269,7 +99152,6 @@ self: {
        ];
        description = "Haskell FFI bindings for DuckDB";
        license = lib.meta.getLicenseFromSpdxId "MPL-2.0";
-       maintainers = [ lib.maintainers.Ai-Ya-Ya ];
      }) {inherit (pkgs) duckdb;};
 
   duckdb-haskell = callPackage
@@ -99308,7 +99190,6 @@ self: {
        ];
        description = "Haskell FFI bindings for DuckDB";
        license = lib.meta.getLicenseFromSpdxId "MPL-2.0";
-       maintainers = [ lib.maintainers.Ai-Ya-Ya ];
      }) {};
 
   duckling = callPackage
@@ -99450,7 +99331,6 @@ self: {
        benchmarkHaskellDepends = [ base criterion filepath time ];
        description = "Generalised reactive framework supporting classic, arrowized and monadic FRP";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.turion ];
      }) {};
 
   dunai-core = callPackage
@@ -102931,7 +102811,6 @@ self: {
        description = "elm-export persistent entities";
        license = lib.licenses.mit;
        hydraPlatforms = lib.platforms.none;
-       maintainers = [ lib.maintainers.jb55 ];
        broken = true;
      }) {};
 
@@ -103391,7 +103270,6 @@ self: {
        description = "Validate and (optionally) redo ELynx analyses";
        license = lib.meta.getLicenseFromSpdxId "GPL-3.0-or-later";
        mainProgram = "elynx";
-       maintainers = [ lib.maintainers.dschrempf ];
      }) {};
 
   elynx_0_9_0_0 = callPackage
@@ -103411,7 +103289,6 @@ self: {
        license = lib.meta.getLicenseFromSpdxId "GPL-3.0-or-later";
        hydraPlatforms = lib.platforms.none;
        mainProgram = "elynx";
-       maintainers = [ lib.maintainers.dschrempf ];
      }) {};
 
   elynx-markov = callPackage
@@ -103433,7 +103310,6 @@ self: {
        benchmarkHaskellDepends = [ base ];
        description = "Simulate molecular sequences along trees";
        license = lib.meta.getLicenseFromSpdxId "GPL-3.0-or-later";
-       maintainers = [ lib.maintainers.dschrempf ];
      }) {};
 
   elynx-markov_0_9_0_0 = callPackage
@@ -103456,7 +103332,6 @@ self: {
        description = "Simulate molecular sequences along trees";
        license = lib.meta.getLicenseFromSpdxId "GPL-3.0-or-later";
        hydraPlatforms = lib.platforms.none;
-       maintainers = [ lib.maintainers.dschrempf ];
      }) {};
 
   elynx-nexus = callPackage
@@ -103469,7 +103344,6 @@ self: {
        testHaskellDepends = [ base hspec ];
        description = "Import and export Nexus files";
        license = lib.meta.getLicenseFromSpdxId "GPL-3.0-or-later";
-       maintainers = [ lib.maintainers.dschrempf ];
      }) {};
 
   elynx-nexus_0_9_0_0 = callPackage
@@ -103483,7 +103357,6 @@ self: {
        description = "Import and export Nexus files";
        license = lib.meta.getLicenseFromSpdxId "GPL-3.0-or-later";
        hydraPlatforms = lib.platforms.none;
-       maintainers = [ lib.maintainers.dschrempf ];
      }) {};
 
   elynx-seq = callPackage
@@ -103504,7 +103377,6 @@ self: {
        ];
        description = "Handle molecular sequences";
        license = lib.meta.getLicenseFromSpdxId "GPL-3.0-or-later";
-       maintainers = [ lib.maintainers.dschrempf ];
      }) {};
 
   elynx-seq_0_9_0_0 = callPackage
@@ -103526,7 +103398,6 @@ self: {
        description = "Handle molecular sequences";
        license = lib.meta.getLicenseFromSpdxId "GPL-3.0-or-later";
        hydraPlatforms = lib.platforms.none;
-       maintainers = [ lib.maintainers.dschrempf ];
      }) {};
 
   elynx-tools = callPackage
@@ -103546,7 +103417,6 @@ self: {
        ];
        description = "Tools for ELynx";
        license = lib.meta.getLicenseFromSpdxId "GPL-3.0-or-later";
-       maintainers = [ lib.maintainers.dschrempf ];
      }) {};
 
   elynx-tools_0_9_0_0 = callPackage
@@ -103567,7 +103437,6 @@ self: {
        description = "Tools for ELynx";
        license = lib.meta.getLicenseFromSpdxId "GPL-3.0-or-later";
        hydraPlatforms = lib.platforms.none;
-       maintainers = [ lib.maintainers.dschrempf ];
      }) {};
 
   elynx-tree = callPackage
@@ -103594,7 +103463,6 @@ self: {
        ];
        description = "Handle phylogenetic trees";
        license = lib.meta.getLicenseFromSpdxId "GPL-3.0-or-later";
-       maintainers = [ lib.maintainers.dschrempf ];
      }) {};
 
   elynx-tree_0_9_0_0 = callPackage
@@ -103621,7 +103489,6 @@ self: {
        description = "Handle phylogenetic trees";
        license = lib.meta.getLicenseFromSpdxId "GPL-3.0-or-later";
        hydraPlatforms = lib.platforms.none;
-       maintainers = [ lib.maintainers.dschrempf ];
      }) {};
 
   ema = callPackage
@@ -104797,7 +104664,6 @@ self: {
        ];
        description = "Sets of enumeration values represented by machine words";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   env-extra = callPackage
@@ -104931,7 +104797,6 @@ self: {
        ];
        description = "An environmentally friendly way to deal with environment variables";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.sternenseemann ];
      }) {};
 
   envy-extensible = callPackage
@@ -105251,7 +105116,6 @@ self: {
        description = "Shell command for finding equal files";
        license = "GPL";
        mainProgram = "equal-files";
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   equational-reasoning = callPackage
@@ -105770,7 +105634,6 @@ self: {
        ];
        description = "Simplified error-handling";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.Gabriella439 ];
      }) {};
 
   errors-ext = callPackage
@@ -106259,7 +106122,6 @@ self: {
        ];
        description = "General purpose live coding framework";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
-       maintainers = [ lib.maintainers.turion ];
      }) {};
 
   essence-of-live-coding-PortMidi = callPackage
@@ -106291,7 +106153,6 @@ self: {
        ];
        description = "General purpose live coding framework - Gloss backend";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.turion ];
      }) {};
 
   essence-of-live-coding-gloss-example = callPackage
@@ -106328,7 +106189,6 @@ self: {
        ];
        description = "General purpose live coding framework - pulse backend";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.turion ];
      }) {};
 
   essence-of-live-coding-pulse-example = callPackage
@@ -106366,7 +106226,6 @@ self: {
        ];
        description = "General purpose live coding framework - QuickCheck integration";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.turion ];
      }) {};
 
   essence-of-live-coding-vivid = callPackage
@@ -106396,7 +106255,6 @@ self: {
        ];
        description = "General purpose live coding framework";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.turion ];
      }) {};
 
   estimator = callPackage
@@ -107033,7 +106891,6 @@ self: {
        ];
        description = "Event lists with relative or absolute time stamps";
        license = "GPL";
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   event-monad = callPackage
@@ -107466,7 +107323,6 @@ self: {
        description = "Visualise an eventlog";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
        mainProgram = "eventlog2html";
-       maintainers = [ lib.maintainers.maralorn ];
      }) {};
 
   eventloop = callPackage
@@ -109010,7 +108866,6 @@ self: {
        libraryHaskellDepends = [ base deepseq semigroups transformers ];
        description = "Exceptions which are explicit in the type signature";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   explicit-iomodes = callPackage
@@ -110359,7 +110214,6 @@ self: {
        ];
        description = "Property-based testing with internal integrated shrinking";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
-       maintainers = [ lib.maintainers.maralorn ];
      }) {};
 
   falsify_0_3_0 = callPackage
@@ -110383,7 +110237,6 @@ self: {
        description = "Property-based testing with internal integrated shrinking";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
        hydraPlatforms = lib.platforms.none;
-       maintainers = [ lib.maintainers.maralorn ];
      }) {};
 
   familiar-reflection = callPackage
@@ -110560,7 +110413,6 @@ self: {
        testToolDepends = [ hspec-discover ];
        description = "A fast logging system";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.sternenseemann ];
      }) {};
 
   fast-math = callPackage
@@ -112614,7 +112466,6 @@ self: {
        testHaskellDepends = [ base carray QuickCheck storable-complex ];
        description = "Bindings to the FFTW library";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.thielema ];
      }) {inherit (pkgs) fftw; inherit (pkgs) fftwFloat;};
 
   fftw-ffi = callPackage
@@ -112629,7 +112480,6 @@ self: {
        libraryPkgconfigDepends = [ fftw fftwFloat ];
        description = "Low-level interface to FFTW (Fast Fourier Transform)";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
-       maintainers = [ lib.maintainers.thielema ];
      }) {inherit (pkgs) fftw; inherit (pkgs) fftwFloat;};
 
   fftwRaw = callPackage
@@ -113834,7 +113684,6 @@ self: {
        testHaskellDepends = [ base deepseq QuickCheck ];
        description = "A type inhabited by finitely many values, indexed by type-level naturals";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.turion ];
      }) {};
 
   finito = callPackage
@@ -114262,7 +114111,6 @@ self: {
        ];
        description = "Lists with statically known length based on non-empty package";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   fixed-list = callPackage
@@ -114900,7 +114748,6 @@ self: {
        ];
        description = "Principled and efficient bit-oriented binary serialization";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.sternenseemann ];
      }) {};
 
   flat-maybe = callPackage
@@ -115067,7 +114914,6 @@ self: {
        ];
        description = "High-performance parsing from strict bytestrings";
        license = lib.licenses.mit;
-       maintainers = [ lib.maintainers.raehik ];
      }) {};
 
   flay = callPackage
@@ -116254,7 +116100,6 @@ self: {
        benchmarkHaskellDepends = [ base criterion profunctors ];
        description = "Composable, streaming, and efficient left folds";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.Gabriella439 ];
      }) {};
 
   foldl-exceptions = callPackage
@@ -120045,7 +119890,6 @@ self: {
        libraryHaskellDepends = [ base filepath pretty process ];
        description = "Functional MetaPost is a Haskell frontend to the MetaPost language";
        license = lib.licenses.gpl3Only;
-       maintainers = [ lib.maintainers.peti ];
      }) {};
 
   funcons-intgen = callPackage
@@ -120606,7 +120450,6 @@ self: {
        benchmarkHaskellDepends = [ base tasty-bench transformers ];
        description = "A fast, flexible, fused effect system";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
-       maintainers = [ lib.maintainers.mangoiv ];
      }) {};
 
   fused-effects-exceptions = callPackage
@@ -120859,7 +120702,6 @@ self: {
        description = "An optimising compiler for a functional, array-oriented language";
        license = lib.meta.getLicenseFromSpdxId "ISC";
        mainProgram = "futhark";
-       maintainers = [ lib.maintainers.athas ];
      }) {};
 
   futhark-data = callPackage
@@ -122042,7 +121884,6 @@ self: {
        description = "GCode processor";
        license = lib.licenses.bsd3;
        mainProgram = "gcodehs";
-       maintainers = [ lib.maintainers.sorki ];
      }) {};
 
   gconf = callPackage
@@ -122981,7 +122822,6 @@ self: {
        libraryHaskellDepends = [ base contravariant ];
        description = "Familiar functions lifted to generic data types";
        license = lib.licenses.mit;
-       maintainers = [ lib.maintainers.raehik ];
      }) {};
 
   generic-data-surgery = callPackage
@@ -123313,7 +123153,6 @@ self: {
        ];
        description = "Generically derive traversals, lenses and prisms";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.maralorn ];
      }) {};
 
   generic-optics_2_3_0_0 = callPackage
@@ -123331,7 +123170,6 @@ self: {
        description = "Generically derive traversals, lenses and prisms";
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
-       maintainers = [ lib.maintainers.maralorn ];
      }) {};
 
   generic-optics-lite = callPackage
@@ -123660,7 +123498,6 @@ self: {
        ];
        description = "Generic Programming using True Sums of Products";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.alexfmpe ];
      }) {};
 
   generics-sop-lens = callPackage
@@ -125483,7 +125320,6 @@ self: {
        description = "A simple TUI using ghc-debug";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
        mainProgram = "ghc-debug-brick";
-       maintainers = [ lib.maintainers.maralorn ];
      }) {};
 
   ghc-debug-client = callPackage
@@ -125549,7 +125385,6 @@ self: {
        ];
        description = "Functions for instrumenting your application so the heap can be analysed with ghc-debug-common";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
-       maintainers = [ lib.maintainers.maralorn ];
      }) {};
 
   ghc-debugger = callPackage
@@ -127449,7 +127284,6 @@ self: {
        ];
        description = "Live visualization of data structures in GHCi";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
-       maintainers = [ lib.maintainers.dalpd ];
      }) {};
 
   ghcflags = callPackage
@@ -127732,7 +127566,6 @@ self: {
        description = "GHCi based bare bones IDE";
        license = lib.licenses.bsd3;
        mainProgram = "ghcid";
-       maintainers = [ lib.maintainers.maralorn ];
      }) {};
 
   ghcide = callPackage
@@ -127879,7 +127712,6 @@ self: {
        sha256 = "081w3234jramsmafnl86v37lwbckr2vc93gr9pdwc31yzni9kbml";
        description = "base library for GHCJS";
        license = lib.meta.getLicenseFromSpdxId "MIT";
-       maintainers = [ lib.maintainers.alexfmpe ];
      }) {};
 
   ghcjs-base-stub = callPackage
@@ -127928,7 +127760,6 @@ self: {
        ];
        description = "DOM library that supports both GHCJS and GHC";
        license = lib.meta.getLicenseFromSpdxId "MIT";
-       maintainers = [ lib.maintainers.alexfmpe ];
      }) {};
 
   ghcjs-dom-hello = callPackage
@@ -127961,7 +127792,6 @@ self: {
        sha256 = "1k62w5czg544ias8q2kvhp8qnlafzisgx1p0gq8d2kh662w99kcg";
        description = "DOM library using JSFFI and GHCJS";
        license = lib.meta.getLicenseFromSpdxId "MIT";
-       maintainers = [ lib.maintainers.alexfmpe ];
      }) {};
 
   ghcjs-dom-jsaddle = callPackage
@@ -127974,7 +127804,6 @@ self: {
        doHaddock = false;
        description = "DOM library that supports both GHCJS and GHC using jsaddle";
        license = lib.meta.getLicenseFromSpdxId "MIT";
-       maintainers = [ lib.maintainers.alexfmpe ];
      }) {};
 
   ghcjs-dom-jsffi = callPackage
@@ -130403,7 +130232,6 @@ self: {
        description = "manage files with git, without checking their contents into git";
        license = lib.licenses.agpl3Only;
        mainProgram = "git-annex";
-       maintainers = [ lib.maintainers.peti ];
      }) {};
 
   git-brunch = callPackage
@@ -131389,7 +131217,6 @@ self: {
        ];
        description = "Wiki using happstack, git or darcs, and pandoc";
        license = "GPL";
-       maintainers = [ lib.maintainers.sternenseemann ];
      }) {};
 
   gitlab-api = callPackage
@@ -131934,7 +131761,6 @@ self: {
        libraryHaskellDepends = [ base vector ];
        description = "Graphical Lasso algorithm";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.dschrempf ];
      }) {};
 
   glaze = callPackage
@@ -133197,7 +133023,6 @@ self: {
        ];
        description = "2D and 3D plots using gnuplot";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   gnutls = callPackage
@@ -136094,7 +135919,6 @@ self: {
        description = "proxy gopher over http";
        license = lib.licenses.gpl3Only;
        mainProgram = "gopher-proxy";
-       maintainers = [ lib.maintainers.sternenseemann ];
      }) {};
 
   gopherbot = callPackage
@@ -137783,7 +137607,6 @@ self: {
        description = "A client for Haskell programs to query a GraphQL API";
        license = lib.licenses.bsd3;
        mainProgram = "graphql-codegen";
-       maintainers = [ lib.maintainers.maralorn ];
      }) {};
 
   graphql-spice = callPackage
@@ -138877,7 +138700,6 @@ self: {
        description = "Shell command for grouping files by dates into folders";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
        mainProgram = "group-by-date";
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   group-theory = callPackage
@@ -140000,7 +139822,6 @@ self: {
        libraryHaskellDepends = [ base ];
        description = "Memory allocation with added stress tests and integrity checks";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   guarded-rewriting = callPackage
@@ -141559,7 +141380,6 @@ self: {
        ];
        description = "Access cabal-install's Hackage database via Data.Map";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.sternenseemann ];
      }) {};
 
   hackage-diff = callPackage
@@ -142820,7 +142640,6 @@ self: {
        description = "A static website compiler library";
        license = lib.licenses.bsd3;
        mainProgram = "hakyll-init";
-       maintainers = [ lib.maintainers.erictapen ];
      }) {inherit (pkgs) util-linux;};
 
   hakyll-R = callPackage
@@ -145059,7 +144878,6 @@ self: {
        libraryToolDepends = [ happy ];
        description = "Quasi-quoter for Happy parsers";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.artem ];
      }) {};
 
   happybara = callPackage
@@ -145527,7 +145345,6 @@ self: {
        testToolDepends = [ hspec-discover ];
        description = "This library 'Has' transformers";
        license = lib.meta.getLicenseFromSpdxId "MIT";
-       maintainers = [ lib.maintainers.turion ];
      }) {};
 
   hasbolt = callPackage
@@ -147029,7 +146846,6 @@ self: {
        description = "Cabal package script generator for Travis-CI";
        license = lib.meta.getLicenseFromSpdxId "GPL-3.0-or-later";
        mainProgram = "haskell-ci";
-       maintainers = [ lib.maintainers.sternenseemann ];
      }) {};
 
   haskell-cnc = callPackage
@@ -147210,7 +147026,6 @@ self: {
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
        hydraPlatforms = lib.platforms.none;
        mainProgram = "hdb";
-       maintainers = [ lib.maintainers.alexfmpe ];
      }) {};
 
   haskell-debugger-view = callPackage
@@ -147769,7 +147584,6 @@ self: {
        doHaddock = false;
        description = "LSP server for GHC";
        license = lib.meta.getLicenseFromSpdxId "Apache-2.0";
-       maintainers = [ lib.maintainers.maralorn ];
      }) {};
 
   haskell-lexer = callPackage
@@ -155941,7 +155755,6 @@ self: {
        testToolDepends = [ hspec-discover ];
        description = "Runs Continuous Integration tasks on your machines";
        license = lib.meta.getLicenseFromSpdxId "Apache-2.0";
-       maintainers = [ lib.maintainers.roberth ];
      }) {inherit (pkgs) boost; inherit (pkgs) nix;};
 
   hercules-ci-api = callPackage
@@ -155982,7 +155795,6 @@ self: {
        description = "Hercules CI API definition with Servant";
        license = lib.meta.getLicenseFromSpdxId "Apache-2.0";
        mainProgram = "hercules-gen-swagger";
-       maintainers = [ lib.maintainers.roberth ];
      }) {};
 
   hercules-ci-api-agent = callPackage
@@ -156011,7 +155823,6 @@ self: {
        ];
        description = "API definition for Hercules CI Agent to talk to hercules-ci.com or Hercules CI Enterprise";
        license = lib.licenses.asl20;
-       maintainers = [ lib.maintainers.roberth ];
      }) {};
 
   hercules-ci-api-core = callPackage
@@ -156035,7 +155846,6 @@ self: {
        ];
        description = "Types and convenience modules use across Hercules CI API packages";
        license = lib.licenses.asl20;
-       maintainers = [ lib.maintainers.roberth ];
      }) {};
 
   hercules-ci-cli = callPackage
@@ -156081,7 +155891,6 @@ self: {
        license = lib.licenses.asl20;
        hydraPlatforms = lib.platforms.none;
        mainProgram = "hci";
-       maintainers = [ lib.maintainers.roberth ];
        broken = true;
      }) {hercules-ci-optparse-applicative = null;};
 
@@ -156113,7 +155922,6 @@ self: {
        testToolDepends = [ hspec-discover ];
        description = "Bindings for the Nix evaluator";
        license = lib.meta.getLicenseFromSpdxId "Apache-2.0";
-       maintainers = [ lib.maintainers.roberth ];
      }) {inherit (pkgs) boost; inherit (pkgs) nix;};
 
   hercules-ci-cnix-store = callPackage
@@ -156140,7 +155948,6 @@ self: {
        testToolDepends = [ hspec-discover ];
        description = "Haskell bindings for Nix's libstore";
        license = lib.meta.getLicenseFromSpdxId "Apache-2.0";
-       maintainers = [ lib.maintainers.roberth ];
      }) {inherit (pkgs) boost; inherit (pkgs) nix;};
 
   here = callPackage
@@ -156705,7 +156512,6 @@ self: {
        description = "Symbolic EVM Evaluator";
        license = lib.meta.getLicenseFromSpdxId "AGPL-3.0-only";
        mainProgram = "hevm";
-       maintainers = [ lib.maintainers.arturcygan ];
      }) {inherit (pkgs) gmp; inherit (pkgs) libff; 
          inherit (pkgs) secp256k1;};
 
@@ -157173,7 +156979,6 @@ self: {
        libraryToolDepends = [ c2hs ];
        description = "Haskell bindings for the Keystone assembler framework";
        license = lib.licenses.gpl2Only;
-       maintainers = [ lib.maintainers.raehik ];
      }) {inherit (pkgs) keystone;};
 
   heyting-algebras = callPackage
@@ -159250,7 +159055,6 @@ self: {
        description = "Generic project initialization tool";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
        mainProgram = "hi";
-       maintainers = [ lib.maintainers.poscat ];
      }) {};
 
   hinotify = callPackage
@@ -160509,9 +160313,6 @@ self: {
        description = "Command-line interface for the hledger accounting system";
        license = lib.meta.getLicenseFromSpdxId "GPL-3.0-or-later";
        mainProgram = "hledger";
-       maintainers = [
-         lib.maintainers.maralorn lib.maintainers.sternenseemann
-       ];
      }) {};
 
   hledger-api = callPackage
@@ -160658,7 +160459,6 @@ self: {
        description = "computes interest for a given account";
        license = lib.licenses.bsd3;
        mainProgram = "hledger-interest";
-       maintainers = [ lib.maintainers.peti ];
      }) {};
 
   hledger-irr = callPackage
@@ -160800,7 +160600,6 @@ self: {
        description = "Terminal interface for the hledger accounting system";
        license = lib.meta.getLicenseFromSpdxId "GPL-3.0-or-later";
        mainProgram = "hledger-ui";
-       maintainers = [ lib.maintainers.maralorn ];
      }) {};
 
   hledger-vty = callPackage
@@ -160857,7 +160656,6 @@ self: {
        description = "Web user interface for the hledger accounting system";
        license = lib.meta.getLicenseFromSpdxId "GPL-3.0-or-later";
        mainProgram = "hledger-web";
-       maintainers = [ lib.maintainers.maralorn ];
      }) {};
 
   hlex = callPackage
@@ -160987,7 +160785,6 @@ self: {
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
        mainProgram = "hlint";
-       maintainers = [ lib.maintainers.maralorn ];
      }) {};
 
   hlint_3_8 = callPackage
@@ -161016,7 +160813,6 @@ self: {
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
        mainProgram = "hlint";
-       maintainers = [ lib.maintainers.maralorn ];
      }) {};
 
   hlint = callPackage
@@ -161044,7 +160840,6 @@ self: {
        description = "Source code suggestions";
        license = lib.licenses.bsd3;
        mainProgram = "hlint";
-       maintainers = [ lib.maintainers.maralorn ];
      }) {};
 
   hlint-plugin = callPackage
@@ -162453,7 +162248,6 @@ self: {
        doHaddock = false;
        description = "Hidden Markov Models using LAPACK primitives";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   hmp3 = callPackage
@@ -162675,9 +162469,6 @@ self: {
        description = "Haskell implementation of the Nix language";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
        mainProgram = "hnix";
-       maintainers = [
-         lib.maintainers.Anton-Latukha lib.maintainers.sorki
-       ];
      }) {};
 
   hnix-store-core = callPackage
@@ -162709,9 +162500,6 @@ self: {
        testToolDepends = [ tasty-discover ];
        description = "Core effects for interacting with the Nix store";
        license = lib.meta.getLicenseFromSpdxId "Apache-2.0";
-       maintainers = [
-         lib.maintainers.Anton-Latukha lib.maintainers.sorki
-       ];
      }) {};
 
   hnix-store-core_0_8_0_0 = callPackage
@@ -162741,9 +162529,6 @@ self: {
        description = "Core types used for interacting with the Nix store";
        license = lib.meta.getLicenseFromSpdxId "Apache-2.0";
        hydraPlatforms = lib.platforms.none;
-       maintainers = [
-         lib.maintainers.Anton-Latukha lib.maintainers.sorki
-       ];
      }) {};
 
   hnix-store-db = callPackage
@@ -162853,9 +162638,6 @@ self: {
        ];
        description = "Remote hnix store";
        license = lib.meta.getLicenseFromSpdxId "Apache-2.0";
-       maintainers = [
-         lib.maintainers.Anton-Latukha lib.maintainers.sorki
-       ];
      }) {};
 
   hnix-store-remote_0_7_0_0 = callPackage
@@ -162888,9 +162670,6 @@ self: {
        description = "Remote hnix store";
        license = lib.meta.getLicenseFromSpdxId "Apache-2.0";
        hydraPlatforms = lib.platforms.none;
-       maintainers = [
-         lib.maintainers.Anton-Latukha lib.maintainers.sorki
-       ];
      }) {};
 
   hnix-store-tests = callPackage
@@ -164441,7 +164220,6 @@ self: {
        testHaskellDepends = [ base bytestring HUnit ];
        description = "FFI Bindings to OpenSSL's EVP Digest Interface";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.peti ];
      }) {inherit (pkgs) openssl;};
 
   hopfield = callPackage
@@ -165621,7 +165399,6 @@ self: {
        description = "Generate reports from hpc data";
        license = lib.licenses.bsd3;
        mainProgram = "hpc-codecov";
-       maintainers = [ lib.maintainers.wolfgangwalther ];
      }) {};
 
   hpc-coveralls = callPackage
@@ -167788,7 +167565,6 @@ self: {
        ];
        description = "A library for Passbook pass creation & signing";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.mpscholten ];
      }) {};
 
   hs-popen = callPackage
@@ -169496,7 +169272,6 @@ self: {
        librarySystemDepends = [ adns ];
        description = "Asynchronous DNS Resolver";
        license = lib.licenses.lgpl3Only;
-       maintainers = [ lib.maintainers.peti ];
      }) {inherit (pkgs) adns;};
 
   hsdns-cache = callPackage
@@ -169646,7 +169421,6 @@ self: {
        testHaskellDepends = [ base hspec parsec time ];
        description = "Parsec parsers for the Internet Message format (e-mail)";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.peti ];
      }) {};
 
   hsemail-ns = callPackage
@@ -171412,7 +171186,6 @@ self: {
        description = "Automatically discover and run Hspec tests";
        license = lib.licenses.mit;
        mainProgram = "hspec-discover";
-       maintainers = [ lib.maintainers.maralorn ];
      }) {};
 
   hspec-discover-discover = callPackage
@@ -173117,7 +172890,6 @@ self: {
        libraryHaskellDepends = [ base ];
        description = "FFI interface to syslog(3) from POSIX.1-2001";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.peti ];
      }) {};
 
   hsyslog-tcp = callPackage
@@ -173543,7 +173315,6 @@ self: {
        libraryHaskellDepends = [ attoparsec base html-parse text ];
        description = "Utility functions for working with html-parse";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.slotThe ];
      }) {};
 
   html-presentation-text = callPackage
@@ -173830,7 +173601,6 @@ self: {
        ];
        description = "a library to build and work with heterogeneous, type level indexed rose trees";
        license = lib.meta.getLicenseFromSpdxId "AGPL-3.0-or-later";
-       maintainers = [ lib.maintainers.mangoiv ];
      }) {};
 
   hts = callPackage
@@ -174049,7 +173819,6 @@ self: {
        testHaskellDepends = [ base ];
        description = "a library to make http requests without worrying much";
        license = lib.meta.getLicenseFromSpdxId "AGPL-3.0-or-later";
-       maintainers = [ lib.maintainers.mangoiv ];
      }) {};
 
   http-client = callPackage
@@ -175369,7 +175138,6 @@ self: {
        testHaskellDepends = [ base ];
        description = "A native HTTP2 client library";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.mpscholten ];
      }) {};
 
   http2-client-exe = callPackage
@@ -180228,7 +179996,6 @@ self: {
        libraryHaskellDepends = [ base binary bytestring ];
        description = "Constructing and dissecting IFF files";
        license = lib.meta.getLicenseFromSpdxId "GPL-3.0-only";
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   ifscs = callPackage
@@ -180831,7 +180598,6 @@ self: {
        ];
        description = "Haskell Web Framework";
        license = lib.meta.getLicenseFromSpdxId "MIT";
-       maintainers = [ lib.maintainers.mpscholten ];
      }) {};
 
   ihp-context = callPackage
@@ -180970,7 +180736,6 @@ self: {
        doHaddock = false;
        description = "JSX-like but for Haskell";
        license = lib.meta.getLicenseFromSpdxId "MIT";
-       maintainers = [ lib.maintainers.mpscholten ];
      }) {};
 
   ihp-ide = callPackage
@@ -181043,7 +180808,6 @@ self: {
        ];
        description = "Dev tools for IHP";
        license = lib.meta.getLicenseFromSpdxId "MIT";
-       maintainers = [ lib.maintainers.mpscholten ];
      }) {};
 
   ihp-imagemagick = callPackage
@@ -181138,7 +180902,6 @@ self: {
        description = "Provides the IHP migrate binary";
        license = lib.meta.getLicenseFromSpdxId "MIT";
        mainProgram = "migrate";
-       maintainers = [ lib.maintainers.mpscholten ];
      }) {};
 
   ihp-modal = callPackage
@@ -181172,7 +180935,6 @@ self: {
        testHaskellDepends = [ aeson base hspec neat-interpolation text ];
        description = "Call GPT4 from your Haskell apps";
        license = lib.meta.getLicenseFromSpdxId "MIT";
-       maintainers = [ lib.maintainers.mpscholten ];
      }) {};
 
   ihp-pagehead = callPackage
@@ -181256,7 +181018,6 @@ self: {
        testToolDepends = [ hspec-discover ];
        description = "Extra data types for postgresql-simple";
        license = lib.meta.getLicenseFromSpdxId "MIT";
-       maintainers = [ lib.maintainers.mpscholten ];
      }) {};
 
   ihp-schema-compiler = callPackage
@@ -182010,7 +181771,6 @@ self: {
        benchmarkHaskellDepends = [ base criterion linear parsec ];
        description = "A math-inspired programmatic 2D & 3D CAD system";
        license = lib.meta.getLicenseFromSpdxId "AGPL-3.0-or-later";
-       maintainers = [ lib.maintainers.sorki ];
      }) {};
 
   implicit-hie = callPackage
@@ -182674,7 +182434,6 @@ self: {
        description = "Indexed Types";
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
-       maintainers = [ lib.maintainers.Gabriella439 ];
        broken = true;
      }) {};
 
@@ -183289,7 +183048,6 @@ self: {
        benchmarkHaskellDepends = [ base criterion text weigh ];
        description = "Inflections library for Haskell";
        license = lib.licenses.mit;
-       maintainers = [ lib.maintainers.mpscholten ];
      }) {};
 
   inflist = callPackage
@@ -183574,7 +183332,6 @@ self: {
        ];
        description = "Write Haskell source files including C code inline. No FFI required.";
        license = lib.licenses.mit;
-       maintainers = [ lib.maintainers.roberth ];
      }) {};
 
   inline-c-cpp = callPackage
@@ -183596,7 +183353,6 @@ self: {
        ];
        description = "Lets you embed C++ code into Haskell";
        license = lib.meta.getLicenseFromSpdxId "MIT";
-       maintainers = [ lib.maintainers.roberth ];
      }) {};
 
   inline-c-cuda = callPackage
@@ -184896,7 +184652,6 @@ self: {
        ];
        description = "piecewise linear and cubic Hermite interpolation";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   interpolator = callPackage
@@ -186259,9 +186014,6 @@ self: {
        ];
        description = "An IRC client library";
        license = lib.licenses.mit;
-       maintainers = [
-         lib.maintainers.ncfavier lib.maintainers.sternenseemann
-       ];
      }) {};
 
   irc-colors = callPackage
@@ -187874,7 +187626,6 @@ self: {
        description = "Functional, expression-oriented data processing language";
        license = lib.meta.getLicenseFromSpdxId "AGPL-3.0-only";
        mainProgram = "ja";
-       maintainers = [ lib.maintainers.sternenseemann ];
      }) {};
 
   jack = callPackage
@@ -187897,7 +187648,6 @@ self: {
        libraryPkgconfigDepends = [ libjack2 ];
        description = "Bindings for the JACK Audio Connection Kit";
        license = lib.meta.getLicenseFromSpdxId "GPL-2.0-only";
-       maintainers = [ lib.maintainers.thielema ];
      }) {inherit (pkgs) libjack2;};
 
   jack-bindings = callPackage
@@ -188048,7 +187798,6 @@ self: {
        description = "Strip version restrictions from Cabal files";
        license = lib.licenses.bsd3;
        mainProgram = "jailbreak-cabal";
-       maintainers = [ lib.maintainers.sternenseemann ];
      }) {};
 
   jalaali = callPackage
@@ -189520,7 +189269,6 @@ self: {
        ];
        description = "Interface for JavaScript that works with GHCJS and GHC";
        license = lib.licenses.mit;
-       maintainers = [ lib.maintainers.alexfmpe ];
      }) {};
 
   jsaddle-clib = callPackage
@@ -189536,7 +189284,6 @@ self: {
        ];
        description = "Interface for JavaScript that works with GHCJS and GHC";
        license = lib.licenses.mit;
-       maintainers = [ lib.maintainers.alexfmpe ];
      }) {};
 
   jsaddle-dom = callPackage
@@ -189552,7 +189299,6 @@ self: {
        ];
        description = "DOM library that uses jsaddle to support both GHCJS and GHC";
        license = lib.meta.getLicenseFromSpdxId "MIT";
-       maintainers = [ lib.maintainers.alexfmpe ];
      }) {};
 
   jsaddle-hello = callPackage
@@ -189595,9 +189341,6 @@ self: {
        ];
        description = "Interface for JavaScript that works with GHCJS and GHC";
        license = lib.meta.getLicenseFromSpdxId "MIT";
-       maintainers = [
-         lib.maintainers.alexfmpe lib.maintainers.maralorn
-       ];
      }) {};
 
   jsaddle-wasm = callPackage
@@ -189663,7 +189406,6 @@ self: {
        description = "Interface for JavaScript that works with GHCJS and GHC";
        license = lib.meta.getLicenseFromSpdxId "MIT";
        platforms = lib.platforms.darwin;
-       maintainers = [ lib.maintainers.alexfmpe ];
      }) {};
 
   jsc = callPackage
@@ -190385,7 +190127,6 @@ self: {
        ];
        description = "Generics JSON (de)serialization using generics-sop";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.alexfmpe ];
      }) {};
 
   json-spec = callPackage
@@ -194429,7 +194170,6 @@ self: {
        description = "Advanced keyboard remapping utility";
        license = lib.meta.getLicenseFromSpdxId "MIT";
        mainProgram = "kmonad";
-       maintainers = [ lib.maintainers.auscyber lib.maintainers.slotThe ];
      }) {};
 
   kmp-dfa = callPackage
@@ -194887,7 +194627,6 @@ self: {
        description = "Krank checks issue tracker link status in your source code";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
        mainProgram = "krank";
-       maintainers = [ lib.maintainers.sternenseemann ];
      }) {};
 
   krapsh = callPackage
@@ -195821,7 +195560,6 @@ self: {
        description = "Lambdabot is a development tool and advanced IRC bot";
        license = "GPL";
        mainProgram = "lambdabot";
-       maintainers = [ lib.maintainers.ncfavier ];
      }) {};
 
   lambdabot-core = callPackage
@@ -197533,7 +197271,6 @@ self: {
        ];
        description = "Data types and functions to represent the Nix language";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.sternenseemann ];
      }) {};
 
   language-oberon = callPackage
@@ -198092,7 +197829,6 @@ self: {
        ];
        description = "Numerical Linear Algebra using LAPACK";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   lapack-carray = callPackage
@@ -198111,7 +197847,6 @@ self: {
        ];
        description = "Auto-generated interface to Fortran LAPACK via CArrays";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   lapack-comfort-array = callPackage
@@ -198128,7 +197863,6 @@ self: {
        ];
        description = "Auto-generated interface to Fortran LAPACK via comfort-array";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   lapack-ffi = callPackage
@@ -198141,7 +197875,6 @@ self: {
        libraryPkgconfigDepends = [ liblapack ];
        description = "Auto-generated interface to Fortran LAPACK";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.thielema ];
      }) {inherit (pkgs) liblapack;};
 
   lapack-ffi-tools = callPackage
@@ -198166,7 +197899,6 @@ self: {
        ];
        description = "Generator for Haskell interface to Fortran LAPACK";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   lapack-hmatrix = callPackage
@@ -198183,7 +197915,6 @@ self: {
        ];
        description = "Conversion of objects between 'lapack' and 'hmatrix'";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   large-anon = callPackage
@@ -198235,7 +197966,6 @@ self: {
        ];
        description = "Generic programming API for large-records and large-anon";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
-       maintainers = [ lib.maintainers.alexfmpe ];
      }) {};
 
   large-hashable = callPackage
@@ -198268,7 +197998,6 @@ self: {
        benchmarkToolDepends = [ cpphs ];
        description = "Efficiently hash (large) Haskell values";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.sternenseemann ];
      }) {};
 
   large-records = callPackage
@@ -198292,7 +198021,6 @@ self: {
        ];
        description = "Efficient compilation for large records, linear in the size of the record";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
-       maintainers = [ lib.maintainers.alexfmpe ];
      }) {};
 
   largeword = callPackage
@@ -198399,7 +198127,6 @@ self: {
        libraryHaskellDepends = [ base containers utility-ht ];
        description = "Parse, format and process LaTeX files";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   latex-formulae-hakyll = callPackage
@@ -199260,7 +198987,6 @@ self: {
        libraryHaskellDepends = [ base transformers unsafe ];
        description = "Run IO actions lazily while respecting their order";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   lazyio-applicative = callPackage
@@ -200432,7 +200158,6 @@ self: {
        libraryHaskellDepends = [ base generics-sop optics-core ];
        description = "Computing lenses generically using generics-sop";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.alexfmpe ];
      }) {};
 
   lens-tell = callPackage
@@ -200517,7 +200242,6 @@ self: {
        description = "Tutorial for the lens library";
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
-       maintainers = [ lib.maintainers.Gabriella439 ];
        broken = true;
      }) {};
 
@@ -200643,7 +200367,6 @@ self: {
        description = "frugal issue tracker";
        license = lib.meta.getLicenseFromSpdxId "GPL-3.0-only";
        mainProgram = "lentil";
-       maintainers = [ lib.maintainers.rvl ];
      }) {};
 
   lenz = callPackage
@@ -201066,7 +200789,6 @@ self: {
        description = "Preprocessor for typesetting Haskell sources with LaTeX";
        license = lib.meta.getLicenseFromSpdxId "GPL-2.0-or-later";
        mainProgram = "lhs2TeX";
-       maintainers = [ lib.maintainers.nomeata ];
      }) {};
 
   lhslatex = callPackage
@@ -202020,7 +201742,6 @@ self: {
        license = lib.meta.getLicenseFromSpdxId "MIT";
        hydraPlatforms = lib.platforms.none;
        mainProgram = "riscv-tiny";
-       maintainers = [ lib.maintainers.sternenseemann ];
        broken = true;
      }) {};
 
@@ -202096,7 +201817,6 @@ self: {
        librarySystemDepends = [ libsodium ];
        description = "FFI bindings to libsodium";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
-       maintainers = [ lib.maintainers.mangoiv ];
      }) {inherit (pkgs) libsodium;};
 
   libssh = callPackage
@@ -202127,7 +201847,6 @@ self: {
        libraryToolDepends = [ c2hs ];
        description = "FFI bindings to libssh2 SSH2 client library (http://libssh2.org/)";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.mpscholten ];
      }) {inherit (pkgs) libssh2;};
 
   libssh2-conduit = callPackage
@@ -203349,7 +203068,6 @@ self: {
        ];
        description = "Compute resistance of linear electrical circuits";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   linear-code = callPackage
@@ -203537,7 +203255,6 @@ self: {
        ];
        description = "Linear Programming basic definitions";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   linear-smc = callPackage
@@ -204179,7 +203896,6 @@ self: {
        description = "Work with linux namespaces: create new or enter existing ones";
        license = lib.licenses.bsd3;
        platforms = lib.platforms.linux;
-       maintainers = [ lib.maintainers.alexfmpe ];
      }) {};
 
   linux-perf = callPackage
@@ -204492,7 +204208,6 @@ self: {
        description = "Predicate Abstraction-based Horn-Clause/Implication Constraint Solver";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
        mainProgram = "fixpoint";
-       maintainers = [ lib.maintainers.artem ];
      }) {};
 
   liquid-fixpoint_0_9_6_3_5 = callPackage
@@ -204530,7 +204245,6 @@ self: {
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
        hydraPlatforms = lib.platforms.none;
        mainProgram = "fixpoint";
-       maintainers = [ lib.maintainers.artem ];
      }) {};
 
   liquid-ghc-prim = callPackage
@@ -204637,7 +204351,6 @@ self: {
        testSystemDepends = [ z3 ];
        description = "Liquid Types for Haskell";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
-       maintainers = [ lib.maintainers.artem ];
      }) {inherit (pkgs) z3;};
 
   liquidhaskell_0_9_12_2_1 = callPackage
@@ -204656,7 +204369,6 @@ self: {
        description = "Liquid Types for Haskell";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
        hydraPlatforms = lib.platforms.none;
-       maintainers = [ lib.maintainers.artem ];
      }) {inherit (pkgs) z3;};
 
   liquidhaskell-boot = callPackage
@@ -204690,7 +204402,6 @@ self: {
        ];
        description = "Liquid Types for Haskell";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
-       maintainers = [ lib.maintainers.artem ];
      }) {};
 
   liquidhaskell-boot_0_9_12_2_1 = callPackage
@@ -204723,7 +204434,6 @@ self: {
        description = "Liquid Types for Haskell";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
        hydraPlatforms = lib.platforms.none;
-       maintainers = [ lib.maintainers.artem ];
      }) {};
 
   liquidhaskell-cabal = callPackage
@@ -205046,7 +204756,6 @@ self: {
        testHaskellDepends = [ base doctest ];
        description = "List monad transformer";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.Gabriella439 ];
      }) {};
 
   list-tries = callPackage
@@ -205800,7 +205509,6 @@ self: {
        librarySystemDepends = [ LLVM ];
        description = "FFI bindings to the LLVM compiler toolkit";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
-       maintainers = [ lib.maintainers.thielema ];
      }) {LLVM = null;};
 
   llvm-ffi-tools = callPackage
@@ -206491,7 +206199,6 @@ self: {
        benchmarkHaskellDepends = [ base criterion ];
        description = "Location-aware variants of partial functions";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.gridaphobe ];
      }) {};
 
   located-monad-logger = callPackage
@@ -207155,7 +206862,6 @@ self: {
        libraryHaskellDepends = [ base hsyslog logging-facade ];
        description = "A logging back-end to syslog(3) for the logging-facade library";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.peti ];
      }) {};
 
   logic-TPTP = callPackage
@@ -210321,7 +210027,6 @@ self: {
        description = "Compute solutions for Magico puzzle";
        license = lib.licenses.bsd3;
        mainProgram = "magico";
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   magma = callPackage
@@ -210724,7 +210429,6 @@ self: {
        libraryHaskellDepends = [ base transformers ];
        description = "A monad for managed values";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.Gabriella439 ];
      }) {};
 
   managed-functions = callPackage
@@ -211768,7 +211472,6 @@ self: {
        libraryHaskellDepends = [ base containers random transformers ];
        description = "Markov Chains for generating random sequences with a user definable behaviour";
        license = "GPL";
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   markov-chain-usage-model = callPackage
@@ -212111,7 +211814,6 @@ self: {
        testHaskellDepends = [ base doctest ];
        description = "Massiv (Массив) is an Array Library";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.sheepforce ];
      }) {};
 
   massiv-io = callPackage
@@ -212138,7 +211840,6 @@ self: {
        ];
        description = "Import/export of Image files into massiv Arrays";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.sheepforce ];
      }) {};
 
   massiv-persist = callPackage
@@ -212226,7 +211927,6 @@ self: {
        testToolDepends = [ hspec-discover ];
        description = "Library that contains generators, properties and tests for Massiv Array Library";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.sheepforce ];
      }) {};
 
   master-plan = callPackage
@@ -212741,7 +212441,6 @@ self: {
        ];
        description = "A matrix client library";
        license = lib.meta.getLicenseFromSpdxId "Apache-2.0";
-       maintainers = [ lib.maintainers.maralorn ];
      }) {};
 
   matrix-lens = callPackage
@@ -213179,7 +212878,6 @@ self: {
        description = "List contents of an mbox file containing e-mails";
        license = lib.licenses.bsd3;
        mainProgram = "lsmbox";
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   mbtiles = callPackage
@@ -213332,7 +213030,6 @@ self: {
        ];
        description = "Sample from a posterior using Markov chain Monte Carlo";
        license = lib.meta.getLicenseFromSpdxId "GPL-3.0-or-later";
-       maintainers = [ lib.maintainers.dschrempf ];
      }) {};
 
   mcmc-samplers = callPackage
@@ -213664,7 +213361,6 @@ self: {
        ];
        description = "Parse song module files from Amiga MED and OctaMED";
        license = lib.licenses.gpl3Only;
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   medea = callPackage
@@ -216146,7 +215842,6 @@ self: {
        ];
        description = "Handling of MIDI messages and files";
        license = "GPL";
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   midi-alsa = callPackage
@@ -216161,7 +215856,6 @@ self: {
        description = "Convert between datatypes of the midi and the alsa packages";
        license = lib.licenses.bsd3;
        platforms = lib.platforms.linux;
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   midi-music-box = callPackage
@@ -216184,7 +215878,6 @@ self: {
        description = "Convert MIDI file to music box punch tape";
        license = lib.licenses.bsd3;
        mainProgram = "midi-music-box";
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   midi-simple = callPackage
@@ -216460,7 +216153,6 @@ self: {
        testToolDepends = [ hspec-discover ];
        description = "High performance web server on WAI/warp";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.sternenseemann ];
      }) {};
 
   mighttpd2_4_0_10 = callPackage
@@ -216495,7 +216187,6 @@ self: {
        description = "High performance web server on WAI/warp";
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
-       maintainers = [ lib.maintainers.sternenseemann ];
      }) {};
 
   mighty-metropolis = callPackage
@@ -217143,7 +216834,6 @@ self: {
        ];
        description = "A MinIO Haskell Library for Amazon S3 compatible cloud storage";
        license = lib.meta.getLicenseFromSpdxId "Apache-2.0";
-       maintainers = [ lib.maintainers.mpscholten ];
      }) {};
 
   minion = callPackage
@@ -218159,7 +217849,6 @@ self: {
        benchmarkHaskellDepends = [ base criterion text weigh ];
        description = "Strict markdown processor for writers";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
-       maintainers = [ lib.maintainers.mpscholten ];
      }) {};
 
   mmark-cli = callPackage
@@ -218203,7 +217892,6 @@ self: {
        testToolDepends = [ hspec-discover ];
        description = "Commonly useful extensions for the MMark markdown processor";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
-       maintainers = [ lib.maintainers.mpscholten ];
      }) {};
 
   mmorph = callPackage
@@ -218219,7 +217907,6 @@ self: {
        ];
        description = "Monad morphisms";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.Gabriella439 ];
      }) {};
 
   mmsyn2 = callPackage
@@ -219448,7 +219135,6 @@ self: {
        description = "A library for probabilistic programming";
        license = lib.meta.getLicenseFromSpdxId "MIT";
        mainProgram = "example";
-       maintainers = [ lib.maintainers.turion ];
      }) {};
 
   monad-bool = callPackage
@@ -220490,7 +220176,6 @@ self: {
        ];
        description = "A new, simple, composable concurrency abstraction";
        license = lib.meta.getLicenseFromSpdxId "MIT";
-       maintainers = [ lib.maintainers.turion ];
      }) {};
 
   monad-schedule_1_6 = callPackage
@@ -220514,7 +220199,6 @@ self: {
        description = "A new, simple, composable concurrency abstraction";
        license = lib.meta.getLicenseFromSpdxId "MIT";
        hydraPlatforms = lib.platforms.none;
-       maintainers = [ lib.maintainers.turion ];
      }) {};
 
   monad-skeleton = callPackage
@@ -221634,7 +221318,6 @@ self: {
        libraryHaskellDepends = [ base semigroups ];
        description = "Monoid counterparts to some ubiquitous monad transformers";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   monoidal-containers = callPackage
@@ -221651,7 +221334,6 @@ self: {
        ];
        description = "Containers with monoidal accumulation";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.alexfmpe ];
      }) {};
 
   monoidal-functors = callPackage
@@ -222810,7 +222492,6 @@ self: {
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
        mainProgram = "morte";
-       maintainers = [ lib.maintainers.Gabriella439 ];
        broken = true;
      }) {};
 
@@ -223180,7 +222861,6 @@ self: {
        description = "MPI bindings for Haskell";
        license = lib.licenses.asl20;
        badPlatforms = [ "aarch64-linux" ];
-       maintainers = [ lib.maintainers.sheepforce ];
      }) {ompi = null;};
 
   mpi-hs-binary = callPackage
@@ -223199,7 +222879,6 @@ self: {
        description = "MPI bindings for Haskell";
        license = lib.licenses.asl20;
        badPlatforms = [ "aarch64-linux" ];
-       maintainers = [ lib.maintainers.sheepforce ];
      }) {};
 
   mpi-hs-cereal = callPackage
@@ -223218,7 +222897,6 @@ self: {
        description = "MPI bindings for Haskell";
        license = lib.licenses.asl20;
        badPlatforms = [ "aarch64-linux" ];
-       maintainers = [ lib.maintainers.sheepforce ];
      }) {};
 
   mpi-hs-store = callPackage
@@ -223237,7 +222915,6 @@ self: {
        description = "MPI bindings for Haskell";
        license = lib.licenses.asl20;
        badPlatforms = [ "aarch64-linux" ] ++ lib.platforms.darwin;
-       maintainers = [ lib.maintainers.sheepforce ];
      }) {};
 
   mplayer-spot = callPackage
@@ -226280,7 +225957,6 @@ self: {
        ];
        description = "Model-view-controller";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.Gabriella439 ];
      }) {};
 
   mvc-updates = callPackage
@@ -226292,7 +225968,6 @@ self: {
        libraryHaskellDepends = [ async base foldl mvc ];
        description = "Concurrent and combinable updates";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.Gabriella439 ];
      }) {};
 
   mvclient = callPackage
@@ -229062,7 +228737,6 @@ self: {
        ];
        description = "Helper modules for CArray wrappers to BLAS and LAPACK";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   netlib-comfort-array = callPackage
@@ -229078,7 +228752,6 @@ self: {
        ];
        description = "Helper modules for comfort-array wrappers to BLAS and LAPACK";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   netlib-ffi = callPackage
@@ -229094,7 +228767,6 @@ self: {
        ];
        description = "Helper modules for FFI to BLAS and LAPACK";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   netlines = callPackage
@@ -231226,7 +230898,6 @@ self: {
        libraryToolDepends = [ c2hs ];
        description = "libnfc bindings";
        license = lib.licenses.publicDomain;
-       maintainers = [ lib.maintainers.centromere ];
      }) {inherit (pkgs) libnfc;};
 
   ngram = callPackage
@@ -231733,9 +231404,6 @@ self: {
        description = "Parse and render *.drv files";
        license = lib.licenses.bsd3;
        mainProgram = "pretty-derivation";
-       maintainers = [
-         lib.maintainers.Gabriella439 lib.maintainers.sorki
-       ];
      }) {};
 
   nix-diff = callPackage
@@ -231768,10 +231436,6 @@ self: {
        description = "Explain why two Nix derivations differ";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
        mainProgram = "nix-diff";
-       maintainers = [
-         lib.maintainers.Gabriella439 lib.maintainers.sorki
-         lib.maintainers.terlar
-       ];
      }) {};
 
   nix-eval = callPackage
@@ -231866,7 +231530,6 @@ self: {
        description = "Parse and render .narinfo files";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
        mainProgram = "pretty-narinfo";
-       maintainers = [ lib.maintainers.sorki ];
      }) {};
 
   nix-paths = callPackage
@@ -231883,7 +231546,6 @@ self: {
        ];
        description = "Knowledge of Nix's installation directories";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.peti ];
      }) {nix-build = null; nix-env = null; nix-hash = null; 
          nix-instantiate = null; nix-store = null;};
 
@@ -231911,7 +231573,6 @@ self: {
        description = "A drop-in replacement for nix-serve that's faster and more stable";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
        mainProgram = "nix-serve";
-       maintainers = [ lib.maintainers.sternenseemann ];
      }) {inherit (pkgs) nix;};
 
   nix-thunk = callPackage
@@ -232003,7 +231664,6 @@ self: {
        description = "Interactively browse a Nix store paths dependencies";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
        mainProgram = "nix-tree";
-       maintainers = [ lib.maintainers.utdemir ];
      }) {};
 
   nixdu = callPackage
@@ -232332,7 +231992,6 @@ self: {
        testHaskellDepends = [ base doctest ];
        description = "A GHC plugin to remove support for recursion";
        license = lib.meta.getLicenseFromSpdxId "AGPL-3.0-or-later";
-       maintainers = [ lib.maintainers.sellout ];
      }) {};
 
   no-recursion_0_4_0_0 = callPackage
@@ -232347,7 +232006,6 @@ self: {
        description = "A GHC plugin to remove support for recursion";
        license = "(AGPL-3.0-only WITH Universal-FOSS-exception-1.0 OR LicenseRef-commercial)";
        hydraPlatforms = lib.platforms.none;
-       maintainers = [ lib.maintainers.sellout ];
      }) {};
 
   no-role-annots = callPackage
@@ -232668,7 +232326,6 @@ self: {
        ];
        description = "List-like structures with static restrictions on the number of elements";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   non-empty-containers = callPackage
@@ -232734,7 +232391,6 @@ self: {
        testHaskellDepends = [ base QuickCheck semigroups utility-ht ];
        description = "Non-negative numbers";
        license = "GPL";
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   non-negative-time-diff = callPackage
@@ -234123,7 +233779,6 @@ self: {
        ];
        description = "Convert numbers to number words";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.t4ccer ];
      }) {};
 
   numeric-domains = callPackage
@@ -234316,7 +233971,6 @@ self: {
        ];
        description = "An experimental alternative hierarchy of numeric type classes";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   numeric-qq = callPackage
@@ -234348,7 +234002,6 @@ self: {
        libraryHaskellDepends = [ array base prelude-compat ];
        description = "Math and quantum mechanics";
        license = "GPL";
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   numeric-ranges = callPackage
@@ -234700,7 +234353,6 @@ self: {
        description = "Generate nix sources expr for the latest version of packages";
        license = lib.meta.getLicenseFromSpdxId "MIT";
        mainProgram = "nvfetcher";
-       maintainers = [ lib.maintainers.berberman ];
      }) {};
 
   nvim-hs = callPackage
@@ -237777,7 +237429,6 @@ self: {
        description = "OpenAPI3 Haskell Client Code Generator";
        license = lib.licenses.mit;
        mainProgram = "openapi3-code-generator-exe";
-       maintainers = [ lib.maintainers.turion ];
      }) {};
 
   opencascade-hs = callPackage
@@ -239107,7 +238758,6 @@ self: {
        ];
        description = "Optics as an abstract interface";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
-       maintainers = [ lib.maintainers.maralorn ];
      }) {};
 
   optics-core = callPackage
@@ -239337,7 +238987,6 @@ self: {
        libraryHaskellDepends = [ base ];
        description = "Optional function arguments";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.Gabriella439 ];
      }) {};
 
   options = callPackage
@@ -239417,7 +239066,6 @@ self: {
        ];
        description = "Utility functions for working with optparse-applicative";
        license = lib.licenses.agpl3Only;
-       maintainers = [ lib.maintainers.slotThe ];
      }) {};
 
   optparse-applicative-dex = callPackage
@@ -239495,7 +239143,6 @@ self: {
        executableHaskellDepends = [ base ];
        description = "Auto-generate a command-line parser for your datatype";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.Gabriella439 ];
      }) {};
 
   optparse-helper = callPackage
@@ -241849,9 +241496,6 @@ self: {
        doHaddock = false;
        description = "Conversion between markup formats";
        license = lib.meta.getLicenseFromSpdxId "GPL-2.0-or-later";
-       maintainers = [
-         lib.maintainers.maralorn lib.maintainers.sternenseemann
-       ];
      }) {};
 
   pandoc_3_9_0_2 = callPackage
@@ -241905,9 +241549,6 @@ self: {
        description = "Conversion between markup formats";
        license = lib.meta.getLicenseFromSpdxId "GPL-2.0-or-later";
        hydraPlatforms = lib.platforms.none;
-       maintainers = [
-         lib.maintainers.maralorn lib.maintainers.sternenseemann
-       ];
      }) {};
 
   pandoc-builder-monadic = callPackage
@@ -241993,7 +241634,6 @@ self: {
        description = "Conversion between documentation formats";
        license = lib.meta.getLicenseFromSpdxId "GPL-2.0-or-later";
        mainProgram = "pandoc";
-       maintainers = [ lib.maintainers.maralorn ];
      }) {};
 
   pandoc-cli_3_9_0_2 = callPackage
@@ -242014,7 +241654,6 @@ self: {
        license = lib.meta.getLicenseFromSpdxId "GPL-2.0-or-later";
        hydraPlatforms = lib.platforms.none;
        mainProgram = "pandoc";
-       maintainers = [ lib.maintainers.maralorn ];
      }) {};
 
   pandoc-columns = callPackage
@@ -245193,7 +244832,6 @@ self: {
        ];
        description = "Hashing and checking of passwords";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.cdepillabout ];
      }) {};
 
   password-aeson = callPackage
@@ -245273,7 +244911,6 @@ self: {
        ];
        description = "typeclass instances for password package";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.cdepillabout ];
      }) {};
 
   password-instances_3_1_0_0 = callPackage
@@ -245291,7 +244928,6 @@ self: {
        description = "typeclass instances for password package";
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
-       maintainers = [ lib.maintainers.cdepillabout ];
      }) {};
 
   password-persistent = callPackage
@@ -245456,7 +245092,6 @@ self: {
        description = "Terminal-based presentations using Pandoc";
        license = lib.licenses.gpl2Only;
        mainProgram = "patat";
-       maintainers = [ lib.maintainers.dalpd ];
      }) {};
 
   patch = callPackage
@@ -245692,7 +245327,6 @@ self: {
        testHaskellDepends = [ base hspec HUnit QuickCheck text ];
        description = "Components of paths";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.psibi ];
      }) {};
 
   path-sing = callPackage
@@ -245849,7 +245483,6 @@ self: {
        ];
        description = "Type-safe replacement for System.FilePath etc";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   pathwalk = callPackage
@@ -245947,7 +245580,6 @@ self: {
        libraryHaskellDepends = [ base mtl ];
        description = "Arrows for Pretty Printing";
        license = lib.licenses.mit;
-       maintainers = [ lib.maintainers.t4ccer ];
      }) {};
 
   pattern-matcher = callPackage
@@ -246021,7 +245653,6 @@ self: {
        ];
        description = "Greatest convex majorants and least concave minorants";
        license = lib.meta.getLicenseFromSpdxId "GPL-3.0-or-later";
-       maintainers = [ lib.maintainers.dschrempf ];
      }) {};
 
   paymill = callPackage
@@ -246388,7 +246019,6 @@ self: {
        ];
        description = "A regexp (regex) library on top of pcre-light you can actually use";
        license = lib.licenses.publicDomain;
-       maintainers = [ lib.maintainers.mpscholten ];
      }) {};
 
   pcre-less = callPackage
@@ -246784,7 +246414,6 @@ self: {
        description = "Extracts text from PDF using poppler";
        license = lib.licenses.bsd3;
        mainProgram = "pdftotext.hs";
-       maintainers = [ lib.maintainers.mpscholten ];
      }) {inherit (pkgs) poppler;};
 
   pdynload = callPackage
@@ -247838,7 +247467,6 @@ self: {
        ];
        description = "Type-safe, multi-backend data serialization";
        license = lib.licenses.mit;
-       maintainers = [ lib.maintainers.psibi ];
      }) {};
 
   persistent_2_18_1_0 = callPackage
@@ -247877,7 +247505,6 @@ self: {
        description = "Type-safe, multi-backend data serialization";
        license = lib.licenses.mit;
        hydraPlatforms = lib.platforms.none;
-       maintainers = [ lib.maintainers.psibi ];
      }) {};
 
   persistent-audit = callPackage
@@ -248673,7 +248300,6 @@ self: {
        ];
        description = "Backend for the persistent library using sqlite3";
        license = lib.licenses.mit;
-       maintainers = [ lib.maintainers.psibi ];
      }) {inherit (pkgs) sqlite;};
 
   persistent-stm = callPackage
@@ -248706,7 +248332,6 @@ self: {
        doHaddock = false;
        description = "Type-safe, non-relational, multi-backend persistence";
        license = lib.licenses.mit;
-       maintainers = [ lib.maintainers.psibi ];
      }) {};
 
   persistent-template-classy = callPackage
@@ -251028,7 +250653,6 @@ self: {
        description = "Back up the notes you've saved to Pinboard";
        license = lib.licenses.gpl3Only;
        mainProgram = "pnbackup";
-       maintainers = [ lib.maintainers.bdesham ];
      }) {};
 
   pinch = callPackage
@@ -251350,7 +250974,6 @@ self: {
        ];
        description = "Compositional pipelines";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.Gabriella439 ];
      }) {};
 
   pipes-aeson = callPackage
@@ -251523,7 +251146,6 @@ self: {
        ];
        description = "ByteString support for pipes";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.Gabriella439 ];
      }) {};
 
   pipes-bzip = callPackage
@@ -251695,7 +251317,6 @@ self: {
        testHaskellDepends = [ async base pipes stm ];
        description = "Concurrency for the pipes ecosystem";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.Gabriella439 ];
      }) {};
 
   pipes-conduit = callPackage
@@ -251758,7 +251379,6 @@ self: {
        ];
        description = "Fast, streaming csv parser";
        license = lib.licenses.mit;
-       maintainers = [ lib.maintainers.Gabriella439 ];
      }) {};
 
   pipes-errors = callPackage
@@ -251818,7 +251438,6 @@ self: {
        ];
        description = "Extra utilities for pipes";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.Gabriella439 ];
      }) {};
 
   pipes-fastx = callPackage
@@ -251903,7 +251522,6 @@ self: {
        testHaskellDepends = [ base doctest lens-family-core ];
        description = "Group streams into substreams";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.Gabriella439 ];
      }) {};
 
   pipes-http = callPackage
@@ -251921,7 +251539,6 @@ self: {
        ];
        description = "HTTP client with pipes interface";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.Gabriella439 ];
      }) {};
 
   pipes-illumina = callPackage
@@ -252200,7 +251817,6 @@ self: {
        libraryHaskellDepends = [ base pipes transformers ];
        description = "Parsing infrastructure for the pipes ecosystem";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.Gabriella439 ];
      }) {};
 
   pipes-postgresql-simple = callPackage
@@ -252329,7 +251945,6 @@ self: {
        ];
        description = "Safety for the pipes ecosystem";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.Gabriella439 ];
      }) {};
 
   pipes-shell = callPackage
@@ -256198,7 +255813,6 @@ self: {
        ];
        description = "Run jobs on a limited number of threads and support data dependencies";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   pop3-client = callPackage
@@ -257150,7 +256764,6 @@ self: {
        description = "Middleware to map LISTEN/NOTIFY messages to Websockets";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
        mainProgram = "postgres-websockets";
-       maintainers = [ lib.maintainers.wolfgangwalther ];
      }) {};
 
   postgresql-binary_0_13_1_3 = callPackage
@@ -257735,7 +257348,6 @@ self: {
        benchmarkHaskellDepends = [ base vector ];
        description = "Mid-Level PostgreSQL client library";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.maralorn ];
      }) {};
 
   postgresql-simple-bind = callPackage
@@ -258260,7 +257872,6 @@ self: {
        description = "REST API for any Postgres database";
        license = lib.licenses.mit;
        mainProgram = "postgrest";
-       maintainers = [ lib.maintainers.wolfgangwalther ];
      }) {};
 
   postgrest-ws = callPackage
@@ -259831,7 +259442,6 @@ self: {
        libraryHaskellDepends = [ base ];
        description = "Provide Prelude and Data.List with fixed content across GHC versions";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   prelude-edsl = callPackage
@@ -260346,7 +259956,6 @@ self: {
        description = "pretty printer for data types with a 'Show' instance";
        license = lib.licenses.bsd3;
        mainProgram = "pretty-simple";
-       maintainers = [ lib.maintainers.cdepillabout ];
      }) {};
 
   pretty-sop = callPackage
@@ -261588,7 +261197,6 @@ self: {
        ];
        description = "Probabilistic Functional Programming";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   probability-polynomial = callPackage
@@ -263342,7 +262950,6 @@ self: {
        ];
        description = "Arbitrary instances for proto-lens";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.alexfmpe ];
      }) {};
 
   proto-lens-combinators = callPackage
@@ -263548,7 +263155,6 @@ self: {
        ];
        description = "A higher-level API to the proto3-wire library";
        license = lib.meta.getLicenseFromSpdxId "Apache-2.0";
-       maintainers = [ lib.maintainers.alexfmpe ];
      }) {};
 
   proto3-wire = callPackage
@@ -263574,7 +263180,6 @@ self: {
        benchmarkHaskellDepends = [ base bytestring criterion random ];
        description = "A low-level implementation of the Protocol Buffers (version 3) wire format";
        license = lib.licenses.asl20;
-       maintainers = [ lib.maintainers.alexfmpe ];
      }) {};
 
   protobuf = callPackage
@@ -264715,7 +264320,6 @@ self: {
        librarySystemDepends = [ libpulseaudio ];
        description = "binding to Simple API of pulseaudio";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.turion ];
      }) {inherit (pkgs) libpulseaudio;};
 
   pulseaudio = callPackage
@@ -265034,7 +264638,6 @@ self: {
        ];
        description = "types and parser for email messages (including MIME)";
        license = lib.meta.getLicenseFromSpdxId "AGPL-3.0-or-later";
-       maintainers = [ lib.maintainers.maralorn ];
      }) {};
 
   purekell = callPackage
@@ -265449,7 +265052,6 @@ self: {
        description = "Send push notifications to mobile iOS devices";
        license = lib.licenses.bsd3;
        mainProgram = "sendapn";
-       maintainers = [ lib.maintainers.mpscholten ];
      }) {};
 
   push-notify-ccs = callPackage
@@ -267823,7 +267425,6 @@ self: {
        libraryHaskellDepends = [ base QuickCheck random transformers ];
        description = "A GenT monad transformer for QuickCheck library";
        license = lib.meta.getLicenseFromSpdxId "MIT";
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   quickcheck-unicode = callPackage
@@ -270322,7 +269923,6 @@ self: {
        ];
        description = "Haskell client for Sentry logging service";
        license = lib.licenses.mit;
-       maintainers = [ lib.maintainers.mpscholten ];
      }) {};
 
   raven-haskell-scotty = callPackage
@@ -271029,7 +270629,6 @@ self: {
        description = "Programmatically edit MIDI events via ALSA and reactive-banana";
        license = lib.licenses.bsd3;
        badPlatforms = lib.platforms.darwin;
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   reactive-banana = callPackage
@@ -271254,7 +270853,6 @@ self: {
        ];
        description = "Process MIDI events via reactive-banana and JACK";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   reactive-midyim = callPackage
@@ -271276,7 +270874,6 @@ self: {
        ];
        description = "Process MIDI events via reactive-banana";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   reactive-thread = callPackage
@@ -271691,7 +271288,6 @@ self: {
        ];
        description = "Animation library based on SVGs";
        license = lib.licenses.publicDomain;
-       maintainers = [ lib.maintainers.Ai-Ya-Ya ];
      }) {};
 
   reanimate-svg = callPackage
@@ -271719,7 +271315,6 @@ self: {
        ];
        description = "SVG file loader and serializer";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
-       maintainers = [ lib.maintainers.Ai-Ya-Ya ];
      }) {};
 
   reason-export = callPackage
@@ -271864,7 +271459,6 @@ self: {
        ];
        description = "Recursively defined values";
        license = lib.meta.getLicenseFromSpdxId "BSD-2-Clause";
-       maintainers = [ lib.maintainers.nomeata ];
      }) {};
 
   rec-smallarray = callPackage
@@ -272139,7 +271733,6 @@ self: {
        ];
        description = "Record subtyping and record utilities with generics-sop";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.alexfmpe ];
      }) {};
 
   records-th = callPackage
@@ -272965,7 +272558,6 @@ self: {
        testHaskellDepends = [ base QuickCheck ];
        description = "Refinement types with static and runtime checking";
        license = lib.meta.getLicenseFromSpdxId "MIT";
-       maintainers = [ lib.maintainers.raehik ];
      }) {};
 
   refined-containers = callPackage
@@ -273252,7 +272844,6 @@ self: {
        description = "Functional Reactive Web Apps with Reflex";
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
-       maintainers = [ lib.maintainers.maralorn ];
      }) {};
 
   reflex-dom-ace = callPackage
@@ -274553,7 +274144,6 @@ self: {
        testHaskellDepends = [ base bytestring tasty tasty-hunit ];
        description = "Bindings to Rust's regex library";
        license = lib.licenses.agpl3Only;
-       maintainers = [ lib.maintainers.sternenseemann ];
      }) {inherit (pkgs) rure;};
 
   regex-tdfa = callPackage
@@ -275318,7 +274908,6 @@ self: {
        description = "Hey! Hey! Can u rel8?";
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
-       maintainers = [ lib.maintainers.sternenseemann ];
      }) {};
 
   relacion = callPackage
@@ -276363,7 +275952,6 @@ self: {
        testHaskellDepends = [ base bytestring hspec megaparsec text ];
        description = "Find, replace, split string patterns with Megaparsec parsers (instead of regex)";
        license = lib.meta.getLicenseFromSpdxId "BSD-2-Clause";
-       maintainers = [ lib.maintainers.maralorn ];
      }) {};
 
   replica = callPackage
@@ -276606,7 +276194,6 @@ self: {
        doCheck = false;
        description = "HTTP client library";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
-       maintainers = [ lib.maintainers.maralorn ];
      }) {};
 
   req-conduit = callPackage
@@ -276843,7 +276430,6 @@ self: {
        ];
        description = "Refinement types, again";
        license = lib.licenses.mit;
-       maintainers = [ lib.maintainers.raehik ];
      }) {};
 
   reroute = callPackage
@@ -276967,7 +276553,6 @@ self: {
        description = "Compute total resistance of a cube of resistors";
        license = lib.licenses.bsd3;
        mainProgram = "resistor-cube";
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   resolv = callPackage
@@ -277437,7 +277022,6 @@ self: {
        doHaddock = false;
        description = "Rewriting library with online termination checking";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.tbidne ];
      }) {inherit (pkgs) graphviz; inherit (pkgs) z3;};
 
   rest-snap = callPackage
@@ -278376,7 +277960,6 @@ self: {
        ];
        description = "Functional Reactive Programming with type-level clocks";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
-       maintainers = [ lib.maintainers.turion ];
      }) {};
 
   rhine_1_6 = callPackage
@@ -278410,7 +277993,6 @@ self: {
        description = "Functional Reactive Programming with type-level clocks";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
        hydraPlatforms = lib.platforms.none;
-       maintainers = [ lib.maintainers.turion ];
      }) {};
 
   rhine-bayes = callPackage
@@ -278475,7 +278057,6 @@ self: {
        description = "Gloss backend for Rhine";
        license = lib.licenses.bsd3;
        mainProgram = "rhine-gloss-gears";
-       maintainers = [ lib.maintainers.turion ];
      }) {};
 
   rhine-gloss_1_6 = callPackage
@@ -278496,7 +278077,6 @@ self: {
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
        mainProgram = "rhine-gloss-gears";
-       maintainers = [ lib.maintainers.turion ];
      }) {};
 
   rhine-terminal = callPackage
@@ -283177,7 +282757,6 @@ self: {
        libraryHaskellDepends = [ base QuickCheck storable-record ];
        description = "Handling of samples in an (audio) signal";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   sample-frame-np = callPackage
@@ -283189,7 +282768,6 @@ self: {
        libraryHaskellDepends = [ base numeric-prelude sample-frame ];
        description = "Orphan instances for types from sample-frame and numericprelude";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   sampling = callPackage
@@ -284024,7 +283602,6 @@ self: {
        ];
        description = "Send textual messages to a Handle in a thread-friendly way";
        license = lib.licenses.mit;
-       maintainers = [ lib.maintainers.maralorn ];
      }) {};
 
   say-my-name = callPackage
@@ -285290,7 +284867,6 @@ self: {
        testHaskellDepends = [ base hspec transformers unliftio ];
        description = "CPS resource allocation but as a Monad and completely safe";
        license = lib.meta.getLicenseFromSpdxId "AGPL-3.0-or-later";
-       maintainers = [ lib.maintainers.mangoiv ];
      }) {};
 
   scottish = callPackage
@@ -287092,7 +286668,6 @@ self: {
        ];
        description = "Cryptography for the casual user";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
-       maintainers = [ lib.maintainers.mangoiv ];
      }) {};
 
   selda = callPackage
@@ -287790,7 +287365,6 @@ self: {
        testToolDepends = [ hspec-discover ];
        description = "Automatically run Hspec tests on file modifications";
        license = lib.licenses.mit;
-       maintainers = [ lib.maintainers.libjared ];
      }) {};
 
   sensenet = callPackage
@@ -291915,7 +291489,6 @@ self: {
        description = "Auto-generate a server for your datatype";
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
-       maintainers = [ lib.maintainers.Gabriella439 ];
        broken = true;
      }) {};
 
@@ -292271,7 +291844,6 @@ self: {
        ];
        description = "Solve exact set cover problems like Sudoku, 8 Queens, Soma Cube, Tetris Cube";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   set-extra = callPackage
@@ -293044,7 +292616,6 @@ self: {
        description = "Build system library, like Make, but more accurate dependencies";
        license = lib.licenses.bsd3;
        mainProgram = "shake";
-       maintainers = [ lib.maintainers.ncfavier ];
      }) {};
 
   shake-ats = callPackage
@@ -293081,7 +292652,6 @@ self: {
        ];
        description = "Build rules for historical benchmarking";
        license = lib.meta.getLicenseFromSpdxId "Apache-2.0";
-       maintainers = [ lib.maintainers.maralorn ];
      }) {};
 
   shake-bindist = callPackage
@@ -293511,7 +293081,6 @@ self: {
        testToolDepends = [ hspec-discover ];
        description = "A toolkit for making compile-time interpolated templates";
        license = lib.licenses.mit;
-       maintainers = [ lib.maintainers.psibi ];
      }) {};
 
   shakespeare_2_2_0 = callPackage
@@ -293540,7 +293109,6 @@ self: {
        description = "A toolkit for making compile-time interpolated templates";
        license = lib.licenses.mit;
        hydraPlatforms = lib.platforms.none;
-       maintainers = [ lib.maintainers.psibi ];
      }) {};
 
   shakespeare-babel = callPackage
@@ -294031,7 +293599,6 @@ self: {
        libraryHaskellDepends = [ base ];
        description = "Utility functions for writing command-line programs";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   shellify = callPackage
@@ -294061,7 +293628,6 @@ self: {
        description = "A tool for generating shell.nix files";
        license = lib.meta.getLicenseFromSpdxId "Apache-2.0";
        mainProgram = "nix-shellify";
-       maintainers = [ lib.maintainers.danielrolls ];
      }) {};
 
   shellish = callPackage
@@ -294299,7 +293865,6 @@ self: {
        testToolDepends = [ markdown-unlit ];
        description = "Simple shell scripting from Haskell";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.maralorn ];
      }) {};
 
   shh-extras = callPackage
@@ -294314,7 +293879,6 @@ self: {
        testHaskellDepends = [ base tasty ];
        description = "Utility functions for using shh";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.maralorn ];
      }) {};
 
   shibuya-core = callPackage
@@ -295525,7 +295089,6 @@ self: {
        ];
        description = "A simple library for affine and vector spaces";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.turion ];
      }) {};
 
   simple-amount = callPackage
@@ -297350,7 +296913,6 @@ self: {
        libraryHaskellDepends = [ base lens taggy taggy-lens text ];
        description = "Sitemap parser";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.mpscholten ];
      }) {};
 
   sitemap-gen = callPackage
@@ -298753,7 +298315,6 @@ self: {
        description = "Handle molecular sequences";
        license = lib.meta.getLicenseFromSpdxId "GPL-3.0-or-later";
        mainProgram = "slynx";
-       maintainers = [ lib.maintainers.dschrempf ];
      }) {};
 
   slynx_0_9_0_0 = callPackage
@@ -298778,7 +298339,6 @@ self: {
        license = lib.meta.getLicenseFromSpdxId "GPL-3.0-or-later";
        hydraPlatforms = lib.platforms.none;
        mainProgram = "slynx";
-       maintainers = [ lib.maintainers.dschrempf ];
      }) {};
 
   small-bytearray-builder = callPackage
@@ -299424,7 +298984,6 @@ self: {
        libraryHaskellDepends = [ base bytestring ];
        description = "Low-level functions for SMT-LIB-based interaction with SMT solvers";
        license = lib.licenses.mit;
-       maintainers = [ lib.maintainers.artem ];
      }) {};
 
   smtlib-backends-process = callPackage
@@ -299446,7 +299005,6 @@ self: {
        ];
        description = "An SMT-LIB backend running solvers as external processes";
        license = lib.licenses.mit;
-       maintainers = [ lib.maintainers.artem ];
      }) {};
 
   smtlib-backends-tests = callPackage
@@ -299460,7 +299018,6 @@ self: {
        libraryHaskellDepends = [ base smtlib-backends tasty tasty-hunit ];
        description = "Testing SMT-LIB backends";
        license = lib.licenses.mit;
-       maintainers = [ lib.maintainers.artem ];
      }) {};
 
   smtlib-backends-z3 = callPackage
@@ -299588,7 +299145,6 @@ self: {
        ];
        description = "Simple email sending via SMTP";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.mpscholten ];
      }) {};
 
   smtp-mail_0_5_0_1 = callPackage
@@ -299610,7 +299166,6 @@ self: {
        description = "Simple email sending via SMTP";
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
-       maintainers = [ lib.maintainers.mpscholten ];
      }) {};
 
   smtp-mail-ng = callPackage
@@ -299841,7 +299396,6 @@ self: {
        ];
        description = "Top-level package for the Snap Web Framework";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
-       maintainers = [ lib.maintainers.maralorn ];
      }) {};
 
   snap-accept = callPackage
@@ -301650,7 +301204,6 @@ self: {
        ];
        description = "An extensible socket library";
        license = lib.licenses.mit;
-       maintainers = [ lib.maintainers.sternenseemann ];
      }) {};
 
   socket-activation = callPackage
@@ -302464,7 +302017,6 @@ self: {
        description = "Approximate a song from other pieces of sound";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
        mainProgram = "sound-collage";
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   sounddelay = callPackage
@@ -302599,7 +302151,6 @@ self: {
        ];
        description = "Play, write, read, convert audio signals using Sox";
        license = lib.meta.getLicenseFromSpdxId "GPL-3.0-only";
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   soxlib = callPackage
@@ -302622,7 +302173,6 @@ self: {
        libraryPkgconfigDepends = [ sox ];
        description = "Write, read, convert audio signals using libsox";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.thielema ];
      }) {inherit (pkgs) sox;};
 
   soyuz = callPackage
@@ -302703,7 +302253,6 @@ self: {
        description = "Gopher server library and daemon";
        license = lib.meta.getLicenseFromSpdxId "GPL-3.0-only";
        mainProgram = "spacecookie";
-       maintainers = [ lib.maintainers.sternenseemann ];
      }) {};
 
   spacefill = callPackage
@@ -303465,7 +303014,6 @@ self: {
        description = "Manage the application of templates to custom yaml";
        license = lib.meta.getLicenseFromSpdxId "GPL-2.0-only";
        mainProgram = "specup";
-       maintainers = [ lib.maintainers.danielrolls ];
      }) {};
 
   speechmatics = callPackage
@@ -303930,7 +303478,6 @@ self: {
        description = "Split a big audio file into pieces at positions of silence";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
        mainProgram = "split-record";
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   split-tchan = callPackage
@@ -304185,7 +303732,6 @@ self: {
        ];
        description = "Read and write spreadsheets from and to CSV files in a lazy way";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   sprinkles = callPackage
@@ -305600,7 +305146,6 @@ self: {
        description = "A program for developing Haskell projects";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
        mainProgram = "stack";
-       maintainers = [ lib.maintainers.cdepillabout ];
      }) {};
 
   stack-all = callPackage
@@ -307934,7 +307479,6 @@ self: {
        ];
        description = "Containers for STM";
        license = lib.meta.getLicenseFromSpdxId "MIT";
-       maintainers = [ lib.maintainers.maralorn ];
      }) {};
 
   stm-delay = callPackage
@@ -308146,7 +307690,6 @@ self: {
        libraryHaskellDepends = [ base stm ];
        description = "TMVars, TVars and TChans with distinguished input and output side";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   stm-stats = callPackage
@@ -308450,7 +307993,6 @@ self: {
        ];
        description = "Elegant definition of Storable instances for records";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   storable-static-array = callPackage
@@ -308477,7 +308019,6 @@ self: {
        ];
        description = "Storable instance for pairs and triples";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   storablevector = callPackage
@@ -308503,7 +308044,6 @@ self: {
        ];
        description = "Fast, packed, strict storable arrays with a list interface like ByteString";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   storablevector-carray = callPackage
@@ -312825,7 +312365,6 @@ self: {
        ];
        description = "Streaming Wai utilities";
        license = lib.licenses.mit;
-       maintainers = [ lib.maintainers.jb55 ];
      }) {};
 
   streaming-with = callPackage
@@ -312865,7 +312404,6 @@ self: {
        ];
        description = "Streaming, dataflow programming and declarative concurrency";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
-       maintainers = [ lib.maintainers.maralorn ];
      }) {};
 
   streamly_0_11_0 = callPackage
@@ -312890,7 +312428,6 @@ self: {
        description = "Streaming data pipelines with declarative concurrency";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
        hydraPlatforms = lib.platforms.none;
-       maintainers = [ lib.maintainers.maralorn ];
      }) {};
 
   streamly-archive = callPackage
@@ -312958,7 +312495,6 @@ self: {
        ];
        description = "Library for streamly and bytestring interoperation";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.maralorn ];
      }) {};
 
   streamly-cassava = callPackage
@@ -313955,7 +313491,6 @@ self: {
        ];
        description = "Haskell string/text/bytestring interpolation that just works";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.maralorn ];
      }) {};
 
   string-interpreter = callPackage
@@ -314052,7 +313587,6 @@ self: {
        description = "A library for generating random string from a regular experession";
        license = lib.licenses.bsd3;
        mainProgram = "hstrrand";
-       maintainers = [ lib.maintainers.mpscholten ];
      }) {};
 
   string-similarity = callPackage
@@ -314304,7 +313838,6 @@ self: {
        libraryHaskellDepends = [ base bytestring text ];
        description = "Types for the Stripe API";
        license = lib.meta.getLicenseFromSpdxId "MIT";
-       maintainers = [ lib.maintainers.mpscholten ];
      }) {};
 
   stripe-core = callPackage
@@ -314457,7 +313990,6 @@ self: {
        ];
        description = "Verification of Stripe webhook signatures";
        license = lib.meta.getLicenseFromSpdxId "MIT";
-       maintainers = [ lib.maintainers.mpscholten ];
      }) {};
 
   stripe-tests = callPackage
@@ -314633,7 +314165,6 @@ self: {
        testToolDepends = [ hspec-discover ];
        description = "Convert between strong and weak representations of types";
        license = lib.licenses.mit;
-       maintainers = [ lib.maintainers.raehik ];
      }) {};
 
   strptime = callPackage
@@ -314786,7 +314317,6 @@ self: {
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
        mainProgram = "structured-haskell-mode";
-       maintainers = [ lib.maintainers.peti ];
      }) {};
 
   structured-mongoDB = callPackage
@@ -316591,7 +316121,6 @@ self: {
        libraryPkgconfigDepends = [ librsvg ];
        description = "Binding to the libsvg-cairo library";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.dalpd ];
      }) {inherit (pkgs) librsvg;};
 
   svgone = callPackage
@@ -318365,7 +317894,6 @@ self: {
        ];
        description = "Type level string parser combinators";
        license = lib.licenses.mit;
-       maintainers = [ lib.maintainers.raehik ];
      }) {};
 
   symparsec_2_0_0 = callPackage
@@ -318385,7 +317913,6 @@ self: {
        description = "Type level string parser combinators";
        license = lib.licenses.mit;
        hydraPlatforms = lib.platforms.none;
-       maintainers = [ lib.maintainers.raehik ];
      }) {};
 
   symplectic-chp = callPackage
@@ -318840,7 +318367,6 @@ self: {
        description = "Control synthesizer effects via ALSA/MIDI";
        license = lib.meta.getLicenseFromSpdxId "GPL-3.0-only";
        badPlatforms = lib.platforms.darwin;
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   synthesizer-core = callPackage
@@ -318875,7 +318401,6 @@ self: {
        ];
        description = "Audio signal processing coded in Haskell: Low level part";
        license = "GPL";
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   synthesizer-dimensional = callPackage
@@ -318898,7 +318423,6 @@ self: {
        ];
        description = "Audio signal processing with static physical dimensions";
        license = "GPL";
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   synthesizer-filter = callPackage
@@ -319000,7 +318524,6 @@ self: {
        ];
        description = "Render audio signals from MIDI files or realtime messages";
        license = "GPL";
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   sys-auth-smbclient = callPackage
@@ -319398,7 +318921,6 @@ self: {
        testHaskellDepends = [ base network unix ];
        description = "Systemd facilities (Socket activation, Notify)";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.sternenseemann ];
      }) {};
 
   systemd-api = callPackage
@@ -319871,7 +319393,6 @@ self: {
        description = "A desktop bar similar to xmobar, but with more GUI";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
        badPlatforms = lib.platforms.darwin;
-       maintainers = [ lib.maintainers.rvl ];
      }) {inherit (pkgs) gtk3; inherit (pkgs) systemd;};
 
   tag-bits = callPackage
@@ -319928,7 +319449,6 @@ self: {
        ];
        description = "alternative package for processing of tag soups";
        license = "GPL";
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   tagged = callPackage
@@ -321404,7 +320924,6 @@ self: {
        testToolDepends = [ hspec-discover ];
        description = "Types and aeson instances for taskwarrior tasks";
        license = lib.meta.getLicenseFromSpdxId "AGPL-3.0-or-later";
-       maintainers = [ lib.maintainers.maralorn ];
      }) {};
 
   tasty = callPackage
@@ -321421,7 +320940,6 @@ self: {
        ];
        description = "Modern and extensible testing framework";
        license = lib.licenses.mit;
-       maintainers = [ lib.maintainers.maralorn ];
      }) {};
 
   tasty-ant-xml = callPackage
@@ -321680,7 +321198,6 @@ self: {
        ];
        description = "Mark tasty tests as failure expected";
        license = lib.licenses.mit;
-       maintainers = [ lib.maintainers.nomeata ];
      }) {};
 
   tasty-fail-fast = callPackage
@@ -324594,7 +324111,6 @@ self: {
        badPlatforms = lib.platforms.darwin;
        hydraPlatforms = lib.platforms.none;
        mainProgram = "termonad";
-       maintainers = [ lib.maintainers.cdepillabout ];
        broken = true;
      }) {inherit (pkgs) gtk3; inherit (pkgs) pcre2; 
          inherit (pkgs) vte;};
@@ -325998,7 +325514,6 @@ self: {
        ];
        description = "A typeclass for user-facing output";
        license = lib.meta.getLicenseFromSpdxId "MIT";
-       maintainers = [ lib.maintainers.mangoiv ];
      }) {};
 
   text-encode = callPackage
@@ -326957,7 +326472,6 @@ self: {
        testHaskellDepends = [ base QuickCheck ];
        description = "Type-level integers, booleans, lists using type families";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   tfp-th = callPackage
@@ -327023,7 +326537,6 @@ self: {
        testHaskellDepends = [ base containers template-haskell ];
        description = "Nicer interface for reified information about data types";
        license = lib.licenses.isc;
-       maintainers = [ lib.maintainers.alexfmpe ];
      }) {};
 
   th-alpha = callPackage
@@ -328252,7 +327765,6 @@ self: {
        description = "A graphical tool for profiling parallel Haskell programs";
        license = lib.licenses.bsd3;
        mainProgram = "threadscope";
-       maintainers = [ lib.maintainers.maralorn ];
      }) {};
 
   threefish = callPackage
@@ -329226,7 +328738,6 @@ self: {
        libraryHaskellDepends = [ base time ];
        description = "A library for time domains and durations";
        license = lib.meta.getLicenseFromSpdxId "MIT";
-       maintainers = [ lib.maintainers.turion ];
      }) {};
 
   time-domain_1_6 = callPackage
@@ -329239,7 +328750,6 @@ self: {
        description = "A library for time domains and durations";
        license = lib.meta.getLicenseFromSpdxId "MIT";
        hydraPlatforms = lib.platforms.none;
-       maintainers = [ lib.maintainers.turion ];
      }) {};
 
   time-extras = callPackage
@@ -330613,7 +330123,6 @@ self: {
        description = "Convert English Words to Title Case";
        license = lib.licenses.bsd3;
        mainProgram = "titlecase";
-       maintainers = [ lib.maintainers.peti ];
      }) {};
 
   tkhs = callPackage
@@ -330998,7 +330507,6 @@ self: {
        description = "Handle phylogenetic trees";
        license = lib.meta.getLicenseFromSpdxId "GPL-3.0-or-later";
        mainProgram = "tlynx";
-       maintainers = [ lib.maintainers.dschrempf ];
      }) {};
 
   tlynx_0_9_0_0 = callPackage
@@ -331023,7 +330531,6 @@ self: {
        license = lib.meta.getLicenseFromSpdxId "GPL-3.0-or-later";
        hydraPlatforms = lib.platforms.none;
        mainProgram = "tlynx";
-       maintainers = [ lib.maintainers.dschrempf ];
      }) {};
 
   tmapchan = callPackage
@@ -332308,7 +331815,6 @@ self: {
        libraryHaskellDepends = [ base void ];
        description = "Exhaustive pattern matching using lenses, traversals, and prisms";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.Gabriella439 ];
      }) {};
 
   total-alternative = callPackage
@@ -335084,7 +334590,6 @@ self: {
        ];
        description = "Things Tracker Network JSON Types";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.sorki ];
      }) {};
 
   ttn-client = callPackage
@@ -335107,7 +334612,6 @@ self: {
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
        mainProgram = "ttnc";
-       maintainers = [ lib.maintainers.sorki ];
        broken = true;
      }) {};
 
@@ -335653,7 +335157,6 @@ self: {
        benchmarkHaskellDepends = [ base tasty-bench text ];
        description = "Shell programming, Haskell-style";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.Gabriella439 ];
      }) {};
 
   turtle-options = callPackage
@@ -337835,7 +337338,6 @@ self: {
        description = "Typed and composable spreadsheets";
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
-       maintainers = [ lib.maintainers.Gabriella439 ];
        broken = true;
      }) {};
 
@@ -338152,7 +337654,6 @@ self: {
        doHaddock = false;
        description = "Efficient implementation of a dependent map with types as keys";
        license = lib.meta.getLicenseFromSpdxId "MPL-2.0";
-       maintainers = [ lib.maintainers.mpscholten ];
      }) {};
 
   types-compat = callPackage
@@ -338500,7 +338001,6 @@ self: {
        ];
        description = "Efficient time zone handling";
        license = lib.licenses.asl20;
-       maintainers = [ lib.maintainers.maralorn ];
      }) {};
 
   tzdata = callPackage
@@ -339553,7 +339053,6 @@ self: {
        description = "a library which implements easy, concurrent and pretty logging";
        license = lib.meta.getLicenseFromSpdxId "AGPL-3.0-or-later";
        mainProgram = "unclogging";
-       maintainers = [ lib.maintainers.mangoiv ];
      }) {};
 
   unconditional-jump = callPackage
@@ -339837,7 +339336,6 @@ self: {
        testHaskellDepends = [ base containers utility-ht ];
        description = "Construct and transform unicode characters";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   unicode-collation = callPackage
@@ -340646,7 +340144,6 @@ self: {
        ];
        description = "Solve simple simultaneous equations";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   unique-logic-tf = callPackage
@@ -340665,7 +340162,6 @@ self: {
        ];
        description = "Solve simple simultaneous equations";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   uniqueid = callPackage
@@ -341071,7 +340567,6 @@ self: {
        ];
        description = "A class for finite and recursively enumerable types";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
-       maintainers = [ lib.maintainers.alexfmpe ];
      }) {};
 
   universe-base = callPackage
@@ -341176,7 +340671,6 @@ self: {
        testHaskellDepends = [ base some template-haskell universe-base ];
        description = "Universe instances for Some from some";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
-       maintainers = [ lib.maintainers.alexfmpe ];
      }) {};
 
   universe-th = callPackage
@@ -341997,7 +341491,6 @@ self: {
        libraryHaskellDepends = [ base ];
        description = "Unified interface to unsafe functions";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   unsafe-promises = callPackage
@@ -342268,7 +341761,6 @@ self: {
        description = "A program to update fetchgit values in Nix expressions";
        license = lib.licenses.bsd3;
        mainProgram = "update-nix-fetchgit";
-       maintainers = [ lib.maintainers.sorki ];
      }) {};
 
   update-repos = callPackage
@@ -343138,7 +342630,6 @@ self: {
        description = "A pragmatic time and date library";
        license = lib.licenses.mit;
        hydraPlatforms = lib.platforms.none;
-       maintainers = [ lib.maintainers.sternenseemann ];
        broken = true;
      }) {};
 
@@ -343375,7 +342866,6 @@ self: {
        ];
        description = "Various small helper functions for Lists, Maybes, Tuples, Functions";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   utxorpc = callPackage
@@ -343832,7 +343322,6 @@ self: {
        description = "Tweak .cabal files";
        license = lib.meta.getLicenseFromSpdxId "MIT";
        hydraPlatforms = lib.platforms.none;
-       maintainers = [ lib.maintainers.berberman ];
        broken = true;
      }) {};
 
@@ -345564,7 +345053,6 @@ self: {
        ];
        description = "Efficient vector-based mutable hashtables implementation";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.artem ];
      }) {};
 
   vector-heterogenous = callPackage
@@ -350229,7 +349717,6 @@ self: {
        ];
        description = "A fast, light-weight web server for WAI applications";
        license = lib.licenses.mit;
-       maintainers = [ lib.maintainers.alexfmpe ];
      }) {};
 
   warp_3_4_13 = callPackage
@@ -350266,7 +349753,6 @@ self: {
        description = "A fast, light-weight web server for WAI applications";
        license = lib.licenses.mit;
        hydraPlatforms = lib.platforms.none;
-       maintainers = [ lib.maintainers.alexfmpe ];
      }) {};
 
   warp-dynamic = callPackage
@@ -350364,7 +349850,6 @@ self: {
        description = "Socket activation and other systemd integration for the Warp web server (WAI)";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
        mainProgram = "warp-systemd-example";
-       maintainers = [ lib.maintainers.mpscholten ];
      }) {};
 
   warp-tls = callPackage
@@ -352777,7 +352262,6 @@ self: {
        description = "Detect dead code";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
        mainProgram = "weeder";
-       maintainers = [ lib.maintainers.maralorn ];
      }) {};
 
   weekdaze = callPackage
@@ -353925,7 +353409,6 @@ self: {
        ];
        description = "Convert values from one type into another";
        license = lib.meta.getLicenseFromSpdxId "MIT";
-       maintainers = [ lib.maintainers.maralorn ];
      }) {};
 
   _with = callPackage
@@ -355874,7 +355357,6 @@ self: {
        ];
        description = "Code for the dice chain problem";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   wumpus-basic = callPackage
@@ -357188,7 +356670,6 @@ self: {
        ];
        description = "Basics for XML/HTML representation and processing";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   xml-catalog = callPackage
@@ -358196,10 +357677,6 @@ self: {
        description = "A tiling window manager";
        license = lib.licenses.bsd3;
        mainProgram = "xmonad";
-       maintainers = [
-         lib.maintainers.dschrempf lib.maintainers.ivanbrennan
-         lib.maintainers.peti lib.maintainers.slotThe
-       ];
      }) {};
 
   xmonad-bluetilebranch = callPackage
@@ -358243,10 +357720,6 @@ self: {
        ];
        description = "Community-maintained extensions for xmonad";
        license = lib.licenses.bsd3;
-       maintainers = [
-         lib.maintainers.dschrempf lib.maintainers.ivanbrennan
-         lib.maintainers.peti lib.maintainers.slotThe
-       ];
      }) {};
 
   xmonad-contrib-bluetilebranch = callPackage
@@ -358351,7 +357824,6 @@ self: {
        description = "Third party extensions for xmonad with wacky dependencies";
        license = lib.licenses.bsd3;
        badPlatforms = lib.platforms.darwin;
-       maintainers = [ lib.maintainers.slotThe ];
      }) {};
 
   xmonad-screenshot = callPackage
@@ -360172,7 +359644,6 @@ self: {
        ];
        description = "Represent and parse yarn.lock files";
        license = lib.licenses.mit;
-       maintainers = [ lib.maintainers.sternenseemann ];
      }) {};
 
   yarn2nix = callPackage
@@ -360211,7 +359682,6 @@ self: {
        description = "Convert yarn.lock files to nix expressions";
        license = lib.licenses.mit;
        hydraPlatforms = lib.platforms.none;
-       maintainers = [ lib.maintainers.sternenseemann ];
        broken = true;
      }) {};
 
@@ -360326,7 +359796,6 @@ self: {
        testHaskellDepends = [ base doctest ];
        description = "Total recursion schemes";
        license = lib.meta.getLicenseFromSpdxId "AGPL-3.0-or-later";
-       maintainers = [ lib.maintainers.sellout ];
      }) {};
 
   yaya_0_7_0_0 = callPackage
@@ -360347,7 +359816,6 @@ self: {
        description = "Total recursion schemes";
        license = "(AGPL-3.0-only WITH Universal-FOSS-exception-1.0 OR LicenseRef-commercial)";
        hydraPlatforms = lib.platforms.none;
-       maintainers = [ lib.maintainers.sellout ];
      }) {};
 
   yaya-containers = callPackage
@@ -360363,7 +359831,6 @@ self: {
        testHaskellDepends = [ base doctest ];
        description = "Pattern functors and instances for types in the containers package";
        license = lib.meta.getLicenseFromSpdxId "AGPL-3.0-or-later";
-       maintainers = [ lib.maintainers.sellout ];
      }) {};
 
   yaya-containers_0_2_0_0 = callPackage
@@ -360380,7 +359847,6 @@ self: {
        description = "Pattern functors and instances for types in the containers package";
        license = "(AGPL-3.0-only WITH Universal-FOSS-exception-1.0 OR LicenseRef-commercial)";
        hydraPlatforms = lib.platforms.none;
-       maintainers = [ lib.maintainers.sellout ];
      }) {};
 
   yaya-hedgehog = callPackage
@@ -360398,7 +359864,6 @@ self: {
        ];
        description = "Hedgehog testing support for the Yaya recursion scheme library";
        license = lib.meta.getLicenseFromSpdxId "AGPL-3.0-or-later";
-       maintainers = [ lib.maintainers.sellout ];
      }) {};
 
   yaya-hedgehog_0_4_0_0 = callPackage
@@ -360417,7 +359882,6 @@ self: {
        description = "Hedgehog testing support for the Yaya recursion scheme library";
        license = "(AGPL-3.0-only WITH Universal-FOSS-exception-1.0 OR LicenseRef-commercial)";
        hydraPlatforms = lib.platforms.none;
-       maintainers = [ lib.maintainers.sellout ];
      }) {};
 
   yaya-quickcheck = callPackage
@@ -360433,7 +359897,6 @@ self: {
        testHaskellDepends = [ base doctest ];
        description = "QuickCheck testing support for the Yaya recursion scheme library";
        license = lib.meta.getLicenseFromSpdxId "AGPL-3.0-or-later";
-       maintainers = [ lib.maintainers.sellout ];
      }) {};
 
   yaya-quickcheck_0_3_0_0 = callPackage
@@ -360450,7 +359913,6 @@ self: {
        description = "QuickCheck testing support for the Yaya recursion scheme library";
        license = "(AGPL-3.0-only WITH Universal-FOSS-exception-1.0 OR LicenseRef-commercial)";
        hydraPlatforms = lib.platforms.none;
-       maintainers = [ lib.maintainers.sellout ];
      }) {};
 
   yaya-test = callPackage
@@ -360485,7 +359947,6 @@ self: {
        testHaskellDepends = [ base doctest hedgehog yaya yaya-hedgehog ];
        description = "Non-total extensions to the Yaya recursion scheme library";
        license = lib.meta.getLicenseFromSpdxId "AGPL-3.0-or-later";
-       maintainers = [ lib.maintainers.sellout ];
      }) {};
 
   yaya-unsafe_0_5_0_0 = callPackage
@@ -360502,7 +359963,6 @@ self: {
        description = "Non-total extensions to the Yaya recursion scheme library";
        license = "(AGPL-3.0-only WITH Universal-FOSS-exception-1.0 OR LicenseRef-commercial)";
        hydraPlatforms = lib.platforms.none;
-       maintainers = [ lib.maintainers.sellout ];
      }) {};
 
   yaya-unsafe-test = callPackage
@@ -363886,7 +363346,6 @@ self: {
        executableHaskellDepends = [ base bytestring process utility-ht ];
        description = "Upload video to YouTube via YouTube API";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.thielema ];
      }) {};
 
   yql = callPackage
@@ -364995,7 +364454,6 @@ self: {
        description = "Operations on zip archives";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
        mainProgram = "haskell-zip-app";
-       maintainers = [ lib.maintainers.mpscholten ];
      }) {};
 
   zip-archive = callPackage
@@ -365641,7 +365099,6 @@ self: {
        ];
        description = "ZRE protocol implementation";
        license = lib.licenses.bsd3;
-       maintainers = [ lib.maintainers.sorki ];
      }) {};
 
   zsdd = callPackage
