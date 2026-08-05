@@ -4,8 +4,7 @@
 # library dependencies. Many of these names don't exist in corepkgs because
 # they are either under a different attribute path (e.g. xorg.*) or simply
 # not yet packaged. This overlay provides the mapping.
-final: prev:
-{
+final: prev: {
   # ---- top-level aliases (non-hackage) ----------------------------------------
   nixfmt-rfc-style = final.nixfmt;
 

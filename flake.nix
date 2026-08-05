@@ -14,7 +14,14 @@
         "x86_64-darwin"
         "aarch64-darwin"
       ];
-      forAllSystems = f: builtins.listToAttrs (map (s: { name = s; value = f s; }) systems);
+      forAllSystems =
+        f:
+        builtins.listToAttrs (
+          map (s: {
+            name = s;
+            value = f s;
+          }) systems
+        );
       pkgsModule = import ./pkgs-module.nix;
     in
     {

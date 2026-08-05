@@ -29,6 +29,9 @@ in
 {
   config.overlays = {
     haskell = [ haskellOverlay ];
-    pkgs = [ toplevelOverlay aliasesOverlay ];
+    pkgs = [
+      toplevelOverlay
+      aliasesOverlay
+    ];
   };
 }
