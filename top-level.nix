@@ -104,6 +104,7 @@ in
   cabal-test-bin = justStaticExecutables hp.cabal-test-bin;
   cabal2spec = justStaticExecutables hp.cabal2spec;
   cabalg = justStaticExecutables hp.cabalg;
+  cachix = justStaticExecutables hp.cachix;
   cairo-appbase = justStaticExecutables hp.cairo-appbase;
   calendar-recycling = justStaticExecutables hp.calendar-recycling;
   calligraphy = justStaticExecutables hp.calligraphy;
