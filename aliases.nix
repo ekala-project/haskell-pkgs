@@ -5,30 +5,6 @@
 # they are either under a different attribute path (e.g. xorg.*) or simply
 # not yet packaged. This overlay provides the mapping.
 final: prev: {
-  # ---- top-level aliases (non-hackage) ----------------------------------------
-  nixfmt-rfc-style = final.nixfmt;
-
-  # ---- X11 / Xorg libraries --------------------------------------------------
-  # hackage-packages.nix uses lowercase names; these xorg libs are not yet
-  # packaged in corepkgs (the xorg scope only has a core subset).
-  libxcursor = null;
-  libxfixes = null;
-  libxi = null;
-  libxinerama = null;
-  libxrandr = null;
-  libxscrnsaver = null;
-  libxtst = null;
-  libxxf86vm = null;
-  xinput = final.xorg.xinput;
-
-  # ---- Packages under a different name in corepkgs ----------------------------
-  lcms = final.lcms2;
-  liblapack = final.lapack;
-  libidn = final.libidn2;
-  openblasCompat = final.openblas;
-  opus = final.libopus;
-  xxhash = final.xxHash;
-
   # ---- Packages not available in corepkgs -------------------------------------
   # Haskell packages depending on these will fail to build until the
   # corresponding system library is added to corepkgs.
@@ -72,10 +48,8 @@ final: prev: {
   gegl = null;
   glew = null;
   graphene = null;
-  potrace = null;
 
   # GTK / GNOME ecosystem
-  atk = null;
   gtk2 = null;
   gtk4-layer-shell = null;
   gtk-layer-shell = null;
@@ -111,12 +85,9 @@ final: prev: {
   cfitsio = null;
   clp = null;
   cudd = null;
-  fftw = null;
-  fftwFloat = null;
   flint = null;
   fplll = null;
   geos = null;
-  gflags = null;
   glog = null;
   glpk = null;
   gomp = null;
@@ -151,13 +122,11 @@ final: prev: {
   enet = null;
   nanomsg = null;
   net-snmp = null;
-  networkmanager = null;
 
   # System / OS
   augeas = null;
   cwiid = null;
   fcgi = null;
-  libevdev = null;
   lxc = null;
   ostree = null;
   papi = null;
@@ -189,12 +158,9 @@ final: prev: {
   cplex = null;
   double-conversion = null;
   fltk_1_4 = null;
-  freeglut = null;
   jasper = null;
   keybinder = null;
-  libb2 = null;
   libbladeRF = null;
-  libcddb = null;
   libconfig = null;
   libff = null;
   libftdi = null;
@@ -218,12 +184,10 @@ final: prev: {
   poppler_gi = null;
   rure = null;
   shaderc = null;
-  snappy = null;
   symengine = null;
   taglib = null;
   talloc = null;
   tdlib = null;
-  unixodbc = null;
 
   # Machine learning / AI
   mxnet = null;

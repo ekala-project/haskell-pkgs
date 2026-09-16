@@ -8597,7 +8597,7 @@ self: {
        librarySystemDepends = [ unixodbc ];
        description = "ODBC driver for HDBC";
        license = lib.licenses.bsd3;
-     }) {inherit (pkgs) unixodbc;};
+     }) {unixodbc = pkgs.unixODBC;};
 
   HDBC-postgresql = callPackage
     ({ mkDerivation, base, bytestring, Cabal, convertible, HDBC, libpq
@@ -13162,7 +13162,7 @@ self: {
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
        broken = true;
-     }) {inherit (pkgs) openblasCompat;};
+     }) {openblasCompat = pkgs.openblas;};
 
   LC3 = callPackage
     ({ mkDerivation, base, bytestring, hspec, lens, mtl, vector }:
@@ -51214,7 +51214,7 @@ self: {
        license = "unknown";
        hydraPlatforms = lib.platforms.none;
        broken = true;
-     }) {inherit (pkgs) blas; inherit (pkgs) liblapack;};
+     }) {inherit (pkgs) blas; liblapack = pkgs.lapack;};
 
   bindings-libcddb = callPackage
     ({ mkDerivation, base, bindings-DSL, libcddb }:
@@ -133000,7 +133000,7 @@ self: {
        testToolDepends = [ c2hs ];
        description = "Bindings for GNU IDN";
        license = lib.licenses.gpl3Only;
-     }) {inherit (pkgs) libidn;};
+     }) {libidn = pkgs.libidn2;};
 
   gnuplot = callPackage
     ({ mkDerivation, array, base, containers, data-accessor
@@ -140700,7 +140700,7 @@ self: {
        hydraPlatforms = lib.platforms.none;
        mainProgram = "hVOIDP";
        broken = true;
-     }) {inherit (pkgs) blas; inherit (pkgs) liblapack;};
+     }) {inherit (pkgs) blas; liblapack = pkgs.lapack;};
 
   hXmixer = callPackage
     ({ mkDerivation, base, directory, gtk3, process, split, text }:
@@ -152849,7 +152849,7 @@ self: {
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
        broken = true;
-     }) {inherit (pkgs) blas; inherit (pkgs) liblapack;};
+     }) {inherit (pkgs) blas; liblapack = pkgs.lapack;};
 
   hblock = callPackage
     ({ mkDerivation, aeson, base, blaze-markup, bytestring, cereal
@@ -161745,7 +161745,7 @@ self: {
        librarySystemDepends = [ openblasCompat ];
        description = "Numeric Linear Algebra";
        license = lib.licenses.bsd3;
-     }) {inherit (pkgs) openblasCompat;};
+     }) {openblasCompat = pkgs.openblas;};
 
   hmatrix-backprop = callPackage
     ({ mkDerivation, backprop, base, finite-typelits
@@ -161783,7 +161783,7 @@ self: {
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
        broken = true;
-     }) {inherit (pkgs) liblapack;};
+     }) {liblapack = pkgs.lapack;};
 
   hmatrix-csv = callPackage
     ({ mkDerivation, base, bytestring, cassava, hmatrix, vector }:
@@ -161872,7 +161872,7 @@ self: {
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
        broken = true;
-     }) {inherit (pkgs) blas; inherit (pkgs) liblapack;};
+     }) {inherit (pkgs) blas; liblapack = pkgs.lapack;};
 
   hmatrix-nipals = callPackage
     ({ mkDerivation, base, hmatrix }:
@@ -169711,7 +169711,7 @@ self: {
        license = lib.licenses.bsd3;
        platforms = lib.platforms.x86;
      }) {inherit (pkgs) blas; inherit (pkgs) gsl; 
-         inherit (pkgs) liblapack;};
+         liblapack = pkgs.lapack;};
 
   hsilop = callPackage
     ({ mkDerivation, base, directory, filepath, haskeline, xdg-basedir
@@ -170641,7 +170641,7 @@ self: {
        broken = true;
      }) {GraphicsMagick = null; inherit (pkgs) bzip2; 
          inherit (pkgs) freetype; inherit (pkgs) jasper; 
-         inherit (pkgs) lcms; inherit (pkgs) libjpeg; 
+         lcms = pkgs.lcms2; inherit (pkgs) libjpeg; 
          inherit (pkgs) libpng; inherit (pkgs) libxml2; tiff = null; 
          wmflite = null; inherit (pkgs) zlib;};
 
@@ -172159,7 +172159,7 @@ self: {
        description = "A Haskell Interface to ODBC";
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
-     }) {inherit (pkgs) unixodbc;};
+     }) {unixodbc = pkgs.unixODBC;};
 
   hsql-postgresql = callPackage
     ({ mkDerivation, base, hsql, libpq, old-time }:
@@ -197875,7 +197875,7 @@ self: {
        libraryPkgconfigDepends = [ liblapack ];
        description = "Auto-generated interface to Fortran LAPACK";
        license = lib.licenses.bsd3;
-     }) {inherit (pkgs) liblapack;};
+     }) {liblapack = pkgs.lapack;};
 
   lapack-ffi-tools = callPackage
     ({ mkDerivation, base, bytestring, cassava, containers
@@ -235199,7 +235199,7 @@ self: {
        description = "Haskell binding to the ODBC API, aimed at SQL Server driver";
        license = lib.licenses.bsd3;
        mainProgram = "odbc";
-     }) {inherit (pkgs) unixodbc;};
+     }) {unixodbc = pkgs.unixODBC;};
 
   odd-jobs = callPackage
     ({ mkDerivation, aeson, base, bytestring, containers
@@ -239257,7 +239257,7 @@ self: {
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
        hydraPlatforms = lib.platforms.none;
        broken = true;
-     }) {inherit (pkgs) opus;};
+     }) {opus = pkgs.libopus;};
 
   opusfile = callPackage
     ({ mkDerivation, base, bytestring, opusfile }:
@@ -304161,7 +304161,7 @@ self: {
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
        broken = true;
-     }) {inherit (pkgs) unixodbc;};
+     }) {unixodbc = pkgs.unixODBC;};
 
   sqlcli-odbc = callPackage
     ({ mkDerivation, base, logging, sqlcli }:
