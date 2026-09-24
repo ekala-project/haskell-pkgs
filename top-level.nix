@@ -59,7 +59,6 @@ in
   bhoogle = justStaticExecutables hp.bhoogle;
   bigpixel = justStaticExecutables hp.BigPixel;
   binance-exports = justStaticExecutables hp.binance-exports;
-  bindings-codec2 = justStaticExecutables hp.bindings-codec2;
   biobasenewick = justStaticExecutables hp.BiobaseNewick;
   bisc = justStaticExecutables hp.bisc;
   bittrex = justStaticExecutables hp.bittrex;
@@ -369,7 +368,6 @@ in
   hercules-ci-api = justStaticExecutables hp.hercules-ci-api;
   hero-club-five-tenets = justStaticExecutables hp.hero-club-five-tenets;
   hetzner = justStaticExecutables hp.hetzner;
-  hevm = justStaticExecutables hp.hevm;
   hgettext = justStaticExecutables hp.hgettext;
   hie-bios = justStaticExecutables hp.hie-bios;
   hiedb = justStaticExecutables hp.hiedb;
@@ -733,7 +731,6 @@ in
   scc = justStaticExecutables hp.scc;
   scripths = justStaticExecutables hp.scripths;
   sdl-try-drivers = justStaticExecutables hp.sdl-try-drivers;
-  sdl2-gfx = justStaticExecutables hp.sdl2-gfx;
   self-extract = justStaticExecutables hp.self-extract;
   seocheck = justStaticExecutables hp.seocheck;
   serialport = justStaticExecutables hp.serialport;
@@ -815,7 +812,6 @@ in
   svgone = justStaticExecutables hp.svgone;
   swish = justStaticExecutables hp.swish;
   sydtest-discover = justStaticExecutables hp.sydtest-discover;
-  symengine-hs = justStaticExecutables hp.symengine-hs;
   symon = justStaticExecutables hp.symon;
   symplectic-chp = justStaticExecutables hp.symplectic-chp;
   systranything = justStaticExecutables hp.systranything;
@@ -891,7 +887,6 @@ in
   vega-view = justStaticExecutables hp.vega-view;
   visualize-type-inference = justStaticExecutables hp.visualize-type-inference;
   vk-posix-pty = justStaticExecutables hp.vk-posix-pty;
-  vrpn = justStaticExecutables hp.vrpn;
   vty-unix = justStaticExecutables hp.vty-unix;
   wai-accept-language = justStaticExecutables hp.wai-accept-language;
   wai-app-static = justStaticExecutables hp.wai-app-static;
@@ -921,10 +916,8 @@ in
   x509-util = justStaticExecutables hp.x509-util;
   xbattbar = justStaticExecutables hp.xbattbar;
   xdot = justStaticExecutables hp.xdot;
-  xgboost-haskell = justStaticExecutables hp.xgboost-haskell;
   xls = justStaticExecutables hp.xls;
   xml-to-json-fast = justStaticExecutables hp.xml-to-json-fast;
-  xmobar = justStaticExecutables hp.xmobar;
   xmonad = justStaticExecutables hp.xmonad;
   xmonad-dbus = justStaticExecutables hp.xmonad-dbus;
   xpathdsv = justStaticExecutables hp.xpathdsv;
