@@ -560,7 +560,8 @@ self: {
        librarySystemDepends = [ freealut ];
        description = "A binding for the OpenAL Utility Toolkit";
        license = lib.licenses.bsd3;
-     }) {inherit (pkgs) freealut;};
+       broken = !(pkgs ? freealut);
+     }) {freealut = pkgs.freealut or null;};
 
   AMI = callPackage
     ({ mkDerivation, base, bytestring, containers, mtl, network
@@ -1533,9 +1534,9 @@ self: {
        description = "Berkeley DB XML binding";
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) db; inherit (pkgs) dbxml; 
-         inherit (pkgs) xercesc; inherit (pkgs) xqilla;};
+       broken = !(pkgs ? dbxml) || !(pkgs ? xercesc) || !(pkgs ? xqilla);
+     }) {inherit (pkgs) db; dbxml = pkgs.dbxml or null; 
+         xercesc = pkgs.xercesc or null; xqilla = pkgs.xqilla or null;};
 
   BerlekampAlgorithm = callPackage
     ({ mkDerivation, base, besout }:
@@ -6100,7 +6101,8 @@ self: {
        librarySystemDepends = [ ftgl ];
        description = "Portable TrueType font rendering for OpenGL using the Freetype2 library";
        license = lib.licenses.bsd3;
-     }) {inherit (pkgs) ftgl;};
+       broken = !(pkgs ? ftgl);
+     }) {ftgl = pkgs.ftgl or null;};
 
   FTGL-bytestring = callPackage
     ({ mkDerivation, base, bytestring, ftgl, StateVar-transformer
@@ -6117,8 +6119,8 @@ self: {
        description = "Portable TrueType font rendering for OpenGL using the Freetype2 library";
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) ftgl;};
+       broken = !(pkgs ? ftgl);
+     }) {ftgl = pkgs.ftgl or null;};
 
   FTPLine = callPackage
     ({ mkDerivation, ansi-terminal, base, bytestring, directory, ftphs
@@ -6595,8 +6597,8 @@ self: {
        description = "Haskell bindings for the flint library for number theory";
        license = lib.licenses.gpl2Only;
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) flint; inherit (pkgs) gmp;};
+       broken = !(pkgs ? flint);
+     }) {flint = pkgs.flint or null; inherit (pkgs) gmp;};
 
   Flint2-Examples = callPackage
     ({ mkDerivation, base, containers, filepath, Flint2, gloss
@@ -8617,7 +8619,8 @@ self: {
        librarySystemDepends = [ libpq ];
        description = "PostgreSQL driver for HDBC";
        license = lib.licenses.bsd3;
-     }) {inherit (pkgs) libpq;};
+       broken = !(pkgs ? libpq);
+     }) {libpq = pkgs.libpq or null;};
 
   HDBC-postgresql-hstore = callPackage
     ({ mkDerivation, attoparsec, base, containers, HDBC, text }:
@@ -8932,7 +8935,8 @@ self: {
        description = "Enet Binding for HGamer3D";
        license = "unknown";
        hydraPlatforms = lib.platforms.none;
-     }) {inherit (pkgs) enet; hg3denet050 = null;};
+       broken = !(pkgs ? enet);
+     }) {enet = pkgs.enet or null; hg3denet050 = null;};
 
   HGamer3D-GUI = callPackage
     ({ mkDerivation, base, HGamer3D-CEGUI-Binding, HGamer3D-Data
@@ -9489,8 +9493,8 @@ self: {
        description = "Binding to libODE";
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) ode;};
+       broken = !(pkgs ? ode);
+     }) {ode = pkgs.ode or null;};
 
   HOpenCV = callPackage
     ({ mkDerivation, allocated-processor, base, opencv, vector-space }:
@@ -9686,7 +9690,8 @@ self: {
        license = lib.meta.getLicenseFromSpdxId "MIT";
        platforms = lib.platforms.x86;
        hydraPlatforms = lib.platforms.none;
-     }) {inherit (pkgs) gsl;};
+       broken = !(pkgs ? gsl);
+     }) {gsl = pkgs.gsl or null;};
 
   HROOT = callPackage
     ({ mkDerivation, base, Cabal, HROOT-core, HROOT-graf, HROOT-hist
@@ -13016,7 +13021,8 @@ self: {
        description = "A compiler from Curry to Haskell";
        license = "unknown";
        hydraPlatforms = lib.platforms.none;
-     }) {inherit (pkgs) kics;};
+       broken = !(pkgs ? kics);
+     }) {kics = pkgs.kics or null;};
 
   KiCS-debugger = callPackage
     ({ mkDerivation, base, containers, curry-base, directory, filepath
@@ -13124,8 +13130,8 @@ self: {
        description = "Kyoto Cabinet DB bindings";
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) kyotocabinet;};
+       broken = !(pkgs ? kyotocabinet);
+     }) {kyotocabinet = pkgs.kyotocabinet or null;};
 
   L-seed = callPackage
     ({ mkDerivation, base, cairo, containers, gtk, mtl, old-time
@@ -14018,7 +14024,8 @@ self: {
        description = "an adapter for LogicGrowsOnTrees that uses MPI";
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
-     }) {inherit (pkgs) openmpi;};
+       broken = !(pkgs ? openmpi);
+     }) {openmpi = pkgs.openmpi or null;};
 
   LogicGrowsOnTrees-network = callPackage
     ({ mkDerivation, base, cereal, cmdtheline, composition, containers
@@ -14282,7 +14289,8 @@ self: {
        ];
        description = "A GLPK backend to the MIP library";
        license = lib.licenses.gpl3Only;
-     }) {inherit (pkgs) glpk;};
+       broken = !(pkgs ? glpk);
+     }) {glpk = pkgs.glpk or null;};
 
   MSQueue = callPackage
     ({ mkDerivation, base, ghc-prim, monad-loops, ref-mtl, stm }:
@@ -16428,7 +16436,8 @@ self: {
        librarySystemDepends = [ openal ];
        description = "A binding to the OpenAL cross-platform 3D audio API";
        license = lib.licenses.bsd3;
-     }) {inherit (pkgs) openal;};
+       broken = !(pkgs ? openal);
+     }) {openal = pkgs.openal or null;};
 
   OpenCL = callPackage
     ({ mkDerivation, base, bytestring, c2hs, mtl, OpenCL, QuickCheck }:
@@ -17206,8 +17215,8 @@ self: {
        description = "A perfect hashing library for mapping bytestrings to values";
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) cmph;};
+       broken = !(pkgs ? cmph);
+     }) {cmph = pkgs.cmph or null;};
 
   PermuteEffects = callPackage
     ({ mkDerivation, base, ReplicateEffects }:
@@ -18965,7 +18974,8 @@ self: {
        librarySystemDepends = [ SDL_gfx ];
        description = "Binding to libSDL_gfx";
        license = lib.licenses.bsd3;
-     }) {inherit (pkgs) SDL_gfx;};
+       broken = !(pkgs ? SDL_gfx);
+     }) {SDL_gfx = pkgs.SDL_gfx or null;};
 
   SDL-image = callPackage
     ({ mkDerivation, base, Cabal, SDL, SDL_image }:
@@ -18979,7 +18989,8 @@ self: {
        librarySystemDepends = [ SDL_image ];
        description = "Binding to libSDL_image";
        license = lib.licenses.bsd3;
-     }) {inherit (pkgs) SDL_image;};
+       broken = !(pkgs ? SDL_image);
+     }) {SDL_image = pkgs.SDL_image or null;};
 
   SDL-mixer = callPackage
     ({ mkDerivation, base, Cabal, SDL, SDL_mixer }:
@@ -18993,7 +19004,8 @@ self: {
        librarySystemDepends = [ SDL_mixer ];
        description = "Binding to libSDL_mixer";
        license = lib.licenses.bsd3;
-     }) {inherit (pkgs) SDL_mixer;};
+       broken = !(pkgs ? SDL_mixer);
+     }) {SDL_mixer = pkgs.SDL_mixer or null;};
 
   SDL-mpeg = callPackage
     ({ mkDerivation, base, SDL, smpeg }:
@@ -19006,7 +19018,8 @@ self: {
        librarySystemDepends = [ smpeg ];
        description = "Binding to the SMPEG library";
        license = lib.licenses.bsd3;
-     }) {inherit (pkgs) smpeg;};
+       broken = !(pkgs ? smpeg);
+     }) {smpeg = pkgs.smpeg or null;};
 
   SDL-ttf = callPackage
     ({ mkDerivation, base, Cabal, SDL, SDL_ttf }:
@@ -19020,7 +19033,8 @@ self: {
        librarySystemDepends = [ SDL_ttf ];
        description = "Binding to libSDL_ttf";
        license = lib.licenses.bsd3;
-     }) {inherit (pkgs) SDL_ttf;};
+       broken = !(pkgs ? SDL_ttf);
+     }) {SDL_ttf = pkgs.SDL_ttf or null;};
 
   SDL2-ttf = callPackage
     ({ mkDerivation, base, SDL2, SDL2_ttf }:
@@ -19033,8 +19047,8 @@ self: {
        description = "Binding to libSDL-ttf";
        license = lib.licenses.mit;
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {SDL2 = null; inherit (pkgs) SDL2_ttf;};
+       broken = !(pkgs ? SDL2_ttf);
+     }) {SDL2 = null; SDL2_ttf = pkgs.SDL2_ttf or null;};
 
   SFML = callPackage
     ({ mkDerivation, base, csfml-audio, csfml-graphics, csfml-network
@@ -19465,8 +19479,8 @@ self: {
        description = "A .NET Bridge for Haskell";
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) glib; inherit (pkgs) mono;};
+       broken = !(pkgs ? mono);
+     }) {inherit (pkgs) glib; mono = pkgs.mono or null;};
 
   Saturnin = callPackage
     ({ mkDerivation, base, bytestring, data-default, directory, either
@@ -23157,7 +23171,8 @@ self: {
        description = "Support for manipulating shortcuts (.lnk files) on Windows";
        license = lib.licenses.bsd3;
        platforms = lib.platforms.windows;
-     }) {inherit (pkgs) libossp_uuid; ole32 = null;};
+       broken = !(pkgs ? libossp_uuid);
+     }) {libossp_uuid = pkgs.libossp_uuid or null; ole32 = null;};
 
   Wired = callPackage
     ({ mkDerivation, base, chalmers-lava2000, containers, mtl
@@ -28655,8 +28670,8 @@ self: {
        description = "OpenAL 1.1 raw API.";
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) openal;};
+       broken = !(pkgs ? openal);
+     }) {openal = pkgs.openal or null;};
 
   alarmclock = callPackage
     ({ mkDerivation, async, base, clock, hspec, hspec-discover, stm
@@ -29955,8 +29970,8 @@ self: {
        description = "A Haskell binding for ALURE";
        license = "LGPL";
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) alure;};
+       broken = !(pkgs ? alure);
+     }) {alure = pkgs.alure or null;};
 
   always = callPackage
     ({ mkDerivation }:
@@ -38451,8 +38466,8 @@ self: {
        description = "Bindings to libaosd, a library for Cairo-based on-screen displays";
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) libaosd;};
+       broken = !(pkgs ? libaosd);
+     }) {libaosd = pkgs.libaosd or null;};
 
   ap-normalize = callPackage
     ({ mkDerivation, base, inspection-testing, transformers }:
@@ -40815,8 +40830,8 @@ self: {
        description = "Solve large scale eigenvalue problems";
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) arpack;};
+       broken = !(pkgs ? arpack);
+     }) {arpack = pkgs.arpack or null;};
 
   array_0_5_8_0 = callPackage
     ({ mkDerivation, base }:
@@ -42095,7 +42110,8 @@ self: {
        description = "The Assimp asset import library";
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
-     }) {inherit (pkgs) assimp;};
+       broken = !(pkgs ? assimp);
+     }) {assimp = pkgs.assimp or null;};
 
   assoc = callPackage
     ({ mkDerivation, base }:
@@ -43810,8 +43826,8 @@ self: {
        license = "LGPL";
        hydraPlatforms = lib.platforms.none;
        mainProgram = "test-haskell-augeas";
-       broken = true;
-     }) {inherit (pkgs) augeas;};
+       broken = !(pkgs ? augeas);
+     }) {augeas = pkgs.augeas or null;};
 
   augur = callPackage
     ({ mkDerivation, base, bytestring, classify, containers, directory
@@ -46431,8 +46447,8 @@ self: {
        description = "Haskell bindings to BABL library";
        license = lib.licenses.lgpl3Only;
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) babl;};
+       broken = !(pkgs ? babl);
+     }) {babl = pkgs.babl or null;};
 
   babylon = callPackage
     ({ mkDerivation, array, base, containers, random, wx, wxcore }:
@@ -48519,7 +48535,8 @@ self: {
        description = "Tools for managing a content store of software packages";
        license = lib.licenses.lgpl21Only;
        hydraPlatforms = lib.platforms.none;
-     }) {inherit (pkgs) ostree;};
+       broken = !(pkgs ? ostree);
+     }) {ostree = pkgs.ostree or null;};
 
   bdcs-api = callPackage
     ({ mkDerivation, aeson, async, base, bdcs, bifunctors, bytestring
@@ -50954,7 +50971,8 @@ self: {
        libraryPkgconfigDepends = [ audiofile ];
        description = "Low level bindings to audiofile";
        license = lib.licenses.publicDomain;
-     }) {inherit (pkgs) audiofile;};
+       broken = !(pkgs ? audiofile);
+     }) {audiofile = pkgs.audiofile or null;};
 
   bindings-bfd = callPackage
     ({ mkDerivation, alex, array, base, bfd, containers, happy, opcodes
@@ -51005,7 +51023,8 @@ self: {
        description = "Very low-level FFI bindings for Codec2";
        license = lib.licenses.gpl2Only;
        mainProgram = "bindings-codec2-demo";
-     }) {inherit (pkgs) codec2;};
+       broken = !(pkgs ? codec2);
+     }) {codec2 = pkgs.codec2 or null;};
 
   bindings-common = callPackage
     ({ mkDerivation, base }:
@@ -51046,7 +51065,8 @@ self: {
        description = "Low level bindings to DirectFB";
        license = lib.licenses.bsd3;
        badPlatforms = lib.platforms.darwin;
-     }) {inherit (pkgs) directfb;};
+       broken = !(pkgs ? directfb);
+     }) {directfb = pkgs.directfb or null;};
 
   bindings-eskit = callPackage
     ({ mkDerivation, array, base, bindings-DSL, eskit }:
@@ -51088,8 +51108,8 @@ self: {
        description = "Haskell FFI bindings for fluidsynth software synthesizer";
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) fluidsynth;};
+       broken = !(pkgs ? fluidsynth);
+     }) {fluidsynth = pkgs.fluidsynth or null;};
 
   bindings-friso = callPackage
     ({ mkDerivation, base, bindings-DSL, friso }:
@@ -51154,8 +51174,8 @@ self: {
        description = "Low level bindings to GNU GSL";
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) gsl;};
+       broken = !(pkgs ? gsl);
+     }) {gsl = pkgs.gsl or null;};
 
   bindings-gts = callPackage
     ({ mkDerivation, base, bindings-DSL, bindings-glib, gts }:
@@ -51186,8 +51206,8 @@ self: {
        license = lib.licenses.lgpl21Only;
        hydraPlatforms = lib.platforms.none;
        mainProgram = "hamlib-hs-demo";
-       broken = true;
-     }) {inherit (pkgs) hamlib;};
+       broken = !(pkgs ? hamlib);
+     }) {hamlib = pkgs.hamlib or null;};
 
   bindings-hdf5 = callPackage
     ({ mkDerivation, base, bindings-DSL }:
@@ -51251,8 +51271,8 @@ self: {
        description = "Low level bindings to libftdi";
        license = "GPL";
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) libftdi; libusb = null;};
+       broken = !(pkgs ? libftdi);
+     }) {libftdi = pkgs.libftdi or null; libusb = null;};
 
   bindings-libg15 = callPackage
     ({ mkDerivation, base, bindings-DSL, g15 }:
@@ -51376,7 +51396,8 @@ self: {
        description = "Direct Haskell bindings to LXC (Linux containers) C API";
        license = lib.licenses.bsd3;
        platforms = lib.platforms.linux;
-     }) {inherit (pkgs) lxc;};
+       broken = !(pkgs ? lxc);
+     }) {lxc = pkgs.lxc or null;};
 
   bindings-mmap = callPackage
     ({ mkDerivation, bindings-posix }:
@@ -51455,7 +51476,8 @@ self: {
        libraryPkgconfigDepends = [ portaudio ];
        description = "Low-level bindings to portaudio library";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
-     }) {inherit (pkgs) portaudio;};
+       broken = !(pkgs ? portaudio);
+     }) {portaudio = pkgs.portaudio or null;};
 
   bindings-posix = callPackage
     ({ mkDerivation, base, bindings-DSL }:
@@ -51613,8 +51635,8 @@ self: {
        description = "Bindings against the wlc library";
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) wlc;};
+       broken = !(pkgs ? wlc);
+     }) {wlc = pkgs.wlc or null;};
 
   bindings-yices = callPackage
     ({ mkDerivation, base, gmp, yices }:
@@ -51627,7 +51649,8 @@ self: {
        description = "Bindings to the Yices theorem prover";
        license = lib.licenses.publicDomain;
        hydraPlatforms = lib.platforms.none;
-     }) {inherit (pkgs) gmp; inherit (pkgs) yices;};
+       broken = !(pkgs ? yices);
+     }) {inherit (pkgs) gmp; yices = pkgs.yices or null;};
 
   bindynamic = callPackage
     ({ mkDerivation, base, binary, bytestring, rank1dynamic }:
@@ -52994,8 +53017,8 @@ self: {
        license = "GPL";
        hydraPlatforms = lib.platforms.none;
        mainProgram = "bitspeak";
-       broken = true;
-     }) {inherit (pkgs) gtk2; inherit (pkgs) pango;};
+       broken = !(pkgs ? gtk2);
+     }) {gtk2 = pkgs.gtk2 or null; inherit (pkgs) pango;};
 
   bitstream = callPackage
     ({ mkDerivation, base, base-unicode-symbols, bytestring, QuickCheck
@@ -54694,7 +54717,8 @@ self: {
        description = "full-featured tiling for the GNOME desktop environment";
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
-     }) {inherit (pkgs) gtk2;};
+       broken = !(pkgs ? gtk2);
+     }) {gtk2 = pkgs.gtk2 or null;};
 
   bluetileutils = callPackage
     ({ mkDerivation, base, gtk }:
@@ -55367,7 +55391,8 @@ self: {
        description = "Haskell bindings for the Boolector SMT solver";
        license = lib.licenses.mit;
        hydraPlatforms = lib.platforms.none;
-     }) {inherit (pkgs) boolector;};
+       broken = !(pkgs ? boolector);
+     }) {boolector = pkgs.boolector or null;};
 
   boolexpr = callPackage
     ({ mkDerivation, base, extra, parsec }:
@@ -57922,7 +57947,8 @@ self: {
        libraryToolDepends = [ c2hs ];
        description = "A wrapper for the Bullet physics engine";
        license = lib.licenses.bsd3;
-     }) {inherit (pkgs) bullet;};
+       broken = !(pkgs ? bullet);
+     }) {bullet = pkgs.bullet or null;};
 
   bulletproofs = callPackage
     ({ mkDerivation, arithmoi, base, bytestring, containers, criterion
@@ -62562,7 +62588,8 @@ self: {
        badPlatforms = [ "aarch64-linux" ];
        hydraPlatforms = lib.platforms.none;
        mainProgram = "camfort";
-     }) {inherit (pkgs) flint;};
+       broken = !(pkgs ? flint);
+     }) {flint = pkgs.flint or null;};
 
   camh = callPackage
     ({ mkDerivation, base, bytestring, Imlib, terminfo }:
@@ -63569,7 +63596,8 @@ self: {
        description = "mid-level bindings to CasADi";
        license = lib.licenses.lgpl3Only;
        hydraPlatforms = lib.platforms.none;
-     }) {inherit (pkgs) casadi;};
+       broken = !(pkgs ? casadi);
+     }) {casadi = pkgs.casadi or null;};
 
   casadi-bindings-control = callPackage
     ({ mkDerivation, base, casadi-bindings-core
@@ -63603,8 +63631,8 @@ self: {
        description = "autogenerated low level bindings to casadi";
        license = lib.licenses.lgpl3Only;
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) casadi;};
+       broken = !(pkgs ? casadi);
+     }) {casadi = pkgs.casadi or null;};
 
   casadi-bindings-internal = callPackage
     ({ mkDerivation, base, casadi, containers, vector }:
@@ -63616,7 +63644,8 @@ self: {
        librarySystemDepends = [ casadi ];
        description = "low level bindings to CasADi";
        license = lib.licenses.lgpl3Only;
-     }) {inherit (pkgs) casadi;};
+       broken = !(pkgs ? casadi);
+     }) {casadi = pkgs.casadi or null;};
 
   casadi-bindings-ipopt-interface = callPackage
     ({ mkDerivation, base, casadi-bindings-core
@@ -64929,8 +64958,8 @@ self: {
        description = "Raw CEF3 bindings";
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {cef = null; inherit (pkgs) gtk2;};
+       broken = !(pkgs ? gtk2);
+     }) {cef = null; gtk2 = pkgs.gtk2 or null;};
 
   cef3-simple = callPackage
     ({ mkDerivation, base, cef3-raw }:
@@ -64980,8 +65009,8 @@ self: {
        description = "Cairo-based CellRenderer";
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) gtk2;};
+       broken = !(pkgs ? gtk2);
+     }) {gtk2 = pkgs.gtk2 or null;};
 
   celtchar = callPackage
     ({ mkDerivation, base, bytestring, directory, file-embed, filepath
@@ -69973,8 +70002,8 @@ self: {
        description = "Haskell bindings to the Clingo ASP solver";
        license = lib.licenses.mit;
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) clingo;};
+       broken = !(pkgs ? clingo);
+     }) {clingo = pkgs.clingo or null;};
 
   clippard = callPackage
     ({ mkDerivation, base, process }:
@@ -70514,8 +70543,8 @@ self: {
        description = "Hosting the Common Language Runtime";
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) glib; inherit (pkgs) mono;};
+       broken = !(pkgs ? mono);
+     }) {inherit (pkgs) glib; mono = pkgs.mono or null;};
 
   clr-inline = callPackage
     ({ mkDerivation, base, bytestring, Cabal, case-insensitive
@@ -70708,7 +70737,8 @@ self: {
        description = "Bindings to the Clutter animation library";
        license = "LGPL";
        hydraPlatforms = lib.platforms.none;
-     }) {inherit (pkgs) clutter; inherit (pkgs) pango;};
+       broken = !(pkgs ? clutter);
+     }) {clutter = pkgs.clutter or null; inherit (pkgs) pango;};
 
   cmaes = callPackage
     ({ mkDerivation, base, doctest, mtl, process, QuickCheck, random
@@ -71054,8 +71084,8 @@ self: {
        description = "low level interface to CMPH";
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) cmph;};
+       broken = !(pkgs ? cmph);
+     }) {cmph = pkgs.cmph or null;};
 
   cmptype = callPackage
     ({ mkDerivation, base, ghc, magic-tyfams, should-not-typecheck }:
@@ -72158,7 +72188,8 @@ self: {
        description = "Linear Programming using COIN-OR/CLP and comfort-array";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
        badPlatforms = [ "aarch64-linux" ];
-     }) {inherit (pkgs) clp; coinutils = null;};
+       broken = !(pkgs ? clp);
+     }) {clp = pkgs.clp or null; coinutils = null;};
 
   cointracking-imports = callPackage
     ({ mkDerivation, base, base-compat-batteries, bytestring, cassava
@@ -73096,7 +73127,8 @@ self: {
        ];
        description = "Linear Programming using GLPK and comfort-array";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
-     }) {inherit (pkgs) glpk;};
+       broken = !(pkgs ? glpk);
+     }) {glpk = pkgs.glpk or null;};
 
   comfort-graph = callPackage
     ({ mkDerivation, base, containers, doctest-exitcode-stdio
@@ -79963,7 +79995,8 @@ self: {
        description = "high-level CPLEX interface";
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
-     }) {inherit (pkgs) cplex;};
+       broken = !(pkgs ? cplex);
+     }) {cplex = pkgs.cplex or null;};
 
   cplusplus-th = callPackage
     ({ mkDerivation, base, bytestring, containers, process, QuickCheck
@@ -83746,8 +83779,8 @@ self: {
        description = "Bindings to the CUDD binary decision diagrams library";
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) cudd;};
+       broken = !(pkgs ? cudd);
+     }) {cudd = pkgs.cudd or null;};
 
   cuddle = callPackage
     ({ mkDerivation, antigen, base, base16-bytestring, boxes
@@ -84442,8 +84475,8 @@ self: {
        badPlatforms = lib.platforms.darwin;
        hydraPlatforms = lib.platforms.none;
        mainProgram = "cut-the-crap";
-       broken = true;
-     }) {inherit (pkgs) pocketsphinx; sphinxbase = null;};
+       broken = !(pkgs ? pocketsphinx);
+     }) {pocketsphinx = pkgs.pocketsphinx or null; sphinxbase = null;};
 
   cutter = callPackage
     ({ mkDerivation, base, bytestring, explicit-exception, spreadsheet
@@ -89150,8 +89183,8 @@ self: {
        description = "Haskell bindings for Dear ImGui";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) SDL2; inherit (pkgs) glew;};
+       broken = !(pkgs ? glew);
+     }) {inherit (pkgs) SDL2; glew = pkgs.glew or null;};
 
   debian = callPackage
     ({ mkDerivation, base, bytestring, bz2, Cabal, containers
@@ -91765,7 +91798,8 @@ self: {
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
        hydraPlatforms = lib.platforms.none;
        mainProgram = "dfinity-radix-tree-example";
-     }) {inherit (pkgs) leveldb;};
+       broken = !(pkgs ? leveldb);
+     }) {leveldb = pkgs.leveldb or null;};
 
   dfrac = callPackage
     ({ mkDerivation, base, scientific }:
@@ -99152,7 +99186,8 @@ self: {
        ];
        description = "Haskell FFI bindings for DuckDB";
        license = lib.meta.getLicenseFromSpdxId "MPL-2.0";
-     }) {inherit (pkgs) duckdb;};
+       broken = !(pkgs ? duckdb);
+     }) {duckdb = pkgs.duckdb or null;};
 
   duckdb-haskell = callPackage
     ({ mkDerivation, base, mtl, system-cxx-std-lib, tasty, tasty-hunit
@@ -104046,8 +104081,8 @@ self: {
        description = "Binding to the Enchant library";
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) enchant;};
+       broken = !(pkgs ? enchant);
+     }) {enchant = pkgs.enchant or null;};
 
   enclosed-exceptions = callPackage
     ({ mkDerivation, async, base, deepseq, hspec, lifted-base
@@ -108265,8 +108300,8 @@ self: {
        description = "A Haskell binding to a subset of libexif";
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) exif;};
+       broken = !(pkgs ? exif);
+     }) {exif = pkgs.exif or null;};
 
   exiftool = callPackage
     ({ mkDerivation, aeson, base, base64, bytestring, hashable, process
@@ -110577,7 +110612,8 @@ self: {
        librarySystemDepends = [ fcgi ];
        description = "A Haskell library for writing FastCGI programs";
        license = lib.licenses.bsd3;
-     }) {inherit (pkgs) fcgi;};
+       broken = !(pkgs ? fcgi);
+     }) {fcgi = pkgs.fcgi or null;};
 
   fastedit = callPackage
     ({ mkDerivation, base, base-prelude, bytestring, containers
@@ -111052,9 +111088,9 @@ self: {
        description = "Various utility libraries";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
        hydraPlatforms = lib.platforms.none;
-       broken = true;
+       broken = !(pkgs ? glog);
      }) {inherit (pkgs) double-conversion; inherit (pkgs) fmt; 
-         inherit (pkgs) gflags; inherit (pkgs) glog; 
+         inherit (pkgs) gflags; glog = pkgs.glog or null; 
          inherit (pkgs) libevent;};
 
   fbmessenger-api = callPackage
@@ -111986,7 +112022,8 @@ self: {
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
        hydraPlatforms = lib.platforms.none;
        mainProgram = "mxnet-op-gen";
-     }) {inherit (pkgs) mxnet;};
+       broken = !(pkgs ? mxnet);
+     }) {mxnet = pkgs.mxnet or null;};
 
   fei-cocoapi = callPackage
     ({ mkDerivation, aeson, attoparsec, base, c2hs, colour, conduit
@@ -112044,7 +112081,8 @@ self: {
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
        mainProgram = "mxnet-dataiter-gen";
-     }) {inherit (pkgs) mxnet;};
+       broken = !(pkgs ? mxnet);
+     }) {mxnet = pkgs.mxnet or null;};
 
   fei-datasets = callPackage
     ({ mkDerivation, aeson, attoparsec, base, conduit
@@ -112309,9 +112347,9 @@ self: {
        description = "C bindings plus conveniences for the festival tts system";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
        hydraPlatforms = lib.platforms.none;
-       broken = true;
+       broken = !(pkgs ? gomp);
      }) {Festival = null; inherit (pkgs) alsa-lib; estbase = null; 
-         estools = null; eststring = null; inherit (pkgs) gomp; 
+         estools = null; eststring = null; gomp = pkgs.gomp or null; 
          inherit (pkgs) ncurses;};
 
   festung = callPackage
@@ -113975,8 +114013,8 @@ self: {
        description = "A library for reading and writing data files in the FITS data format";
        license = "GPL";
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) cfitsio;};
+       broken = !(pkgs ? cfitsio);
+     }) {cfitsio = pkgs.cfitsio or null;};
 
   fitspec = callPackage
     ({ mkDerivation, base, cmdargs, leancheck, pretty, template-haskell
@@ -115528,8 +115566,8 @@ self: {
        description = "FLTK bindings";
        license = lib.licenses.mit;
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) fltk_1_4; inherit (pkgs) libGL; 
+       broken = !(pkgs ? fltk_1_4);
+     }) {fltk_1_4 = pkgs.fltk_1_4 or null; inherit (pkgs) libGL; 
          inherit (pkgs) libGLU; inherit (pkgs) pkg-config;};
 
   fltkhs-demos = callPackage
@@ -115758,8 +115796,8 @@ self: {
        description = "Haskell bindings to FluidSynth";
        license = lib.licenses.mit;
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) fluidsynth;};
+       broken = !(pkgs ? fluidsynth);
+     }) {fluidsynth = pkgs.fluidsynth or null;};
 
   flush-queue = callPackage
     ({ mkDerivation, async, atomic-primops, base, containers, deepseq
@@ -116366,10 +116404,10 @@ self: {
        description = "The folly C++ library from Meta";
        license = lib.meta.getLicenseFromSpdxId "Apache-2.0";
        hydraPlatforms = lib.platforms.none;
-       broken = true;
+       broken = !(pkgs ? glog);
      }) {inherit (pkgs) boost; boost_filesystem = null; 
          boost_program_options = null; inherit (pkgs) fmt; 
-         inherit (pkgs) glog; inherit (pkgs) libunwind; 
+         glog = pkgs.glog or null; inherit (pkgs) libunwind; 
          inherit (pkgs) openssl; inherit (pkgs) snappy;};
 
   foma = callPackage
@@ -116382,7 +116420,8 @@ self: {
        librarySystemDepends = [ foma ];
        description = "Simple Haskell bindings for Foma";
        license = lib.licenses.mit;
-     }) {inherit (pkgs) foma;};
+       broken = !(pkgs ? foma);
+     }) {foma = pkgs.foma or null;};
 
   font-awesome-type = callPackage
     ({ mkDerivation, base }:
@@ -117471,7 +117510,8 @@ self: {
        description = "Haskell bindings to <https://fplll.github.io/fplll/ fplll>";
        license = lib.meta.getLicenseFromSpdxId "LGPL-2.1-or-later";
        hydraPlatforms = lib.platforms.none;
-     }) {inherit (pkgs) fplll;};
+       broken = !(pkgs ? fplll);
+     }) {fplll = pkgs.fplll or null;};
 
   fpnla = callPackage
     ({ mkDerivation, base }:
@@ -118527,8 +118567,8 @@ self: {
        license = lib.licenses.bsd3;
        badPlatforms = lib.platforms.darwin;
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) freenect; freenect_sync = null; 
+       broken = !(pkgs ? freenect);
+     }) {freenect = pkgs.freenect or null; freenect_sync = null; 
          libfreenect = null;};
 
   freer = callPackage
@@ -121603,7 +121643,8 @@ self: {
        ];
        description = "Manage PostgreSQL servers with gargoyle and nix";
        license = lib.licenses.bsd3;
-     }) {inherit (pkgs) libpq;};
+       broken = !(pkgs ? libpq);
+     }) {libpq = pkgs.libpq or null;};
 
   garlic-bread = callPackage
     ({ mkDerivation, base, hspec, mtl, transformers }:
@@ -122177,7 +122218,8 @@ self: {
        description = "Haskell bindings to GEGL library";
        license = lib.licenses.lgpl3Only;
        hydraPlatforms = lib.platforms.none;
-     }) {inherit (pkgs) gegl;};
+       broken = !(pkgs ? gegl);
+     }) {gegl = pkgs.gegl or null;};
 
   gelatin = callPackage
     ({ mkDerivation, base, bytestring, containers, lens, linear, mtl
@@ -124771,8 +124813,8 @@ self: {
        description = "Bindings for GEOS";
        license = lib.meta.getLicenseFromSpdxId "MIT";
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) geos;};
+       broken = !(pkgs ? geos);
+     }) {geos = pkgs.geos or null;};
 
   gerrit = callPackage
     ({ mkDerivation, aeson, aeson-casing, base, bytestring, containers
@@ -128158,7 +128200,8 @@ self: {
        libraryPkgconfigDepends = [ libadwaita ];
        description = "Adwaita bindings";
        license = lib.licenses.lgpl21Only;
-     }) {inherit (pkgs) libadwaita;};
+       broken = !(pkgs ? libadwaita);
+     }) {libadwaita = pkgs.libadwaita or null;};
 
   gi-atk = callPackage
     ({ mkDerivation, atk, base, bytestring, Cabal, containers, gi-glib
@@ -128296,7 +128339,8 @@ self: {
        libraryPkgconfigDepends = [ clutter ];
        description = "clutter GObject bindings";
        license = lib.licenses.lgpl21Only;
-     }) {inherit (pkgs) clutter;};
+       broken = !(pkgs ? clutter);
+     }) {clutter = pkgs.clutter or null;};
 
   gi-cogl = callPackage
     ({ mkDerivation, base, bytestring, Cabal, cogl, containers, gi-glib
@@ -128315,7 +128359,8 @@ self: {
        libraryPkgconfigDepends = [ cogl ];
        description = "COGL GObject bindings";
        license = lib.licenses.lgpl21Only;
-     }) {inherit (pkgs) cogl;};
+       broken = !(pkgs ? cogl);
+     }) {cogl = pkgs.cogl or null;};
 
   gi-coglpango = callPackage
     ({ mkDerivation, base, bytestring, Cabal, cogl-pango, containers
@@ -128364,7 +128409,8 @@ self: {
        libraryPkgconfigDepends = [ libdazzle ];
        description = "libdazzle bindings";
        license = lib.licenses.lgpl21Only;
-     }) {inherit (pkgs) libdazzle;};
+       broken = !(pkgs ? libdazzle);
+     }) {libdazzle = pkgs.libdazzle or null;};
 
   gi-dbusmenu = callPackage
     ({ mkDerivation, base, bytestring, Cabal, containers, gi-glib
@@ -129137,8 +129183,8 @@ self: {
        description = "GtkSheet bindings";
        license = lib.licenses.lgpl21Only;
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) gtksheet;};
+       broken = !(pkgs ? gtksheet);
+     }) {gtksheet = pkgs.gtksheet or null;};
 
   gi-gtksource = callPackage
     ({ mkDerivation, base, Cabal, gi-gtksource5, haskell-gi }:
@@ -129177,7 +129223,8 @@ self: {
        libraryPkgconfigDepends = [ gtksourceview3 ];
        description = "GtkSource 3.x bindings";
        license = lib.licenses.lgpl21Only;
-     }) {inherit (pkgs) gtksourceview3;};
+       broken = !(pkgs ? gtksourceview3);
+     }) {gtksourceview3 = pkgs.gtksourceview3 or null;};
 
   gi-gtksource5 = callPackage
     ({ mkDerivation, base, bytestring, Cabal, containers, gi-atk
@@ -129201,7 +129248,8 @@ self: {
        libraryPkgconfigDepends = [ gtksourceview5 ];
        description = "GtkSource 5.x bindings";
        license = lib.licenses.lgpl21Only;
-     }) {inherit (pkgs) gtksourceview5;};
+       broken = !(pkgs ? gtksourceview5);
+     }) {gtksourceview5 = pkgs.gtksourceview5 or null;};
 
   gi-handy = callPackage
     ({ mkDerivation, base, bytestring, Cabal, containers, gi-atk
@@ -129225,7 +129273,8 @@ self: {
        libraryPkgconfigDepends = [ libhandy ];
        description = "libhandy bindings";
        license = lib.licenses.lgpl21Only;
-     }) {inherit (pkgs) libhandy;};
+       broken = !(pkgs ? libhandy);
+     }) {libhandy = pkgs.libhandy or null;};
 
   gi-harfbuzz = callPackage
     ({ mkDerivation, base, bytestring, Cabal, containers, gi-freetype2
@@ -129269,8 +129318,8 @@ self: {
        license = lib.licenses.lgpl21Only;
        badPlatforms = lib.platforms.darwin;
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) ibus;};
+       broken = !(pkgs ? ibus);
+     }) {ibus = pkgs.ibus or null;};
 
   gi-javascriptcore = callPackage
     ({ mkDerivation, base, Cabal, gi-javascriptcore6, haskell-gi }:
@@ -129325,7 +129374,8 @@ self: {
        libraryPkgconfigDepends = [ webkitgtk_6_0 ];
        description = "JavaScriptCore 6.x bindings";
        license = lib.licenses.lgpl21Only;
-     }) {inherit (pkgs) webkitgtk_6_0;};
+       broken = !(pkgs ? webkitgtk_6_0);
+     }) {webkitgtk_6_0 = pkgs.webkitgtk_6_0 or null;};
 
   gi-json = callPackage
     ({ mkDerivation, base, bytestring, Cabal, containers, gi-gio
@@ -129368,8 +129418,8 @@ self: {
        description = "Libkeybinder bindings";
        license = lib.licenses.lgpl21Only;
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) keybinder;};
+       broken = !(pkgs ? keybinder);
+     }) {keybinder = pkgs.keybinder or null;};
 
   gi-nm = callPackage
     ({ mkDerivation, base, bytestring, Cabal, containers, gi-gio
@@ -129411,7 +129461,8 @@ self: {
        libraryPkgconfigDepends = [ libnotify ];
        description = "Libnotify bindings";
        license = lib.licenses.lgpl21Only;
-     }) {inherit (pkgs) libnotify;};
+       broken = !(pkgs ? libnotify);
+     }) {libnotify = pkgs.libnotify or null;};
 
   gi-ostree = callPackage
     ({ mkDerivation, base, bytestring, Cabal, containers, gi-gio
@@ -129433,7 +129484,8 @@ self: {
        description = "OSTree bindings";
        license = lib.licenses.lgpl21Only;
        badPlatforms = lib.platforms.darwin;
-     }) {inherit (pkgs) ostree;};
+       broken = !(pkgs ? ostree);
+     }) {ostree = pkgs.ostree or null;};
 
   gi-pango = callPackage
     ({ mkDerivation, base, bytestring, Cabal, cairo, containers, gi-gio
@@ -129506,7 +129558,8 @@ self: {
        libraryPkgconfigDepends = [ poppler_gi ];
        description = "Poppler bindings";
        license = lib.licenses.lgpl21Only;
-     }) {inherit (pkgs) poppler_gi;};
+       broken = !(pkgs ? poppler_gi);
+     }) {poppler_gi = pkgs.poppler_gi or null;};
 
   gi-rsvg = callPackage
     ({ mkDerivation, base, bytestring, Cabal, containers, gi-cairo
@@ -129530,7 +129583,8 @@ self: {
        libraryPkgconfigDepends = [ librsvg ];
        description = "librsvg bindings";
        license = lib.licenses.lgpl21Only;
-     }) {inherit (pkgs) librsvg;};
+       broken = !(pkgs ? librsvg);
+     }) {librsvg = pkgs.librsvg or null;};
 
   gi-secret = callPackage
     ({ mkDerivation, base, bytestring, Cabal, containers, gi-gio
@@ -129655,7 +129709,8 @@ self: {
        libraryPkgconfigDepends = [ vte ];
        description = "Vte bindings";
        license = lib.licenses.lgpl21Only;
-     }) {inherit (pkgs) vte;};
+       broken = !(pkgs ? vte);
+     }) {vte = pkgs.vte or null;};
 
   gi-webkit = callPackage
     ({ mkDerivation, base, bytestring, Cabal, containers, gi-atk
@@ -129785,7 +129840,8 @@ self: {
        description = "Wnck bindings";
        license = lib.licenses.lgpl21Only;
        badPlatforms = lib.platforms.darwin;
-     }) {inherit (pkgs) libwnck;};
+       broken = !(pkgs ? libwnck);
+     }) {libwnck = pkgs.libwnck or null;};
 
   gi-xlib = callPackage
     ({ mkDerivation, base, bytestring, Cabal, containers, haskell-gi
@@ -131955,8 +132011,9 @@ self: {
        description = "A system for collecting, deriving and working with facts about source code";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
        hydraPlatforms = lib.platforms.none;
+       broken = !(pkgs ? glog);
      }) {atomic = null; inherit (pkgs) fmt; inherit (pkgs) gflags; 
-         inherit (pkgs) glog; gtest_main = null; inherit (pkgs) icu; 
+         glog = pkgs.glog or null; gtest_main = null; inherit (pkgs) icu; 
          libfolly = null; inherit (pkgs) libunwind; inherit (pkgs) rocksdb; 
          inherit (pkgs) xxhash;};
 
@@ -132560,7 +132617,8 @@ self: {
        testHaskellDepends = [ base hspec ];
        description = "Low-level Haskell bindings to the GLPK library";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
-     }) {inherit (pkgs) glpk;};
+       broken = !(pkgs ? glpk);
+     }) {glpk = pkgs.glpk or null;};
 
   glpk-hs = callPackage
     ({ mkDerivation, array, base, containers, deepseq, gasp, glpk, mtl
@@ -132580,8 +132638,8 @@ self: {
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
        mainProgram = "glpk-hs-example";
-       broken = true;
-     }) {inherit (pkgs) glpk;};
+       broken = !(pkgs ? glpk);
+     }) {glpk = pkgs.glpk or null;};
 
   glsl = callPackage
     ({ mkDerivation, attoparsec, base, binary, bytestring, containers
@@ -139279,7 +139337,8 @@ self: {
        libraryPkgconfigDepends = [ gtk2 ];
        description = "Binding to the Gtk+ graphical user interface library";
        license = lib.meta.getLicenseFromSpdxId "LGPL-2.1-only";
-     }) {inherit (pkgs) gtk2;};
+       broken = !(pkgs ? gtk2);
+     }) {gtk2 = pkgs.gtk2 or null;};
 
   gtk-helpers = callPackage
     ({ mkDerivation, array, base, gio, glib, gtk, mtl, process
@@ -139374,7 +139433,8 @@ self: {
        description = "GTK+ Serialized event";
        license = lib.licenses.lgpl21Only;
        hydraPlatforms = lib.platforms.none;
-     }) {inherit (pkgs) gtk2;};
+       broken = !(pkgs ? gtk2);
+     }) {gtk2 = pkgs.gtk2 or null;};
 
   gtk-simple-list-view = callPackage
     ({ mkDerivation, base, gtk }:
@@ -139700,8 +139760,8 @@ self: {
        description = "Binding to the GTK+ OpenGL Extension";
        license = lib.licenses.lgpl21Only;
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) gtk2; inherit (pkgs.gnome2) gtkglext; 
+       broken = !(pkgs ? gtk2);
+     }) {gtk2 = pkgs.gtk2 or null; inherit (pkgs.gnome2) gtkglext; 
          inherit (pkgs) libGLU; inherit (pkgs) libice; 
          inherit (pkgs) libsm; inherit (pkgs) libxmu; 
          inherit (pkgs) libxt;};
@@ -139723,7 +139783,8 @@ self: {
        description = "Binding to the GtkImageView library";
        license = lib.licenses.lgpl21Only;
        hydraPlatforms = lib.platforms.none;
-     }) {inherit (pkgs) gtkimageview;};
+       broken = !(pkgs ? gtkimageview);
+     }) {gtkimageview = pkgs.gtkimageview or null;};
 
   gtkrsync = callPackage
     ({ mkDerivation, base, gconf, glade, gtk, MissingH, process
@@ -139762,8 +139823,8 @@ self: {
        description = "Binding to the GtkSourceView library";
        license = lib.licenses.lgpl21Only;
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) gtksourceview;};
+       broken = !(pkgs ? gtksourceview);
+     }) {gtksourceview = pkgs.gtksourceview or null;};
 
   gtksourceview3 = callPackage
     ({ mkDerivation, array, base, Cabal, containers, glib
@@ -139783,8 +139844,8 @@ self: {
        description = "Binding to the GtkSourceView library";
        license = lib.licenses.lgpl21Only;
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) gtksourceview3;};
+       broken = !(pkgs ? gtksourceview3);
+     }) {gtksourceview3 = pkgs.gtksourceview3 or null;};
 
   gtvm-hs = callPackage
     ({ mkDerivation, aeson, base, binrep, bytestring, containers
@@ -140193,8 +140254,8 @@ self: {
        description = "A Haskell binding for H3";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) h3;};
+       broken = !(pkgs ? h3);
+     }) {h3 = pkgs.h3 or null;};
 
   h3spec = callPackage
     ({ mkDerivation, base, bytestring, hspec, hspec-core, http-types
@@ -140276,9 +140337,9 @@ self: {
        description = "An FFI binding to the CUDD library";
        license = "LGPL";
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) cudd; epd = null; inherit (pkgs) mtr; 
-         inherit (pkgs) st; util = null;};
+       broken = !(pkgs ? cudd) || !(pkgs ? mtr) || !(pkgs ? st);
+     }) {cudd = pkgs.cudd or null; epd = null; mtr = pkgs.mtr or null; 
+         st = pkgs.st or null; util = null;};
 
   hCM = callPackage
     ({ mkDerivation, base, hashable, haskell-src }:
@@ -141014,7 +141075,8 @@ self: {
        description = "Hack handler direct to fastcgi (deprecated)";
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
-     }) {inherit (pkgs) fcgi;};
+       broken = !(pkgs ? fcgi);
+     }) {fcgi = pkgs.fcgi or null;};
 
   hack-handler-happstack = callPackage
     ({ mkDerivation, base, bytestring, cgi, containers, data-default
@@ -145151,8 +145213,8 @@ self: {
        description = "Low level bindings for Groonga";
        license = lib.licenses.lgpl21Only;
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) groonga;};
+       broken = !(pkgs ? groonga);
+     }) {groonga = pkgs.groonga or null;};
 
   haroonga-httpd = callPackage
     ({ mkDerivation, base, directory, haroonga, http-types, old-locale
@@ -146242,7 +146304,8 @@ self: {
        ];
        description = "Kafka bindings for Haskell";
        license = lib.licenses.mit;
-     }) {inherit (pkgs) rdkafka;};
+       broken = !(pkgs ? rdkafka);
+     }) {rdkafka = pkgs.rdkafka or null;};
 
   haskanoid = callPackage
     ({ mkDerivation, base, freenect, hcwiid, IfElse, MissingH, mtl, SDL
@@ -147763,8 +147826,8 @@ self: {
        description = "Distributed parallel programming in Haskell using MPI";
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {open-pal = null; open-rte = null; inherit (pkgs) openmpi;};
+       broken = !(pkgs ? openmpi);
+     }) {open-pal = null; open-rte = null; openmpi = pkgs.openmpi or null;};
 
   haskell-names = callPackage
     ({ mkDerivation, aeson, base, bytestring, containers
@@ -148065,8 +148128,8 @@ self: {
        description = "Haskell binding for the libpostal library";
        license = lib.licenses.mit;
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) libpostal;};
+       broken = !(pkgs ? libpostal);
+     }) {libpostal = pkgs.libpostal or null;};
 
   haskell-postgis = callPackage
     ({ mkDerivation, aeson, base, binary, bytestring, bytestring-lexing
@@ -149240,7 +149303,8 @@ self: {
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
        mainProgram = "DBDirect-hdbc-postgresql";
-     }) {inherit (pkgs) libpq;};
+       broken = !(pkgs ? libpq);
+     }) {libpq = pkgs.libpq or null;};
 
   haskelldb-hdbc-sqlite3 = callPackage
     ({ mkDerivation, base, haskelldb, haskelldb-hdbc, HDBC
@@ -150894,7 +150958,8 @@ self: {
        librarySystemDepends = [ aspell ];
        description = "Haskell bindings to aspell";
        license = lib.licenses.mit;
-     }) {inherit (pkgs) aspell;};
+       broken = !(pkgs ? aspell);
+     }) {aspell = pkgs.aspell or null;};
 
   hasql_1_6_4_4 = callPackage
     ({ mkDerivation, aeson, attoparsec, base, bytestring
@@ -152792,8 +152857,8 @@ self: {
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
        mainProgram = "hbeat";
-       broken = true;
-     }) {inherit (pkgs) SDL_mixer;};
+       broken = !(pkgs ? SDL_mixer);
+     }) {SDL_mixer = pkgs.SDL_mixer or null;};
 
   hbf = callPackage
     ({ mkDerivation, base, binary, bytestring, criterion, deepseq
@@ -153291,7 +153356,8 @@ self: {
        description = "Library to interface with the wiimote";
        license = lib.licenses.gpl2Only;
        badPlatforms = lib.platforms.darwin;
-     }) {bluetooth = null; inherit (pkgs) cwiid;};
+       broken = !(pkgs ? cwiid);
+     }) {bluetooth = null; cwiid = pkgs.cwiid or null;};
 
   hdaemonize = callPackage
     ({ mkDerivation, base, bytestring, extensible-exceptions, filepath
@@ -153544,7 +153610,8 @@ self: {
        ];
        description = "Haskell interface to the HDF5 scientific data storage library";
        license = lib.licenses.publicDomain;
-     }) {inherit (pkgs) hdf5;};
+       broken = !(pkgs ? hdf5);
+     }) {hdf5 = pkgs.hdf5 or null;};
 
   hdf5-lite = callPackage
     ({ mkDerivation, base, c2hs, containers, exceptions, ghc-prim, hdf5
@@ -153564,7 +153631,8 @@ self: {
        testHaskellDepends = [ base hspec QuickCheck ];
        description = "High-level bindings to the HDF5 \"lite\" interface";
        license = lib.licenses.bsd3;
-     }) {inherit (pkgs) hdf5;};
+       broken = !(pkgs ? hdf5);
+     }) {hdf5 = pkgs.hdf5 or null;};
 
   hdiff = callPackage
     ({ mkDerivation, base, bytestring, containers, cryptonite
@@ -156512,8 +156580,9 @@ self: {
        description = "Symbolic EVM Evaluator";
        license = lib.meta.getLicenseFromSpdxId "AGPL-3.0-only";
        mainProgram = "hevm";
-     }) {inherit (pkgs) gmp; inherit (pkgs) libff; 
-         inherit (pkgs) secp256k1;};
+       broken = !(pkgs ? libff) || !(pkgs ? secp256k1);
+     }) {inherit (pkgs) gmp; libff = pkgs.libff or null; 
+         secp256k1 = pkgs.secp256k1 or null;};
 
   hevolisa = callPackage
     ({ mkDerivation, base, bytestring, cairo, filepath, haskell98 }:
@@ -156979,7 +157048,8 @@ self: {
        libraryToolDepends = [ c2hs ];
        description = "Haskell bindings for the Keystone assembler framework";
        license = lib.licenses.gpl2Only;
-     }) {inherit (pkgs) keystone;};
+       broken = !(pkgs ? keystone);
+     }) {keystone = pkgs.keystone or null;};
 
   heyting-algebras = callPackage
     ({ mkDerivation, base, containers, free-algebras, hashable
@@ -157479,7 +157549,8 @@ self: {
        testHaskellDepends = [ base MissingH ];
        description = "Simple Haskell bindings to GEOS C API";
        license = lib.licenses.mit;
-     }) {inherit (pkgs) geos;};
+       broken = !(pkgs ? geos);
+     }) {geos = pkgs.geos or null;};
 
   hgettext = callPackage
     ({ mkDerivation, base, Cabal, containers, cpphs, deepseq, directory
@@ -158697,7 +158768,8 @@ self: {
        ];
        description = "Linear Programming using HiGHS and comfort-array";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
-     }) {inherit (pkgs) highs;};
+       broken = !(pkgs ? highs);
+     }) {highs = pkgs.highs or null;};
 
   hikchr = callPackage
     ({ mkDerivation, base, bytestring, c2hs, hspec
@@ -160683,8 +160755,8 @@ self: {
        description = "Haskell binding to libBladeRF SDR library";
        license = lib.licenses.lgpl21Only;
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) libbladeRF;};
+       broken = !(pkgs ? libbladeRF);
+     }) {libbladeRF = pkgs.libbladeRF or null;};
 
   hlibcpuid = callPackage
     ({ mkDerivation, base }:
@@ -160757,7 +160829,8 @@ self: {
        testHaskellDepends = [ base hspec ];
        description = "Low-level bindings to Libsass";
        license = lib.licenses.mit;
-     }) {inherit (pkgs) libsass;};
+       broken = !(pkgs ? libsass);
+     }) {libsass = pkgs.libsass or null;};
 
   hlint_3_6_1 = callPackage
     ({ mkDerivation, aeson, ansi-terminal, base, bytestring, cmdargs
@@ -161806,7 +161879,8 @@ self: {
        librarySystemDepends = [ glpk ];
        description = "Linear Programming based on GLPK";
        license = lib.licenses.gpl3Only;
-     }) {inherit (pkgs) glpk;};
+       broken = !(pkgs ? glpk);
+     }) {glpk = pkgs.glpk or null;};
 
   hmatrix-gsl = callPackage
     ({ mkDerivation, array, base, gsl, hmatrix, process, random, vector
@@ -161821,7 +161895,8 @@ self: {
        libraryPkgconfigDepends = [ gsl ];
        description = "Numerical computation";
        license = lib.licenses.gpl3Only;
-     }) {inherit (pkgs) gsl;};
+       broken = !(pkgs ? gsl);
+     }) {gsl = pkgs.gsl or null;};
 
   hmatrix-gsl-stats = callPackage
     ({ mkDerivation, base, binary, gsl, hmatrix, storable-complex
@@ -161837,7 +161912,8 @@ self: {
        libraryPkgconfigDepends = [ gsl ];
        description = "GSL Statistics interface";
        license = lib.licenses.bsd3;
-     }) {inherit (pkgs) gsl;};
+       broken = !(pkgs ? gsl);
+     }) {gsl = pkgs.gsl or null;};
 
   hmatrix-mmap = callPackage
     ({ mkDerivation, base, hmatrix, mmap }:
@@ -161911,7 +161987,8 @@ self: {
        librarySystemDepends = [ quadprogpp ];
        description = "Bindings to the QuadProg++ quadratic programming library";
        license = lib.licenses.bsd3;
-     }) {inherit (pkgs) quadprogpp;};
+       broken = !(pkgs ? quadprogpp);
+     }) {quadprogpp = pkgs.quadprogpp or null;};
 
   hmatrix-repa = callPackage
     ({ mkDerivation, base, hmatrix, repa, vector }:
@@ -162413,8 +162490,8 @@ self: {
        description = "Haskell NetCDF library";
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) netcdf;};
+       broken = !(pkgs ? netcdf);
+     }) {netcdf = pkgs.netcdf or null;};
 
   hnix = callPackage
     ({ mkDerivation, aeson, array, base, base16-bytestring, binary
@@ -163670,8 +163747,8 @@ self: {
        description = "OpenNI 2 binding";
        license = lib.licenses.mit;
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {OpenNI2 = null; inherit (pkgs) freenect;};
+       broken = !(pkgs ? freenect);
+     }) {OpenNI2 = null; freenect = pkgs.freenect or null;};
 
   honk = callPackage
     ({ mkDerivation, base }:
@@ -164155,8 +164232,8 @@ self: {
        description = "Haskell binding to libopencc";
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) opencc;};
+       broken = !(pkgs ? opencc);
+     }) {opencc = pkgs.opencc or null;};
 
   hopencl = callPackage
     ({ mkDerivation, base, bytestring, c2hs, HUnit, OpenCL, QuickCheck
@@ -165228,8 +165305,8 @@ self: {
        license = lib.licenses.bsd3;
        platforms = lib.platforms.linux;
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) papi;};
+       broken = !(pkgs ? papi);
+     }) {papi = pkgs.papi or null;};
 
   hpaste = callPackage
     ({ mkDerivation, base, blaze-builder, blaze-html, blaze-markup
@@ -165720,7 +165797,8 @@ self: {
        ];
        description = "Haskell bindings to libpqtypes";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
-     }) {inherit (pkgs) libpq;};
+       broken = !(pkgs ? libpq);
+     }) {libpq = pkgs.libpq or null;};
 
   hpqtypes_1_14_0_0 = callPackage
     ({ mkDerivation, aeson, async, base, bytestring, containers
@@ -165748,7 +165826,8 @@ self: {
        description = "Haskell bindings to libpqtypes";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
        hydraPlatforms = lib.platforms.none;
-     }) {inherit (pkgs) libpq;};
+       broken = !(pkgs ? libpq);
+     }) {libpq = pkgs.libpq or null;};
 
   hpqtypes-effectful = callPackage
     ({ mkDerivation, base, effectful-core, hpqtypes, resource-pool
@@ -166068,7 +166147,8 @@ self: {
        description = "Quantitative Library";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
        hydraPlatforms = lib.platforms.none;
-     }) {inherit (pkgs) gsl;};
+       broken = !(pkgs ? gsl);
+     }) {gsl = pkgs.gsl or null;};
 
   hqcsim = callPackage
     ({ mkDerivation, base, hmatrix, random }:
@@ -167823,8 +167903,8 @@ self: {
        description = "Bindings to the Tango Controls system";
        license = lib.meta.getLicenseFromSpdxId "MIT";
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) tango;};
+       broken = !(pkgs ? tango);
+     }) {tango = pkgs.tango or null;};
 
   hs-term-emulator = callPackage
     ({ mkDerivation, ansi-terminal, attoparsec, base, bytestring
@@ -169710,7 +169790,8 @@ self: {
        description = "Signal processing and EEG data analysis";
        license = lib.licenses.bsd3;
        platforms = lib.platforms.x86;
-     }) {inherit (pkgs) blas; inherit (pkgs) gsl; 
+       broken = !(pkgs ? gsl);
+     }) {inherit (pkgs) blas; gsl = pkgs.gsl or null; 
          liblapack = pkgs.lapack;};
 
   hsilop = callPackage
@@ -170638,9 +170719,9 @@ self: {
        description = "FFI bindings for the GraphicsMagick library";
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
-       broken = true;
+       broken = !(pkgs ? jasper);
      }) {GraphicsMagick = null; inherit (pkgs) bzip2; 
-         inherit (pkgs) freetype; inherit (pkgs) jasper; 
+         inherit (pkgs) freetype; jasper = pkgs.jasper or null; 
          lcms = pkgs.lcms2; inherit (pkgs) libjpeg; 
          inherit (pkgs) libpng; inherit (pkgs) libxml2; tiff = null; 
          wmflite = null; inherit (pkgs) zlib;};
@@ -172172,7 +172253,8 @@ self: {
        description = "A Haskell Interface to PostgreSQL via the PQ library";
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
-     }) {inherit (pkgs) libpq;};
+       broken = !(pkgs ? libpq);
+     }) {libpq = pkgs.libpq or null;};
 
   hsql-sqlite3 = callPackage
     ({ mkDerivation, base, hsql, sqlite }:
@@ -175881,7 +175963,8 @@ self: {
        benchmarkPkgconfigDepends = [ hunspell ];
        description = "Hunspell thread-safe FFI bindings for spell checking";
        license = lib.licenses.bsd3;
-     }) {inherit (pkgs) hunspell;};
+       broken = !(pkgs ? hunspell);
+     }) {hunspell = pkgs.hunspell or null;};
 
   hunt-searchengine = callPackage
     ({ mkDerivation, aeson, aeson-pretty, base, binary, bytestring
@@ -176992,7 +177075,8 @@ self: {
        testToolDepends = [ hspec-discover ];
        description = "Kafka bindings for Haskell";
        license = lib.meta.getLicenseFromSpdxId "MIT";
-     }) {inherit (pkgs) rdkafka;};
+       broken = !(pkgs ? rdkafka);
+     }) {rdkafka = pkgs.rdkafka or null;};
 
   hw-kafka-conduit = callPackage
     ({ mkDerivation, base, bifunctors, bytestring, conduit
@@ -179011,7 +179095,8 @@ self: {
        testHaskellDepends = [ base hspec QuickCheck ];
        description = "Bindings for the Z3 Theorem Prover";
        license = lib.licenses.bsd3;
-     }) {inherit (pkgs) z3;};
+       broken = !(pkgs ? z3);
+     }) {z3 = pkgs.z3 or null;};
 
   hzaif = callPackage
     ({ mkDerivation, aeson, base, bytestring, http-conduit, text }:
@@ -179077,7 +179162,8 @@ self: {
        description = "Haskell client library for Apache Zookeeper";
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
-     }) {inherit (pkgs) zookeeper_mt;};
+       broken = !(pkgs ? zookeeper_mt);
+     }) {zookeeper_mt = pkgs.zookeeper_mt or null;};
 
   hzulip = callPackage
     ({ mkDerivation, aeson, async, base, bytestring, conduit
@@ -185818,8 +185904,8 @@ self: {
        description = "haskell binding to ipopt and nlopt including automatic differentiation";
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) ipopt; inherit (pkgs) nlopt;};
+       broken = !(pkgs ? ipopt) || !(pkgs ? nlopt);
+     }) {ipopt = pkgs.ipopt or null; nlopt = pkgs.nlopt or null;};
 
   ipprint = callPackage
     ({ mkDerivation, base, haskell-src, sr-extra }:
@@ -187345,7 +187431,8 @@ self: {
        description = "Bindings for the iw C library";
        license = lib.licenses.bsd3;
        badPlatforms = lib.platforms.darwin;
-     }) {inherit (pkgs) wirelesstools;};
+       broken = !(pkgs ? wirelesstools);
+     }) {wirelesstools = pkgs.wirelesstools or null;};
 
   ix = callPackage
     ({ mkDerivation, base, base-unicode-symbols, category, criterion
@@ -193009,7 +193096,8 @@ self: {
        license = "unknown";
        hydraPlatforms = lib.platforms.none;
        mainProgram = "keera-posture";
-     }) {inherit (pkgs) SDL_mixer;};
+       broken = !(pkgs ? SDL_mixer);
+     }) {SDL_mixer = pkgs.SDL_mixer or null;};
 
   keid-core = callPackage
     ({ mkDerivation, base, binary, bytestring, containers
@@ -194717,8 +194805,8 @@ self: {
        description = "A binding for libktx from Khronos";
        license = lib.licenses.mit;
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {egl = null; inherit (pkgs) glew;};
+       broken = !(pkgs ? glew);
+     }) {egl = null; glew = pkgs.glew or null;};
 
   ktx-codec = callPackage
     ({ mkDerivation, base, binary, bytestring, containers, text, vector
@@ -195018,7 +195106,8 @@ self: {
        librarySystemDepends = [ kyotocabinet ];
        description = "Mid level bindings to Kyoto Cabinet";
        license = lib.licenses.bsd3;
-     }) {inherit (pkgs) kyotocabinet;};
+       broken = !(pkgs ? kyotocabinet);
+     }) {kyotocabinet = pkgs.kyotocabinet or null;};
 
   l-bfgs-b = callPackage
     ({ mkDerivation, base, lbfgsb, vector }:
@@ -197636,7 +197725,8 @@ self: {
        ];
        description = "Data type for SPIR-V";
        license = lib.licenses.bsd3;
-     }) {inherit (pkgs) shaderc;};
+       broken = !(pkgs ? shaderc);
+     }) {shaderc = pkgs.shaderc or null;};
 
   language-sqlite = callPackage
     ({ mkDerivation, array, base, bytestring, containers, mtl
@@ -200504,7 +200594,8 @@ self: {
        ];
        description = "Haskell bindings to LevelDB";
        license = lib.licenses.bsd3;
-     }) {inherit (pkgs) leveldb;};
+       broken = !(pkgs ? leveldb);
+     }) {leveldb = pkgs.leveldb or null;};
 
   leveldb-haskell-fork = callPackage
     ({ mkDerivation, base, bytestring, data-default, filepath, hspec
@@ -200527,7 +200618,8 @@ self: {
        ];
        description = "Haskell bindings to LevelDB";
        license = lib.licenses.bsd3;
-     }) {inherit (pkgs) leveldb;};
+       broken = !(pkgs ? leveldb);
+     }) {leveldb = pkgs.leveldb or null;};
 
   levenshtein = callPackage
     ({ mkDerivation, base, binary, criterion, data-default-class
@@ -200937,7 +201029,8 @@ self: {
        description = "Haskell bindings to libconfig";
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
-     }) {inherit (pkgs) libconfig;};
+       broken = !(pkgs ? libconfig);
+     }) {libconfig = pkgs.libconfig or null;};
 
   libcspm = callPackage
     ({ mkDerivation, array, base, bytestring, containers, deepseq
@@ -201406,7 +201499,8 @@ self: {
        librarySystemDepends = [ libnotify ];
        description = "Bindings to libnotify library";
        license = lib.licenses.mit;
-     }) {inherit (pkgs) libnotify;};
+       broken = !(pkgs ? libnotify);
+     }) {libnotify = pkgs.libnotify or null;};
 
   libnvvm = callPackage
     ({ mkDerivation, base, bytestring, c2hs, Cabal, cuda, HUnit, nvvm
@@ -201518,8 +201612,8 @@ self: {
        description = "libpq binding for Haskell";
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) libpq;};
+       broken = !(pkgs ? libpq);
+     }) {libpq = pkgs.libpq or null;};
 
   libraft = callPackage
     ({ mkDerivation, async, atomic-write, attoparsec, base
@@ -201691,8 +201785,8 @@ self: {
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
        hydraPlatforms = lib.platforms.none;
        mainProgram = "libremidi-exe";
-       broken = true;
-     }) {inherit (pkgs) pipewire; inherit (pkgs) systemd;};
+       broken = !(pkgs ? pipewire);
+     }) {pipewire = pkgs.pipewire or null; inherit (pkgs) systemd;};
 
   libretls = callPackage
     ({ mkDerivation, base, containers, hspec, HUnit, libressl, libtls
@@ -201782,8 +201876,8 @@ self: {
        description = "Bindings for secp256k1";
        license = lib.licenses.mit;
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) secp256k1;};
+       broken = !(pkgs ? secp256k1);
+     }) {secp256k1 = pkgs.secp256k1 or null;};
 
   libsodium = callPackage
     ({ mkDerivation, base, c2hs, hedgehog, libsodium, tasty
@@ -201961,8 +202055,8 @@ self: {
        license = lib.meta.getLicenseFromSpdxId "GPL-3.0-or-later";
        badPlatforms = lib.platforms.darwin;
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) libtelnet;};
+       broken = !(pkgs ? libtelnet);
+     }) {libtelnet = pkgs.libtelnet or null;};
 
   libtorch-ffi = callPackage
     ({ mkDerivation, async, base, bytestring, c10, Cabal, containers
@@ -202009,7 +202103,8 @@ self: {
        libraryPkgconfigDepends = [ libversion ];
        description = "Haskell binding to libversion";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
-     }) {inherit (pkgs) libversion;};
+       broken = !(pkgs ? libversion);
+     }) {libversion = pkgs.libversion or null;};
 
   libvirt-hs = callPackage
     ({ mkDerivation, base, cpphs, libvirt, syb, unix }:
@@ -202190,8 +202285,8 @@ self: {
        badPlatforms = lib.platforms.darwin;
        hydraPlatforms = lib.platforms.none;
        mainProgram = "example";
-       broken = true;
-     }) {nvpair = null; inherit (pkgs) zfs;};
+       broken = !(pkgs ? zfs);
+     }) {nvpair = null; zfs = pkgs.zfs or null;};
 
   licensor = callPackage
     ({ mkDerivation, base, bytestring, Cabal, containers, directory
@@ -204351,7 +204446,8 @@ self: {
        testSystemDepends = [ z3 ];
        description = "Liquid Types for Haskell";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
-     }) {inherit (pkgs) z3;};
+       broken = !(pkgs ? z3);
+     }) {z3 = pkgs.z3 or null;};
 
   liquidhaskell_0_9_12_2_1 = callPackage
     ({ mkDerivation, base, bytestring, Cabal, containers, ghc-prim
@@ -204369,7 +204465,8 @@ self: {
        description = "Liquid Types for Haskell";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
        hydraPlatforms = lib.platforms.none;
-     }) {inherit (pkgs) z3;};
+       broken = !(pkgs ? z3);
+     }) {z3 = pkgs.z3 or null;};
 
   liquidhaskell-boot = callPackage
     ({ mkDerivation, aeson, array, base, binary, bytestring, Cabal
@@ -205193,8 +205290,8 @@ self: {
        librarySystemDepends = [ picosat ];
        license = lib.licenses.mit;
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) picosat;};
+       broken = !(pkgs ? picosat);
+     }) {picosat = pkgs.picosat or null;};
 
   llama-cpp-haskell = callPackage
     ({ mkDerivation, aeson, attoparsec, base, bytestring, conduit
@@ -205852,7 +205949,8 @@ self: {
        librarySystemDepends = [ lmdb ];
        description = "Lightning MDB bindings";
        license = lib.licenses.bsd2;
-     }) {inherit (pkgs) lmdb;};
+       broken = !(pkgs ? lmdb);
+     }) {lmdb = pkgs.lmdb or null;};
 
   lmdb-clib = callPackage
     ({ mkDerivation }:
@@ -213301,8 +213399,8 @@ self: {
        description = "A Haskell binding to MeCab";
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) mecab;};
+       broken = !(pkgs ? mecab);
+     }) {mecab = pkgs.mecab or null;};
 
   mech = callPackage
     ({ mkDerivation, base, machines }:
@@ -221615,7 +221713,8 @@ self: {
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
        mainProgram = "dev-test-app";
-     }) {inherit (pkgs) glew;};
+       broken = !(pkgs ? glew);
+     }) {glew = pkgs.glew or null;};
 
   monomer-flatpak-example = callPackage
     ({ mkDerivation, async, base, bytestring, c2hs, containers
@@ -221640,7 +221739,8 @@ self: {
        license = lib.licenses.mit;
        hydraPlatforms = lib.platforms.none;
        mainProgram = "monomer-flatpak-example";
-     }) {inherit (pkgs) pipewire;};
+       broken = !(pkgs ? pipewire);
+     }) {pipewire = pkgs.pipewire or null;};
 
   monomer-hagrid = callPackage
     ({ mkDerivation, base, bytestring, containers, data-default, hspec
@@ -226107,8 +226207,8 @@ self: {
        description = "MXNet interface in Haskell";
        license = lib.licenses.mit;
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) mxnet;};
+       broken = !(pkgs ? mxnet);
+     }) {mxnet = pkgs.mxnet or null;};
 
   mxnet-dataiter = callPackage
     ({ mkDerivation, base, conduit, conduit-combinators, hspec, mxnet
@@ -226181,8 +226281,8 @@ self: {
        description = "NNVM interface in Haskell";
        license = lib.licenses.mit;
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) mxnet;};
+       broken = !(pkgs ? mxnet);
+     }) {mxnet = pkgs.mxnet or null;};
 
   my-package-testing = callPackage
     ({ mkDerivation, base, Cabal, cabal-doctest, doctest, hspec
@@ -227290,8 +227390,8 @@ self: {
        description = "nanomsg - scalability protocols library";
        license = lib.licenses.publicDomain;
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) nanomsg;};
+       broken = !(pkgs ? nanomsg);
+     }) {nanomsg = pkgs.nanomsg or null;};
 
   nanomsg-haskell = callPackage
     ({ mkDerivation, base, binary, bytestring, criterion, nanomsg
@@ -227311,7 +227411,8 @@ self: {
        ];
        description = "Bindings to the nanomsg library";
        license = lib.licenses.mit;
-     }) {inherit (pkgs) nanomsg;};
+       broken = !(pkgs ? nanomsg);
+     }) {nanomsg = pkgs.nanomsg or null;};
 
   nanoparsec = callPackage
     ({ mkDerivation, base, bytestring, ListLike }:
@@ -227394,8 +227495,8 @@ self: {
        description = "Haskell bindings for nanovg";
        license = lib.licenses.isc;
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) freetype; inherit (pkgs) glew; 
+       broken = !(pkgs ? glew);
+     }) {inherit (pkgs) freetype; glew = pkgs.glew or null; 
          inherit (pkgs) libGL; inherit (pkgs) libGLU; 
          inherit (pkgs) libx11;};
 
@@ -230898,7 +230999,8 @@ self: {
        libraryToolDepends = [ c2hs ];
        description = "libnfc bindings";
        license = lib.licenses.publicDomain;
-     }) {inherit (pkgs) libnfc;};
+       broken = !(pkgs ? libnfc);
+     }) {libnfc = pkgs.libnfc or null;};
 
   ngram = callPackage
     ({ mkDerivation, base, bytestring, cereal, cereal-text, containers
@@ -231859,7 +231961,8 @@ self: {
        testHaskellDepends = [ base vector ];
        description = "Low-level bindings to the NLOPT optimization library";
        license = lib.licenses.bsd3;
-     }) {inherit (pkgs) nlopt;};
+       broken = !(pkgs ? nlopt);
+     }) {nlopt = pkgs.nlopt or null;};
 
   nlp-scores = callPackage
     ({ mkDerivation, base, containers, strict }:
@@ -232944,7 +233047,8 @@ self: {
        libraryToolDepends = [ c2hs ];
        description = "Haskell binding to Notmuch, the mail indexer";
        license = lib.meta.getLicenseFromSpdxId "GPL-3.0-or-later";
-     }) {inherit (pkgs) notmuch; inherit (pkgs) talloc;};
+       broken = !(pkgs ? notmuch) || !(pkgs ? talloc);
+     }) {notmuch = pkgs.notmuch or null; talloc = pkgs.talloc or null;};
 
   notmuch-haskell = callPackage
     ({ mkDerivation, base, containers, filepath, notmuch, old-locale
@@ -232964,8 +233068,8 @@ self: {
        license = "LGPL";
        hydraPlatforms = lib.platforms.none;
        mainProgram = "notmuch-test";
-       broken = true;
-     }) {inherit (pkgs) notmuch;};
+       broken = !(pkgs ? notmuch);
+     }) {notmuch = pkgs.notmuch or null;};
 
   notmuch-web = callPackage
     ({ mkDerivation, aeson, attoparsec, attoparsec-conduit, base
@@ -237264,7 +237368,8 @@ self: {
        testHaskellDepends = [ base ];
        description = "Low-level bindings to OpenAL";
        license = lib.licenses.bsd3;
-     }) {inherit (pkgs) openal;};
+       broken = !(pkgs ? openal);
+     }) {openal = pkgs.openal or null;};
 
   openapi-petstore = callPackage
     ({ mkDerivation, aeson, base, base64-bytestring, bytestring
@@ -237456,8 +237561,8 @@ self: {
        description = "OpenCC bindings";
        license = lib.meta.getLicenseFromSpdxId "MIT";
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) opencc;};
+       broken = !(pkgs ? opencc);
+     }) {opencc = pkgs.opencc or null;};
 
   opench-meteo = callPackage
     ({ mkDerivation, aeson, base, data-default, text, time }:
@@ -239271,7 +239376,8 @@ self: {
        librarySystemDepends = [ opusfile ];
        description = "FFI bindings for libopusfile";
        license = lib.licenses.bsd3;
-     }) {inherit (pkgs) opusfile;};
+       broken = !(pkgs ? opusfile);
+     }) {opusfile = pkgs.opusfile or null;};
 
   orbits = callPackage
     ({ mkDerivation, ad, base, Cabal, cabal-doctest, checkers, doctest
@@ -248881,8 +248987,8 @@ self: {
        description = "Bindings to the C version of the PGF runtime";
        license = lib.licenses.lgpl3Only;
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {gu = null; inherit (pkgs) pgf;};
+       broken = !(pkgs ? pgf);
+     }) {gu = null; pgf = pkgs.pgf or null;};
 
   pgm = callPackage
     ({ mkDerivation, array, base, bytestring, parsec }:
@@ -255884,9 +255990,9 @@ self: {
        description = "Binding to the Poppler";
        license = lib.licenses.gpl2Only;
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) gdk-pixbuf; inherit (pkgs) gtk2; 
-         inherit (pkgs) pango; inherit (pkgs) poppler_gi;};
+       broken = !(pkgs ? gtk2) || !(pkgs ? poppler_gi);
+     }) {inherit (pkgs) gdk-pixbuf; gtk2 = pkgs.gtk2 or null; 
+         inherit (pkgs) pango; poppler_gi = pkgs.poppler_gi or null;};
 
   populate-setup-exe-cache = callPackage
     ({ mkDerivation, base }:
@@ -256113,7 +256219,8 @@ self: {
        librarySystemDepends = [ portaudio ];
        description = "Haskell bindings for the PortAudio library";
        license = "unknown";
-     }) {inherit (pkgs) portaudio;};
+       broken = !(pkgs ? portaudio);
+     }) {portaudio = pkgs.portaudio or null;};
 
   porte = callPackage
     ({ mkDerivation, base, bytestring, containers
@@ -257028,7 +257135,8 @@ self: {
        doHaddock = false;
        description = "low-level binding to libpq: pkg-config based provider";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
-     }) {inherit (pkgs) libpq;};
+       broken = !(pkgs ? libpq);
+     }) {libpq = pkgs.libpq or null;};
 
   postgresql-lo-stream = callPackage
     ({ mkDerivation, base, bytestring, io-streams, lifted-base
@@ -258266,8 +258374,8 @@ self: {
        description = "A high performance in memory and LevelDB backend for powerqueue";
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) leveldb; inherit (pkgs) snappy;};
+       broken = !(pkgs ? leveldb);
+     }) {leveldb = pkgs.leveldb or null; inherit (pkgs) snappy;};
 
   powerqueue-sqs = callPackage
     ({ mkDerivation, aws-simple, base, powerqueue, text, timespan }:
@@ -260472,8 +260580,8 @@ self: {
        description = "Bindings to the primecount library";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) primecount;};
+       broken = !(pkgs ? primecount);
+     }) {primecount = pkgs.primecount or null;};
 
   primes = callPackage
     ({ mkDerivation, base }:
@@ -260514,7 +260622,8 @@ self: {
        executableHaskellDepends = [ base foundation ];
        description = "FFI bindings for the primesieve library";
        license = lib.licenses.mit;
-     }) {inherit (pkgs) primesieve;};
+       broken = !(pkgs ? primesieve);
+     }) {primesieve = pkgs.primesieve or null;};
 
   primitive = callPackage
     ({ mkDerivation, base, base-orphans, containers, deepseq
@@ -262027,8 +262136,8 @@ self: {
        description = "Haskell bindings for the Proj4 C dynamic library";
        license = "GPL";
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) proj;};
+       broken = !(pkgs ? proj);
+     }) {proj = pkgs.proj or null;};
 
   project-forge = callPackage
     ({ mkDerivation, aeson, base, Blammo, bytestring, containers
@@ -265736,8 +265845,8 @@ self: {
        description = "Simple bindings to Qhull, a library for computing convex hulls";
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) qhull;};
+       broken = !(pkgs ? qhull);
+     }) {qhull = pkgs.qhull or null;};
 
   qif = callPackage
     ({ mkDerivation, attoparsec, base, microlens, microlens-th
@@ -272225,7 +272334,8 @@ self: {
        libraryPkgconfigDepends = [ raptor2 redland ];
        description = "Redland RDF library bindings";
        license = lib.licenses.bsd3;
-     }) {raptor2 = null; inherit (pkgs) redland;};
+       broken = !(pkgs ? redland);
+     }) {raptor2 = null; redland = pkgs.redland or null;};
 
   redo = callPackage
     ({ mkDerivation, base, bytestring, containers, directory, filepath
@@ -274144,7 +274254,8 @@ self: {
        testHaskellDepends = [ base bytestring tasty tasty-hunit ];
        description = "Bindings to Rust's regex library";
        license = lib.licenses.agpl3Only;
-     }) {inherit (pkgs) rure;};
+       broken = !(pkgs ? rure);
+     }) {rure = pkgs.rure or null;};
 
   regex-tdfa = callPackage
     ({ mkDerivation, array, base, bytestring, containers, directory
@@ -274285,8 +274396,8 @@ self: {
        description = "Replaces/Enhances Text.Regex";
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) tre;};
+       broken = !(pkgs ? tre);
+     }) {tre = pkgs.tre or null;};
 
   regex-type = callPackage
     ({ mkDerivation, base }:
@@ -277022,7 +277133,8 @@ self: {
        doHaddock = false;
        description = "Rewriting library with online termination checking";
        license = lib.licenses.bsd3;
-     }) {inherit (pkgs) graphviz; inherit (pkgs) z3;};
+       broken = !(pkgs ? z3);
+     }) {inherit (pkgs) graphviz; z3 = pkgs.z3 or null;};
 
   rest-snap = callPackage
     ({ mkDerivation, base, base-compat, bytestring, case-insensitive
@@ -281149,8 +281261,8 @@ self: {
        license = lib.licenses.gpl3Only;
        badPlatforms = lib.platforms.darwin;
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) rubberband;};
+       broken = !(pkgs ? rubberband);
+     }) {rubberband = pkgs.rubberband or null;};
 
   ruby-marshal = callPackage
     ({ mkDerivation, base, bytestring, cereal, containers, fail, hspec
@@ -283741,7 +283853,8 @@ self: {
        ];
        description = "SMT Based Verification: Symbolic Haskell theorem prover using SMT solving";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
-     }) {inherit (pkgs) z3;};
+       broken = !(pkgs ? z3);
+     }) {z3 = pkgs.z3 or null;};
 
   sbv_14_0 = callPackage
     ({ mkDerivation, array, async, base, base16-bytestring, bytestring
@@ -283775,7 +283888,8 @@ self: {
        description = "SMT Based Verification: Symbolic Haskell theorem prover using SMT solving";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
        hydraPlatforms = lib.platforms.none;
-     }) {inherit (pkgs) z3;};
+       broken = !(pkgs ? z3);
+     }) {z3 = pkgs.z3 or null;};
 
   sbv-program = callPackage
     ({ mkDerivation, base, bifunctors, containers, pretty-simple, sbv
@@ -285909,7 +286023,8 @@ self: {
        description = "Haskell bindings to SDL2_gfx";
        license = lib.licenses.mit;
        mainProgram = "sdl2-gfx-example";
-     }) {inherit (pkgs) SDL2; inherit (pkgs) SDL2_gfx;};
+       broken = !(pkgs ? SDL2_gfx);
+     }) {inherit (pkgs) SDL2; SDL2_gfx = pkgs.SDL2_gfx or null;};
 
   sdl2-image = callPackage
     ({ mkDerivation, base, bytestring, SDL2, sdl2, SDL2_image
@@ -285933,8 +286048,8 @@ self: {
        license = lib.licenses.mit;
        hydraPlatforms = lib.platforms.none;
        mainProgram = "sdl2-image-example";
-       broken = true;
-     }) {inherit (pkgs) SDL2; inherit (pkgs) SDL2_image;};
+       broken = !(pkgs ? SDL2_image);
+     }) {inherit (pkgs) SDL2; SDL2_image = pkgs.SDL2_image or null;};
 
   sdl2-mixer = callPackage
     ({ mkDerivation, base, bytestring, data-default-class, lifted-base
@@ -285957,7 +286072,8 @@ self: {
        executablePkgconfigDepends = [ SDL2_mixer ];
        description = "Haskell bindings to SDL2_mixer";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
-     }) {inherit (pkgs) SDL2_mixer;};
+       broken = !(pkgs ? SDL2_mixer);
+     }) {SDL2_mixer = pkgs.SDL2_mixer or null;};
 
   sdl2-sprite = callPackage
     ({ mkDerivation, base, optparse-simple, sdl2, sdl2-image, split
@@ -285998,7 +286114,8 @@ self: {
        libraryPkgconfigDepends = [ SDL2 SDL2_ttf ];
        description = "Bindings to SDL2_ttf";
        license = lib.licenses.bsd3;
-     }) {inherit (pkgs) SDL2; inherit (pkgs) SDL2_ttf;};
+       broken = !(pkgs ? SDL2_ttf);
+     }) {inherit (pkgs) SDL2; SDL2_ttf = pkgs.SDL2_ttf or null;};
 
   sdnv = callPackage
     ({ mkDerivation, base, binary, bytestring }:
@@ -286430,8 +286547,8 @@ self: {
        description = "Bindings for secp256k1 library from Bitcoin Core";
        license = lib.licenses.publicDomain;
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) secp256k1;};
+       broken = !(pkgs ? secp256k1);
+     }) {secp256k1 = pkgs.secp256k1 or null;};
 
   secp256k1-haskell = callPackage
     ({ mkDerivation, base, base16, bytestring, deepseq, entropy
@@ -286454,7 +286571,8 @@ self: {
        testToolDepends = [ hspec-discover ];
        description = "Bindings for secp256k1";
        license = lib.licenses.mit;
-     }) {inherit (pkgs) secp256k1;};
+       broken = !(pkgs ? secp256k1);
+     }) {secp256k1 = pkgs.secp256k1 or null;};
 
   secp256k1-legacy = callPackage
     ({ mkDerivation, base, base16-bytestring, bytestring, Cabal, cereal
@@ -292260,8 +292378,8 @@ self: {
        description = "minimal bindings to the audio module of sfml";
        license = "unknown";
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) libsndfile; inherit (pkgs) openal;};
+       broken = !(pkgs ? openal);
+     }) {inherit (pkgs) libsndfile; openal = pkgs.openal or null;};
 
   sfmt = callPackage
     ({ mkDerivation, base, bytestring, entropy, primitive }:
@@ -292492,7 +292610,8 @@ self: {
        ];
        description = "A collection of tools and libraries for Vulkan shader compilation";
        license = lib.licenses.bsd3;
-     }) {inherit (pkgs) shaderc;};
+       broken = !(pkgs ? shaderc);
+     }) {shaderc = pkgs.shaderc or null;};
 
   shadower = callPackage
     ({ mkDerivation, base, doctest, filemanip, fsnotify, MissingH, mtl
@@ -299038,7 +299157,8 @@ self: {
        ];
        description = "An SMT-LIB backend implemented using Z3's C API";
        license = lib.licenses.mit;
-     }) {inherit (pkgs) gomp; inherit (pkgs) z3;};
+       broken = !(pkgs ? gomp) || !(pkgs ? z3);
+     }) {gomp = pkgs.gomp or null; z3 = pkgs.z3 or null;};
 
   smtlib2 = callPackage
     ({ mkDerivation, base, constraints, containers, dependent-map
@@ -302173,7 +302293,8 @@ self: {
        libraryPkgconfigDepends = [ sox ];
        description = "Write, read, convert audio signals using libsox";
        license = lib.licenses.bsd3;
-     }) {inherit (pkgs) sox;};
+       broken = !(pkgs ? sox);
+     }) {sox = pkgs.sox or null;};
 
   soyuz = callPackage
     ({ mkDerivation, base, bytestring, cereal, cmdargs, containers
@@ -304677,7 +304798,8 @@ self: {
        ];
        description = "A general library to work with Symbolic Regression expression trees";
        license = lib.licenses.bsd3;
-     }) {inherit (pkgs) nlopt;};
+       broken = !(pkgs ? nlopt);
+     }) {nlopt = pkgs.nlopt or null;};
 
   srv = callPackage
     ({ mkDerivation, async, base, bytestring, containers, directory
@@ -306480,7 +306602,8 @@ self: {
        librarySystemDepends = [ libstatgrab ];
        description = "Collect system level metrics and statistics";
        license = "unknown";
-     }) {inherit (pkgs) libstatgrab;};
+       broken = !(pkgs ? libstatgrab);
+     }) {libstatgrab = pkgs.libstatgrab or null;};
 
   static = callPackage
     ({ mkDerivation, base, binary, bytestring, constraints, doctest
@@ -312666,8 +312789,8 @@ self: {
        description = "Stream data to or from LMDB databases using the streamly library";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) lmdb;};
+       broken = !(pkgs ? lmdb);
+     }) {lmdb = pkgs.lmdb or null;};
 
   streamly-lz4 = callPackage
     ({ mkDerivation, base, directory, exceptions, fusion-plugin-types
@@ -316121,7 +316244,8 @@ self: {
        libraryPkgconfigDepends = [ librsvg ];
        description = "Binding to the libsvg-cairo library";
        license = lib.licenses.bsd3;
-     }) {inherit (pkgs) librsvg;};
+       broken = !(pkgs ? librsvg);
+     }) {librsvg = pkgs.librsvg or null;};
 
   svgone = callPackage
     ({ mkDerivation, base, bytestring, containers, directory, extra
@@ -316414,7 +316538,8 @@ self: {
        description = "Transparently swapping data from in-memory structures to disk";
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
-     }) {inherit (pkgs) tokyocabinet;};
+       broken = !(pkgs ? tokyocabinet);
+     }) {tokyocabinet = pkgs.tokyocabinet or null;};
 
   swarm = callPackage
     ({ mkDerivation, aeson, AhoCorasick, array, astar, base, boolexpr
@@ -317810,9 +317935,9 @@ self: {
        description = "SymEngine symbolic mathematics engine for Haskell";
        license = lib.licenses.mit;
        hydraPlatforms = lib.platforms.none;
-       broken = true;
+       broken = !(pkgs ? symengine);
      }) {inherit (pkgs) gmp; inherit (pkgs) gmpxx; 
-         inherit (pkgs) symengine;};
+         symengine = pkgs.symengine or null;};
 
   symengine-hs = callPackage
     ({ mkDerivation, base, gmp, gmpxx, symengine }:
@@ -317830,8 +317955,9 @@ self: {
        description = "SymEngine symbolic mathematics engine for Haskell";
        license = lib.licenses.mit;
        mainProgram = "symengine-hs-exe";
+       broken = !(pkgs ? symengine);
      }) {inherit (pkgs) gmp; inherit (pkgs) gmpxx; 
-         inherit (pkgs) symengine;};
+         symengine = pkgs.symengine or null;};
 
   symmetric-properties = callPackage
     ({ mkDerivation, base, containers, hspec, HUnit }:
@@ -318907,7 +319033,8 @@ self: {
        librarySystemDepends = [ libossp_uuid ];
        description = "Bindings to system UUID functions";
        license = lib.licenses.bsd3;
-     }) {inherit (pkgs) libossp_uuid;};
+       broken = !(pkgs ? libossp_uuid);
+     }) {libossp_uuid = pkgs.libossp_uuid or null;};
 
   systemd = callPackage
     ({ mkDerivation, base, bytestring, network, transformers, unix }:
@@ -320694,7 +320821,8 @@ self: {
        license = lib.licenses.mit;
        hydraPlatforms = lib.platforms.none;
        mainProgram = "target";
-     }) {inherit (pkgs) z3;};
+       broken = !(pkgs ? z3);
+     }) {z3 = pkgs.z3 or null;};
 
   targeted-quickcheck = callPackage
     ({ mkDerivation, base, containers, hspec, QuickCheck }:
@@ -321665,8 +321793,8 @@ self: {
        license = lib.licenses.bsd3;
        platforms = lib.platforms.linux;
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) papi;};
+       broken = !(pkgs ? papi);
+     }) {papi = pkgs.papi or null;};
 
   tasty-prelude = callPackage
     ({ mkDerivation, base, tasty, tasty-expected-failure, tasty-focus
@@ -322285,7 +322413,8 @@ self: {
        testSystemDepends = [ tdlib ];
        description = "complete binding to the Telegram Database Library";
        license = lib.licenses.bsd3;
-     }) {inherit (pkgs) tdlib;};
+       broken = !(pkgs ? tdlib);
+     }) {tdlib = pkgs.tdlib or null;};
 
   tdlib-gen = callPackage
     ({ mkDerivation, aeson, base, base64-bytestring-type, containers
@@ -323604,8 +323733,8 @@ self: {
        description = "TensorFlow bindings";
        license = lib.licenses.asl20;
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) libtensorflow;};
+       broken = !(pkgs ? libtensorflow);
+     }) {libtensorflow = pkgs.libtensorflow or null;};
 
   tensorflow-core-ops = callPackage
     ({ mkDerivation, base, bytestring, Cabal, directory, filepath
@@ -324111,9 +324240,9 @@ self: {
        badPlatforms = lib.platforms.darwin;
        hydraPlatforms = lib.platforms.none;
        mainProgram = "termonad";
-       broken = true;
+       broken = !(pkgs ? vte);
      }) {inherit (pkgs) gtk3; inherit (pkgs) pcre2; 
-         inherit (pkgs) vte;};
+         vte = pkgs.vte or null;};
 
   termplot = callPackage
     ({ mkDerivation, base, brick, data-default, optparse-applicative
@@ -331180,8 +331309,8 @@ self: {
        description = "Haskell binding of Tokyo Cabinet";
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) tokyocabinet;};
+       broken = !(pkgs ? tokyocabinet);
+     }) {tokyocabinet = pkgs.tokyocabinet or null;};
 
   tokyotyrant-haskell = callPackage
     ({ mkDerivation, base, bytestring, mtl, tokyocabinet, tokyotyrant
@@ -331196,8 +331325,8 @@ self: {
        license = lib.licenses.bsd3;
        badPlatforms = lib.platforms.darwin;
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) tokyocabinet; inherit (pkgs) tokyotyrant;};
+       broken = !(pkgs ? tokyocabinet) || !(pkgs ? tokyotyrant);
+     }) {tokyocabinet = pkgs.tokyocabinet or null; tokyotyrant = pkgs.tokyotyrant or null;};
 
   tomato-rubato-openal = callPackage
     ({ mkDerivation, base, OpenAL, stm, vector }:
@@ -333842,7 +333971,8 @@ self: {
        doHaddock = false;
        description = "Bindings to the TREXIO library for wave function data";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
-     }) {inherit (pkgs) trexio;};
+       broken = !(pkgs ? trexio);
+     }) {trexio = pkgs.trexio or null;};
 
   trhsx = callPackage
     ({ mkDerivation }:
@@ -338252,8 +338382,8 @@ self: {
        description = "Datatype and parser for the Universal Configuration Language (UCL) using libucl";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) libucl;};
+       broken = !(pkgs ? libucl);
+     }) {libucl = pkgs.libucl or null;};
 
   uconv = callPackage
     ({ mkDerivation, base, icu }:
@@ -338453,8 +338583,8 @@ self: {
        description = "Interface with Ettus USRP SDRs";
        license = lib.meta.getLicenseFromSpdxId "MIT";
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) uhd;};
+       broken = !(pkgs ? uhd);
+     }) {uhd = pkgs.uhd or null;};
 
   uhexdump = callPackage
     ({ mkDerivation, base, bytestring, split }:
@@ -346836,7 +346966,8 @@ self: {
        description = "Bindings to VRPN";
        license = lib.licenses.mit;
        mainProgram = "test-vrpn";
-     }) {quat = null; inherit (pkgs) vrpn;};
+       broken = !(pkgs ? vrpn);
+     }) {quat = null; vrpn = pkgs.vrpn or null;};
 
   vt-utils = callPackage
     ({ mkDerivation, aeson, aeson-pretty, base, bytestring
@@ -346880,8 +347011,8 @@ self: {
        description = "Binding to the VTE library";
        license = lib.licenses.lgpl21Only;
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) vte;};
+       broken = !(pkgs ? vte);
+     }) {vte = pkgs.vte or null;};
 
   vtegtk3 = callPackage
     ({ mkDerivation, base, Cabal, glib, gtk2hs-buildtools, gtk3, pango
@@ -346899,8 +347030,8 @@ self: {
        description = "Binding to the VTE library";
        license = lib.licenses.lgpl21Only;
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) vte;};
+       broken = !(pkgs ? vte);
+     }) {vte = pkgs.vte or null;};
 
   vty = callPackage
     ({ mkDerivation, base, binary, blaze-builder, bytestring, deepseq
@@ -347773,7 +347904,8 @@ self: {
        librarySystemDepends = [ fcgi ];
        description = "Wai handler to fastcgi";
        license = lib.licenses.mit;
-     }) {inherit (pkgs) fcgi;};
+       broken = !(pkgs ? fcgi);
+     }) {fcgi = pkgs.fcgi or null;};
 
   wai-handler-hal = callPackage
     ({ mkDerivation, aeson, base, base64-bytestring, bytestring
@@ -353785,7 +353917,8 @@ self: {
        description = "Haskell bindings for the wlc library";
        license = lib.licenses.isc;
        hydraPlatforms = lib.platforms.none;
-     }) {inherit (pkgs) wlc;};
+       broken = !(pkgs ? wlc);
+     }) {wlc = pkgs.wlc or null;};
 
   wled-json = callPackage
     ({ mkDerivation, aeson, barbies, base, bytestring, crypton
@@ -355534,8 +355667,9 @@ self: {
        description = "wxHaskell C++ wrapper";
        license = "unknown";
        hydraPlatforms = lib.platforms.none;
+       broken = !(pkgs ? wxGTK);
      }) {inherit (pkgs) libGL; inherit (pkgs) libx11; 
-         inherit (pkgs) wxGTK;};
+         wxGTK = pkgs.wxGTK or null;};
 
   wxcore = callPackage
     ({ mkDerivation, array, base, bytestring, Cabal, containers
@@ -355555,7 +355689,8 @@ self: {
        description = "wxHaskell core";
        license = "unknown";
        hydraPlatforms = lib.platforms.none;
-     }) {inherit (pkgs) wxGTK;};
+       broken = !(pkgs ? wxGTK);
+     }) {wxGTK = pkgs.wxGTK or null;};
 
   wxdirect = callPackage
     ({ mkDerivation, base, containers, directory, filepath, parsec
@@ -356249,7 +356384,8 @@ self: {
        license = lib.licenses.mit;
        badPlatforms = [ "aarch64-linux" "armv7l-linux" ];
        mainProgram = "xgb-agaricus";
-     }) {inherit (pkgs) xgboost;};
+       broken = !(pkgs ? xgboost);
+     }) {xgboost = pkgs.xgboost or null;};
 
   xhaskell-library = callPackage
     ({ mkDerivation, base, bytestring, containers, ghc-prim, mtl
@@ -357648,8 +357784,9 @@ self: {
        license = lib.licenses.bsd3;
        badPlatforms = lib.platforms.darwin;
        mainProgram = "xmobar";
+       broken = !(pkgs ? wirelesstools);
      }) {inherit (pkgs) libxpm; inherit (pkgs) libxrandr; 
-         inherit (pkgs) libxrender; inherit (pkgs) wirelesstools;};
+         inherit (pkgs) libxrender; wirelesstools = pkgs.wirelesstools or null;};
 
   xmonad = callPackage
     ({ mkDerivation, base, containers, data-default-class, directory
@@ -358039,7 +358176,8 @@ self: {
        librarySystemDepends = [ xosd ];
        description = "A binding to the X on-screen display";
        license = lib.licenses.bsd3;
-     }) {inherit (pkgs) xosd;};
+       broken = !(pkgs ? xosd);
+     }) {xosd = pkgs.xosd or null;};
 
   xournal-builder = callPackage
     ({ mkDerivation, base, blaze-builder, bytestring, double-conversion
@@ -363082,7 +363220,8 @@ self: {
        description = "An embedded language for programming the Yices SMT solver";
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
-     }) {inherit (pkgs) gmp; inherit (pkgs) yices;};
+       broken = !(pkgs ? yices);
+     }) {inherit (pkgs) gmp; yices = pkgs.yices or null;};
 
   yield = callPackage
     ({ mkDerivation, base, containers, hspec, markdown-unlit, mtl
@@ -363607,7 +363746,8 @@ self: {
        testHaskellDepends = [ base hspec QuickCheck ];
        description = "Bindings for the Z3 Theorem Prover";
        license = lib.licenses.bsd3;
-     }) {inherit (pkgs) gomp; inherit (pkgs) z3;};
+       broken = !(pkgs ? gomp) || !(pkgs ? z3);
+     }) {gomp = pkgs.gomp or null; z3 = pkgs.z3 or null;};
 
   z3-encoding = callPackage
     ({ mkDerivation, base, containers, hspec, mtl, z3 }:
@@ -363718,8 +363858,8 @@ self: {
        description = "zbar bindings in Haskell";
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
-       broken = true;
-     }) {inherit (pkgs) zbar;};
+       broken = !(pkgs ? zbar);
+     }) {zbar = pkgs.zbar or null;};
 
   zcache = callPackage
     ({ mkDerivation, array, base, containers, mersenne-random-pure64 }:
@@ -365049,7 +365189,8 @@ self: {
        description = "A haskell binding to Apache Zookeeper C library(mt) using Haskell Z project";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
        hydraPlatforms = lib.platforms.none;
-     }) {inherit (pkgs) zookeeper_mt;};
+       broken = !(pkgs ? zookeeper_mt);
+     }) {zookeeper_mt = pkgs.zookeeper_mt or null;};
 
   zot = callPackage
     ({ mkDerivation, base, monads-tf }:
