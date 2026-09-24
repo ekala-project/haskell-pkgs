@@ -47,7 +47,7 @@ def parse_packages(content: str) -> list[tuple[str, str]]:
             continue
 
         is_exec = "isExecutable = true;" in body
-        is_broken = "broken = true;" in body
+        is_broken = re.search(r"broken\s*=", body) is not None
         hydra_none = "hydraPlatforms = lib.platforms.none;" in body
         has_main = "mainProgram" in body
 

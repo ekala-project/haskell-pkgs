@@ -123,6 +123,14 @@ EKAPKGS_PATH=$(nix-instantiate --eval --json -E '(import ./pins.nix).corepkgs.ou
   --config "$CONFIG_DIR/transitive-broken.yaml"
 
 echo ""
+echo "=== Step 5: Post-processing hackage-packages.nix ==="
+
+# Replace `inherit (pkgs) <name>;` with `<name> = pkgs.<name> or null;`
+# for system deps missing from corepkgs, and set
+# `broken = !(pkgs ? <name>);` on each affected package.
+python3 "$REPO_ROOT/scripts/postprocess-hackage-packages.py"
+
+echo ""
 echo "=== Done ==="
 echo "Per-package Nix files generated in $REPO_ROOT/hackage/"
 echo "Packages: $(find "$REPO_ROOT/hackage" -name default.nix -not -path "$REPO_ROOT/hackage/default.nix" | wc -l)"

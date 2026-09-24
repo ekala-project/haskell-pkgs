@@ -5,7 +5,7 @@
 # attribute path, e.g. xorg.*), add a mapping here.
 #
 # For packages not yet available in corepkgs, hackage-packages.nix uses
-# `name = pkgs.name or null;` directly, with `broken = true;` on the
-# Haskell package.
+# `name = pkgs.name or null;` directly, with
+# `broken = !(pkgs ? name);` on the Haskell package.
 final: prev: {
 }
