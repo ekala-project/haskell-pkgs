@@ -9047,7 +9047,7 @@ self: {
 
   HGamer3D-SDL2-Binding = callPackage
     ({ mkDerivation, base, bytestring, hg3dsdl2050, HGamer3D-Data
-     , libx11, SDL2, utf8-string
+     , libx11, sdl2-compat, utf8-string
      }:
      mkDerivation {
        pname = "HGamer3D-SDL2-Binding";
@@ -9056,11 +9056,11 @@ self: {
        libraryHaskellDepends = [
          base bytestring HGamer3D-Data utf8-string
        ];
-       librarySystemDepends = [ hg3dsdl2050 libx11 SDL2 ];
+       librarySystemDepends = [ hg3dsdl2050 libx11 sdl2-compat ];
        description = "SDL2 Binding for HGamer3D";
        license = "unknown";
        hydraPlatforms = lib.platforms.none;
-     }) {inherit (pkgs) SDL2; hg3dsdl2050 = null; 
+     }) {inherit (pkgs) sdl2-compat; hg3dsdl2050 = null;
          inherit (pkgs) libx11;};
 
   HGamer3D-SFML-Binding = callPackage
@@ -89162,7 +89162,7 @@ self: {
   dear-imgui = callPackage
     ({ mkDerivation, base, containers, directory, filepath, glew
      , inline-c, inline-c-cpp, managed, megaparsec, parser-combinators
-     , scientific, SDL2, sdl2, StateVar, system-cxx-std-lib
+     , scientific, sdl2-compat, sdl2, StateVar, system-cxx-std-lib
      , template-haskell, text, th-lift, transformers, unliftio
      , unordered-containers, vector
      }:
@@ -89178,13 +89178,13 @@ self: {
          system-cxx-std-lib template-haskell text th-lift transformers
          unliftio unordered-containers vector
        ];
-       libraryPkgconfigDepends = [ glew SDL2 ];
+       libraryPkgconfigDepends = [ glew sdl2-compat ];
        doHaddock = false;
        description = "Haskell bindings for Dear ImGui";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
        hydraPlatforms = lib.platforms.none;
        broken = !(pkgs ? glew);
-     }) {inherit (pkgs) SDL2; glew = pkgs.glew or null;};
+     }) {inherit (pkgs) sdl2-compat; glew = pkgs.glew or null;};
 
   debian = callPackage
     ({ mkDerivation, base, bytestring, bz2, Cabal, containers
@@ -262974,7 +262974,7 @@ self: {
          inherit (pkgs) libpulseaudio;};
 
   proteaaudio-sdl = callPackage
-    ({ mkDerivation, base, bytestring, c2hs, SDL2, system-cxx-std-lib
+    ({ mkDerivation, base, bytestring, c2hs, sdl2-compat, system-cxx-std-lib
      }:
      mkDerivation {
        pname = "proteaaudio-sdl";
@@ -262983,14 +262983,14 @@ self: {
        isLibrary = true;
        isExecutable = true;
        libraryHaskellDepends = [ base bytestring system-cxx-std-lib ];
-       librarySystemDepends = [ SDL2 ];
-       libraryPkgconfigDepends = [ SDL2 ];
+       librarySystemDepends = [ sdl2-compat ];
+       libraryPkgconfigDepends = [ sdl2-compat ];
        libraryToolDepends = [ c2hs ];
        description = "Simple audio library for SDL";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
        hydraPlatforms = lib.platforms.none;
        broken = true;
-     }) {inherit (pkgs) SDL2;};
+     }) {inherit (pkgs) sdl2-compat;};
 
   proteome = callPackage
     ({ mkDerivation, attoparsec, base, chiasma, chronos, exon, extra
@@ -285915,7 +285915,7 @@ self: {
 
   sdl2 = callPackage
     ({ mkDerivation, base, bytestring, deepseq, exceptions, linear
-     , SDL2, StateVar, text, transformers, vector, weigh
+     , sdl2-compat, StateVar, text, transformers, vector, weigh
      }:
      mkDerivation {
        pname = "sdl2";
@@ -285927,12 +285927,12 @@ self: {
        libraryHaskellDepends = [
          base bytestring exceptions linear StateVar text transformers vector
        ];
-       librarySystemDepends = [ SDL2 ];
-       libraryPkgconfigDepends = [ SDL2 ];
+       librarySystemDepends = [ sdl2-compat ];
+       libraryPkgconfigDepends = [ sdl2-compat ];
        testHaskellDepends = [ base deepseq linear vector weigh ];
        description = "Both high- and low-level bindings to the SDL library (version 2.0.6+).";
        license = lib.licenses.bsd3;
-     }) {inherit (pkgs) SDL2;};
+     }) {inherit (pkgs) sdl2-compat;};
 
   sdl2-cairo = callPackage
     ({ mkDerivation, base, cairo, linear, sdl2 }:
@@ -286003,7 +286003,7 @@ self: {
      }) {};
 
   sdl2-gfx = callPackage
-    ({ mkDerivation, base, lifted-base, monad-control, SDL2, sdl2
+    ({ mkDerivation, base, lifted-base, monad-control, sdl2-compat, sdl2
      , SDL2_gfx, template-haskell, vector
      }:
      mkDerivation {
@@ -286016,18 +286016,18 @@ self: {
          base lifted-base monad-control sdl2 template-haskell vector
        ];
        librarySystemDepends = [ SDL2_gfx ];
-       libraryPkgconfigDepends = [ SDL2 SDL2_gfx ];
+       libraryPkgconfigDepends = [ sdl2-compat SDL2_gfx ];
        executableHaskellDepends = [ base sdl2 vector ];
        executableSystemDepends = [ SDL2_gfx ];
-       executablePkgconfigDepends = [ SDL2 SDL2_gfx ];
+       executablePkgconfigDepends = [ sdl2-compat SDL2_gfx ];
        description = "Haskell bindings to SDL2_gfx";
        license = lib.licenses.mit;
        mainProgram = "sdl2-gfx-example";
        broken = !(pkgs ? SDL2_gfx);
-     }) {inherit (pkgs) SDL2; SDL2_gfx = pkgs.SDL2_gfx or null;};
+     }) {inherit (pkgs) sdl2-compat; SDL2_gfx = pkgs.SDL2_gfx or null;};
 
   sdl2-image = callPackage
-    ({ mkDerivation, base, bytestring, SDL2, sdl2, SDL2_image
+    ({ mkDerivation, base, bytestring, sdl2-compat, sdl2, SDL2_image
      , template-haskell, text
      }:
      mkDerivation {
@@ -286040,16 +286040,16 @@ self: {
          base bytestring sdl2 template-haskell text
        ];
        librarySystemDepends = [ SDL2_image ];
-       libraryPkgconfigDepends = [ SDL2 SDL2_image ];
+       libraryPkgconfigDepends = [ sdl2-compat SDL2_image ];
        executableHaskellDepends = [ base sdl2 text ];
        executableSystemDepends = [ SDL2_image ];
-       executablePkgconfigDepends = [ SDL2 SDL2_image ];
+       executablePkgconfigDepends = [ sdl2-compat SDL2_image ];
        description = "Haskell bindings to SDL2_image";
        license = lib.licenses.mit;
        hydraPlatforms = lib.platforms.none;
        mainProgram = "sdl2-image-example";
        broken = !(pkgs ? SDL2_image);
-     }) {inherit (pkgs) SDL2; SDL2_image = pkgs.SDL2_image or null;};
+     }) {inherit (pkgs) sdl2-compat; SDL2_image = pkgs.SDL2_image or null;};
 
   sdl2-mixer = callPackage
     ({ mkDerivation, base, bytestring, data-default-class, lifted-base
@@ -286098,7 +286098,7 @@ self: {
      }) {};
 
   sdl2-ttf = callPackage
-    ({ mkDerivation, base, bytestring, SDL2, sdl2, SDL2_ttf
+    ({ mkDerivation, base, bytestring, sdl2-compat, sdl2, SDL2_ttf
      , template-haskell, text, th-abstraction, transformers
      }:
      mkDerivation {
@@ -286111,11 +286111,11 @@ self: {
          base bytestring sdl2 template-haskell text th-abstraction
          transformers
        ];
-       libraryPkgconfigDepends = [ SDL2 SDL2_ttf ];
+       libraryPkgconfigDepends = [ sdl2-compat SDL2_ttf ];
        description = "Bindings to SDL2_ttf";
        license = lib.licenses.bsd3;
        broken = !(pkgs ? SDL2_ttf);
-     }) {inherit (pkgs) SDL2; SDL2_ttf = pkgs.SDL2_ttf or null;};
+     }) {inherit (pkgs) sdl2-compat; SDL2_ttf = pkgs.SDL2_ttf or null;};
 
   sdnv = callPackage
     ({ mkDerivation, base, binary, bytestring }:
@@ -352632,18 +352632,18 @@ self: {
      }) {};
 
   wgpu-raw-hs = callPackage
-    ({ mkDerivation, base, GLFW-b, SDL2, sdl2, unix }:
+    ({ mkDerivation, base, GLFW-b, sdl2-compat, sdl2, unix }:
      mkDerivation {
        pname = "wgpu-raw-hs";
        version = "0.4.0.0";
        sha256 = "1j3bajywdg73c5xq8j8f1dw0bcvr5g3di9rwabzm47xnyjd6jcdh";
        libraryHaskellDepends = [ base GLFW-b sdl2 unix ];
-       libraryPkgconfigDepends = [ SDL2 ];
+       libraryPkgconfigDepends = [ sdl2-compat ];
        description = "WGPU Raw";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
        hydraPlatforms = lib.platforms.none;
        broken = true;
-     }) {inherit (pkgs) SDL2;};
+     }) {inherit (pkgs) sdl2-compat;};
 
   what4 = callPackage
     ({ mkDerivation, async, attoparsec, base, bifunctors, bimap
