@@ -128834,7 +128834,7 @@ self: {
        libraryPkgconfigDepends = [ gstreamer ];
        description = "GStreamer bindings";
        license = lib.licenses.lgpl21Only;
-     }) {inherit (pkgs.gst_all_1) gstreamer;};
+     }) {inherit (pkgs) gstreamer;};
 
   gi-gstapp = callPackage
     ({ mkDerivation, base, bytestring, Cabal, containers, gi-glib
@@ -128878,7 +128878,7 @@ self: {
        libraryPkgconfigDepends = [ gst-plugins-base ];
        description = "GStreamerAudio bindings";
        license = lib.licenses.lgpl21Only;
-     }) {inherit (pkgs.gst_all_1) gst-plugins-base;};
+     }) {gst-plugins-base = pkgs.gstreamer.plugins-base;};
 
   gi-gstbase = callPackage
     ({ mkDerivation, base, bytestring, Cabal, containers, gi-glib
@@ -128899,7 +128899,7 @@ self: {
        libraryPkgconfigDepends = [ gst-plugins-base ];
        description = "GStreamerBase bindings";
        license = lib.licenses.lgpl21Only;
-     }) {inherit (pkgs.gst_all_1) gst-plugins-base;};
+     }) {gst-plugins-base = pkgs.gstreamer.plugins-base;};
 
   gi-gstpbutils = callPackage
     ({ mkDerivation, base, bytestring, Cabal, containers, gi-glib
@@ -128968,7 +128968,7 @@ self: {
        libraryPkgconfigDepends = [ gst-plugins-base ];
        description = "GStreamerVideo bindings";
        license = lib.licenses.lgpl21Only;
-     }) {inherit (pkgs.gst_all_1) gst-plugins-base;};
+     }) {gst-plugins-base = pkgs.gstreamer.plugins-base;};
 
   gi-gtk = callPackage
     ({ mkDerivation, base, Cabal, gi-gtk4, haskell-gi }:
