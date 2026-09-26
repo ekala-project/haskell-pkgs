@@ -201103,7 +201103,7 @@ self: {
 
   libfuse3 = callPackage
     ({ mkDerivation, base, bytestring, clock, criterion, directory
-     , filepath, fuse3, hspec, process, resourcet, temporary, time, unix
+     , filepath, fuse, hspec, process, resourcet, temporary, time, unix
      }:
      mkDerivation {
        pname = "libfuse3";
@@ -201114,7 +201114,7 @@ self: {
        libraryHaskellDepends = [
          base bytestring clock resourcet time unix
        ];
-       libraryPkgconfigDepends = [ fuse3 ];
+       libraryPkgconfigDepends = [ fuse ];
        testHaskellDepends = [
          base bytestring directory filepath hspec process temporary unix
        ];
@@ -201122,7 +201122,7 @@ self: {
        description = "A Haskell binding for libfuse-3.x";
        license = lib.licenses.mit;
        platforms = lib.platforms.linux;
-     }) {inherit (pkgs) fuse3;};
+     }) {inherit (pkgs) fuse;};
 
   libgit = callPackage
     ({ mkDerivation, base, mtl, process }:
