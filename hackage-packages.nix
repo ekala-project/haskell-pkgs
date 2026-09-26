@@ -213044,7 +213044,7 @@ self: {
 
   mcl = callPackage
     ({ mkDerivation, base, binary, bytestring, Cabal, criterion
-     , deepseq, ghc-prim, gmpxx, groups, integer-gmp, mcl, openssl
+     , deepseq, ghc-prim, gmp-withCxx, groups, integer-gmp, mcl, openssl
      , primitive, QuickCheck, test-framework, test-framework-quickcheck2
      }:
      mkDerivation {
@@ -213056,7 +213056,7 @@ self: {
          base binary bytestring deepseq ghc-prim groups integer-gmp
          primitive
        ];
-       librarySystemDepends = [ gmpxx mcl openssl ];
+       librarySystemDepends = [ gmp-withCxx mcl openssl ];
        testHaskellDepends = [
          base binary groups QuickCheck test-framework
          test-framework-quickcheck2
@@ -213068,7 +213068,7 @@ self: {
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
        broken = true;
-     }) {inherit (pkgs) gmpxx; mcl = null; inherit (pkgs) openssl;};
+     }) {gmp-withCxx = pkgs.gmp.withCxx; mcl = null; inherit (pkgs) openssl;};
 
   mcm = callPackage
     ({ mkDerivation, base, blaze-html, bytestring, containers
@@ -317922,7 +317922,7 @@ self: {
      }) {};
 
   symengine = callPackage
-    ({ mkDerivation, base, gmp, gmpxx, symengine, tasty, tasty-hunit
+    ({ mkDerivation, base, gmp, gmp-withCxx, symengine, tasty, tasty-hunit
      , tasty-quickcheck
      }:
      mkDerivation {
@@ -317931,16 +317931,16 @@ self: {
        sha256 = "1x42rbkc2lq06iqwkwwh5h4y9xl0xf1qfg47n62ax1j6j9mgfn8a";
        libraryHaskellDepends = [ base ];
        testHaskellDepends = [ base tasty tasty-hunit tasty-quickcheck ];
-       testSystemDepends = [ gmp gmpxx symengine ];
+       testSystemDepends = [ gmp gmp-withCxx symengine ];
        description = "SymEngine symbolic mathematics engine for Haskell";
        license = lib.licenses.mit;
        hydraPlatforms = lib.platforms.none;
        broken = !(pkgs ? symengine);
-     }) {inherit (pkgs) gmp; inherit (pkgs) gmpxx; 
+     }) {inherit (pkgs) gmp; gmp-withCxx = pkgs.gmp.withCxx;
          symengine = pkgs.symengine or null;};
 
   symengine-hs = callPackage
-    ({ mkDerivation, base, gmp, gmpxx, symengine }:
+    ({ mkDerivation, base, gmp, gmp-withCxx, symengine }:
      mkDerivation {
        pname = "symengine-hs";
        version = "0.1.1.0";
@@ -317949,14 +317949,14 @@ self: {
        isExecutable = true;
        libraryHaskellDepends = [ base ];
        executableHaskellDepends = [ base ];
-       executableSystemDepends = [ gmp gmpxx symengine ];
+       executableSystemDepends = [ gmp gmp-withCxx symengine ];
        testHaskellDepends = [ base ];
-       testSystemDepends = [ gmp gmpxx symengine ];
+       testSystemDepends = [ gmp gmp-withCxx symengine ];
        description = "SymEngine symbolic mathematics engine for Haskell";
        license = lib.licenses.mit;
        mainProgram = "symengine-hs-exe";
        broken = !(pkgs ? symengine);
-     }) {inherit (pkgs) gmp; inherit (pkgs) gmpxx; 
+     }) {inherit (pkgs) gmp; gmp-withCxx = pkgs.gmp.withCxx;
          symengine = pkgs.symengine or null;};
 
   symmetric-properties = callPackage
