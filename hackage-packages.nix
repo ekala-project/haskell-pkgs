@@ -13735,7 +13735,7 @@ self: {
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
        broken = true;
-     }) {inherit (pkgs) libclang; inherit (pkgs) ncurses;};
+     }) {libclang = pkgs.llvmPackages.libclang; inherit (pkgs) ncurses;};
 
   LibZip = callPackage
     ({ mkDerivation, base, bindings-libzip, bytestring, directory
@@ -68371,7 +68371,7 @@ self: {
        license = lib.licenses.asl20;
        hydraPlatforms = lib.platforms.none;
        broken = true;
-     }) {inherit (pkgs) libclang;};
+     }) {libclang = pkgs.llvmPackages.libclang;};
 
   clanki = callPackage
     ({ mkDerivation, base, bytestring, directory, safe, strict, time }:
