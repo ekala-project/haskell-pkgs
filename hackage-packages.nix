@@ -208558,18 +208558,18 @@ self: {
      }) {};
 
   lua = callPackage
-    ({ mkDerivation, base, lua5_4, tasty, tasty-hunit }:
+    ({ mkDerivation, base, lua_5_4, tasty, tasty-hunit }:
      mkDerivation {
        pname = "lua";
        version = "2.3.4";
        sha256 = "1zjjpknl37fp5dj0aj59csg5vby87x1s638nw7ip57j52vr7gv2l";
        configureFlags = [ "-fsystem-lua" "-f-use-pkgconfig" ];
        libraryHaskellDepends = [ base ];
-       librarySystemDepends = [ lua5_4 ];
+       librarySystemDepends = [ lua_5_4 ];
        testHaskellDepends = [ base tasty tasty-hunit ];
        description = "Lua, an embeddable scripting language";
        license = lib.meta.getLicenseFromSpdxId "MIT";
-     }) {inherit (pkgs) lua5_4;};
+     }) {lua_5_4 = pkgs.lua.v5_4;};
 
   lua-arbitrary = callPackage
     ({ mkDerivation, base, lua, QuickCheck }:
