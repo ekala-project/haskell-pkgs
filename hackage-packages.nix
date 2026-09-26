@@ -226491,7 +226491,7 @@ self: {
 
   mysql = callPackage
     ({ mkDerivation, base, bytestring, Cabal, containers, hspec
-     , libmysqlclient
+     , mariadb-connector-c
      }:
      mkDerivation {
        pname = "mysql";
@@ -226499,11 +226499,11 @@ self: {
        sha256 = "051w428arxbix06a52dacqjpnkfx42zbazxsd3l9d857dsd0kl3g";
        setupHaskellDepends = [ base Cabal ];
        libraryHaskellDepends = [ base bytestring containers ];
-       librarySystemDepends = [ libmysqlclient ];
+       librarySystemDepends = [ mariadb-connector-c ];
        testHaskellDepends = [ base bytestring hspec ];
        description = "A low-level MySQL client library";
        license = lib.licenses.bsd3;
-     }) {inherit (pkgs) libmysqlclient;};
+     }) {inherit (pkgs) mariadb-connector-c;};
 
   mysql-effect = callPackage
     ({ mkDerivation, base, bytestring, extensible-effects, mysql
