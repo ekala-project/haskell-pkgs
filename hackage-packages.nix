@@ -18949,7 +18949,7 @@ self: {
      }) {};
 
   SDL = callPackage
-    ({ mkDerivation, base, Cabal, SDL }:
+    ({ mkDerivation, base, Cabal, sdl12-compat }:
      mkDerivation {
        pname = "SDL";
        version = "0.6.7.0";
@@ -18957,10 +18957,10 @@ self: {
        enableSeparateDataOutput = true;
        setupHaskellDepends = [ base Cabal ];
        libraryHaskellDepends = [ base ];
-       librarySystemDepends = [ SDL ];
+       librarySystemDepends = [ sdl12-compat ];
        description = "Binding to libSDL";
        license = lib.licenses.bsd3;
-     }) {inherit (pkgs) SDL;};
+     }) {inherit (pkgs) sdl12-compat;};
 
   SDL-gfx = callPackage
     ({ mkDerivation, base, Cabal, SDL, SDL_gfx }:
