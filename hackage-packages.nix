@@ -128204,7 +128204,7 @@ self: {
      }) {libadwaita = pkgs.libadwaita or null;};
 
   gi-atk = callPackage
-    ({ mkDerivation, atk, base, bytestring, Cabal, containers, gi-glib
+    ({ mkDerivation, at-spi2-core, base, bytestring, Cabal, containers, gi-glib
      , gi-gobject, haskell-gi, haskell-gi-base, haskell-gi-overloading
      , text, transformers
      }:
@@ -128217,10 +128217,10 @@ self: {
          base bytestring containers gi-glib gi-gobject haskell-gi
          haskell-gi-base haskell-gi-overloading text transformers
        ];
-       libraryPkgconfigDepends = [ atk ];
+       libraryPkgconfigDepends = [ at-spi2-core ];
        description = "Atk bindings";
        license = lib.licenses.lgpl21Only;
-     }) {inherit (pkgs) atk;};
+     }) {inherit (pkgs) at-spi2-core;};
 
   gi-ayatana-appindicator3 = callPackage
     ({ mkDerivation, base, bytestring, Cabal, containers, gi-gdk3
