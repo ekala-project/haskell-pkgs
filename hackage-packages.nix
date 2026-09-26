@@ -112488,7 +112488,7 @@ self: {
      }) {};
 
   fft = callPackage
-    ({ mkDerivation, array, base, carray, fftw, fftwFloat, ix-shapable
+    ({ mkDerivation, array, base, carray, fftw, fftw-float, ix-shapable
      , QuickCheck, storable-complex, syb, transformers
      }:
      mkDerivation {
@@ -112500,14 +112500,14 @@ self: {
        libraryHaskellDepends = [
          array base carray ix-shapable storable-complex syb transformers
        ];
-       libraryPkgconfigDepends = [ fftw fftwFloat ];
+       libraryPkgconfigDepends = [ fftw fftw-float ];
        testHaskellDepends = [ base carray QuickCheck storable-complex ];
        description = "Bindings to the FFTW library";
        license = lib.licenses.bsd3;
-     }) {inherit (pkgs) fftw; inherit (pkgs) fftwFloat;};
+     }) {inherit (pkgs) fftw; fftw-float = pkgs.fftw.float;};
 
   fftw-ffi = callPackage
-    ({ mkDerivation, base, enumset, fftw, fftwFloat, netlib-ffi }:
+    ({ mkDerivation, base, enumset, fftw, fftw-float, netlib-ffi }:
      mkDerivation {
        pname = "fftw-ffi";
        version = "0.1";
@@ -112515,10 +112515,10 @@ self: {
        isLibrary = true;
        isExecutable = true;
        libraryHaskellDepends = [ base enumset netlib-ffi ];
-       libraryPkgconfigDepends = [ fftw fftwFloat ];
+       libraryPkgconfigDepends = [ fftw fftw-float ];
        description = "Low-level interface to FFTW (Fast Fourier Transform)";
        license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
-     }) {inherit (pkgs) fftw; inherit (pkgs) fftwFloat;};
+     }) {inherit (pkgs) fftw; fftw-float = pkgs.fftw.float;};
 
   fftwRaw = callPackage
     ({ mkDerivation, base, fftw }:
