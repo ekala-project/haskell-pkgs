@@ -9173,7 +9173,7 @@ self: {
 
   HJVM = callPackage
     ({ mkDerivation, base, Cabal, containers, filepath
-     , haskell-src-exts, HUnit, jdk, mtl, parsec, process
+     , haskell-src-exts, HUnit, java, mtl, parsec, process
      , test-framework, test-framework-hunit, transformers
      }:
      mkDerivation {
@@ -9184,7 +9184,7 @@ self: {
          base containers filepath haskell-src-exts mtl parsec process
          transformers
        ];
-       librarySystemDepends = [ jdk ];
+       librarySystemDepends = [ java ];
        testHaskellDepends = [
          base Cabal haskell-src-exts HUnit mtl parsec test-framework
          test-framework-hunit transformers
@@ -9193,7 +9193,7 @@ self: {
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
        broken = true;
-     }) {inherit (pkgs) jdk;};
+     }) {inherit (pkgs) java;};
 
   HJavaScript = callPackage
     ({ mkDerivation, base, pretty }:
@@ -188744,7 +188744,7 @@ self: {
 
   jni = callPackage
     ({ mkDerivation, async, base, bytestring, choice, constraints
-     , containers, cpphs, deepseq, hspec, inline-c, jdk, singletons, stm
+     , containers, cpphs, deepseq, hspec, inline-c, java, singletons, stm
      , text
      }:
      mkDerivation {
@@ -188757,14 +188757,14 @@ self: {
          async base bytestring choice constraints containers deepseq
          inline-c singletons stm text
        ];
-       librarySystemDepends = [ jdk ];
+       librarySystemDepends = [ java ];
        libraryToolDepends = [ cpphs ];
        testHaskellDepends = [ base hspec singletons ];
        description = "Complete JNI raw bindings";
        license = lib.licenses.bsd3;
        hydraPlatforms = lib.platforms.none;
        broken = true;
-     }) {inherit (pkgs) jdk;};
+     }) {inherit (pkgs) java;};
 
   job = callPackage
     ({ mkDerivation, async, base, containers, hashable, mmzk-typeid
