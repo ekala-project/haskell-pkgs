@@ -133058,7 +133058,7 @@ self: {
        testToolDepends = [ c2hs ];
        description = "Bindings for GNU IDN";
        license = lib.licenses.gpl3Only;
-     }) {libidn = pkgs.libidn2;};
+     }) {libidn = pkgs.libidn.v2;};
 
   gnuplot = callPackage
     ({ mkDerivation, array, base, containers, data-accessor
