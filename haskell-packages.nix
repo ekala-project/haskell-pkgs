@@ -2,13 +2,17 @@
 # Applied after auto-called packages from pkgs/.
 final: prev:
 let
-  # Use the nix-store subcomponent instead of the full nix wrapper package.
-  # The full nix package pulls in nix-manual (needs mdbook/Rust) and
-  # nix-functional-tests (needs mercurial/Rust) as build-time deps.
-  nix-store-lib = prev.pkgs.nixVersions.stable.libs.nix-store;
+  inherit (prev.pkgs.haskell.lib.compose) overrideCabal;
+  # Use nix 2.31's store lib — hercules-ci-cnix-store requires nix-store <2.34
+  # and has API incompatibilities with 2.33+.
+  nix-store-lib = prev.pkgs.nixVersions.nix_2_31.libs.nix-store;
 in
 {
-  hercules-ci-cnix-store = prev.hercules-ci-cnix-store.override { nix = nix-store-lib; };
-  hercules-ci-cnix-expr = prev.hercules-ci-cnix-expr.override { nix = nix-store-lib; };
+  hercules-ci-cnix-store = overrideCabal (drv: {
+    librarySystemDepends = (drv.librarySystemDepends or [ ]) ++ [ prev.pkgs.boehmgc ];
+  }) (prev.hercules-ci-cnix-store.override { nix = nix-store-lib; });
+  hercules-ci-cnix-expr = overrideCabal (drv: {
+    librarySystemDepends = (drv.librarySystemDepends or [ ]) ++ [ prev.pkgs.boehmgc ];
+  }) (prev.hercules-ci-cnix-expr.override { nix = nix-store-lib; });
   cachix = prev.cachix.override { nix = nix-store-lib; };
 }
