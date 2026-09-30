@@ -25,11 +25,15 @@ let
 
   toplevelOverlay = import ./top-level.nix;
   aliasesOverlay = import ./aliases.nix;
+  ghcOverlay = final: prev: {
+    haskellPackages = final.haskell.packages.ghc9103Binary;
+  };
 in
 {
   config.overlays = {
     haskell = [ haskellOverlay ];
     pkgs = [
+      ghcOverlay
       toplevelOverlay
       aliasesOverlay
     ];
