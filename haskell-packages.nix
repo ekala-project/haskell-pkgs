@@ -61,4 +61,6 @@ in
        description = "Core types used for interacting with the Nix store";
        license = prev.lib.meta.getLicenseFromSpdxId "Apache-2.0";
      }) {};
+
+  lzma-conduit = doJailbreak prev.lzma-conduit;
 }
