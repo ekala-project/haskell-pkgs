@@ -39,7 +39,6 @@ in
   arx = justStaticExecutables hp.arx;
   ascii-art-to-unicode = justStaticExecutables hp.ascii-art-to-unicode;
   ascii-holidays = justStaticExecutables hp.ascii-holidays;
-  asciidoc = justStaticExecutables hp.asciidoc;
   asn1dump = justStaticExecutables hp.asn1dump;
   autoexporter = justStaticExecutables hp.autoexporter;
   avahi = justStaticExecutables hp.avahi;
@@ -336,6 +335,7 @@ in
   hamtsolo = justStaticExecutables hp.hamtsolo;
   happy = justStaticExecutables hp.happy;
   harpie = justStaticExecutables hp.harpie;
+  hasciidoc = justStaticExecutables hp.asciidoc;
   hashing = justStaticExecutables hp.hashing;
   hashrename = justStaticExecutables hp.hashrename;
   hashtable-benchmark = justStaticExecutables hp.hashtable-benchmark;
