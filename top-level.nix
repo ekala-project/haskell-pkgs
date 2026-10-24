@@ -41,7 +41,6 @@ in
   ascii-holidays = justStaticExecutables hp.ascii-holidays;
   asn1dump = justStaticExecutables hp.asn1dump;
   autoexporter = justStaticExecutables hp.autoexporter;
-  avahi = justStaticExecutables hp.avahi;
   aws-spend-summary = justStaticExecutables hp.aws-spend-summary;
   aztecs-glfw = justStaticExecutables hp.aztecs-glfw;
   bacteria = justStaticExecutables hp.bacteria;
@@ -191,7 +190,6 @@ in
   djinn = justStaticExecutables hp.djinn;
   djot = justStaticExecutables hp.djot;
   dobutoko2 = justStaticExecutables hp.dobutokO2;
-  doctest = justStaticExecutables hp.doctest;
   doctest-discover = justStaticExecutables hp.doctest-discover;
   doctest-driver-gen = justStaticExecutables hp.doctest-driver-gen;
   doctest-extract = justStaticExecutables hp.doctest-extract;
@@ -673,7 +671,6 @@ in
   protobuf-simple = justStaticExecutables hp.protobuf-simple;
   purenix = justStaticExecutables hp.purenix;
   purescheme-wai-routing-core = justStaticExecutables hp.purescheme-wai-routing-core;
-  purescript = justStaticExecutables hp.purescript;
   purescript-bundle-fast = justStaticExecutables hp.purescript-bundle-fast;
   pursuit-client = justStaticExecutables hp.pursuit-client;
   push-notify-apn = justStaticExecutables hp.push-notify-apn;
