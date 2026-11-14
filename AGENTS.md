@@ -25,6 +25,7 @@ This repository curates the Haskell package set for the ekapkgs poly-repo ecosys
 - **Version updates:** `<pkg>: <old version> -> <new version>`
 - **Build fixes:** `<pkg>: <succinct message>` (e.g. `lzma-conduit: doJailbreak for GHC 9.10`)
 - **System-dep renames after a pin bump:** `rename <old> to <new>`, one commit per renamed attribute (all occurrences grouped together)
+- **Do not** add AI attribution (e.g., `Co-Authored-By`) to commit messages
 - **One logical change per commit** — squash small fixups into the commit they belong to rather than creating separate fixup commits
 
 ## Where to Make a Change
