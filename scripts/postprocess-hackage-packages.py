@@ -25,7 +25,13 @@ HACKAGE_PACKAGES = REPO_ROOT / "hackage-packages.nix"
 
 def available_pkgs() -> set[str]:
     """Return the set of top-level attribute names in the corepkgs set."""
-    expr = "builtins.attrNames (import ./pins.nix).corepkgs.pkgs"
+    # Instantiate corepkgs itself (not this repo, whose top-level haskell
+    # executables would mask missing system deps) with aliases disabled,
+    # so renamed attributes are reported as missing.
+    expr = (
+        "builtins.attrNames (import (import ./pins.nix).corepkgs"
+        " { config.aliases.nixpkgs = false; })"
+    )
     try:
         out = subprocess.check_output(
             ["nix-instantiate", "--eval", "--json", "-E", expr],
@@ -45,7 +51,7 @@ def available_pkgs() -> set[str]:
 def collect_all_inherited_names(path: Path) -> set[str]:
     """Return every <name> that appears in `inherit (pkgs) <name>;`."""
     text = path.read_text()
-    return set(re.findall(r"inherit\s+\(pkgs\)\s+(\w+)\s*;", text))
+    return set(re.findall(r"inherit\s+\(pkgs\)\s+([\w-]+)\s*;", text))
 
 
 def transform(path: Path, missing: set[str]) -> None:
@@ -74,7 +80,7 @@ def transform(path: Path, missing: set[str]) -> None:
             block_text = "".join(block_lines)
 
             # Find inherits that reference missing packages
-            inherits = re.findall(r"inherit\s+\(pkgs\)\s+(\w+)\s*;", block_text)
+            inherits = re.findall(r"inherit\s+\(pkgs\)\s+([\w-]+)\s*;", block_text)
             missing_inherits = [n for n in inherits if n in missing]
 
             if missing_inherits:
@@ -103,18 +109,26 @@ def transform(path: Path, missing: set[str]) -> None:
                 broken_expr = " || ".join(conditions)
 
                 if has_broken:
-                    # Replace existing broken line with conditional
+                    # Merge into the existing broken line. An unconditional
+                    # `broken = true;` (from broken.yaml) must stay broken
+                    # even once the system dep becomes available.
                     for j in range(block_start - 1, max(block_start - 200, -1), -1):
                         if "callPackage" in out[j]:
                             break
-                        if re.search(r"broken\s*=", out[j]):
-                            indent = re.match(r"^(\s*)", out[j]).group(1)
-                            out[j] = f"{indent}broken = {broken_expr};\n"
+                        m = re.match(r"^(\s*)broken\s*=\s*(.*?);\s*$", out[j])
+                        if m:
+                            indent, existing = m.groups()
+                            if existing == "true":
+                                break
+                            new_conds = [c for c in conditions if c not in existing]
+                            if new_conds:
+                                merged = " || ".join([existing] + new_conds)
+                                out[j] = f"{indent}broken = {merged};\n"
                             break
                 else:
-                    # Insert broken line before the closing `}) {`
-                    indent_match = re.match(r"^(\s*)", lines[block_start])
-                    indent = indent_match.group(1) if indent_match else "     "
+                    # Insert broken line before the closing `}) {`, indented
+                    # like the other mkDerivation attributes.
+                    indent = re.match(r"^(\s*)", block_lines[0]).group(1)
                     out.append(f"{indent}  broken = {broken_expr};\n")
 
                 out.append(new_block if new_block.endswith("\n") else new_block + "\n")
@@ -139,7 +153,7 @@ def main():
     else:
         # Fallback: treat names already marked `or null` as missing
         text = HACKAGE_PACKAGES.read_text()
-        missing = set(re.findall(r"(\w+)\s*=\s*pkgs\.\w+\s+or\s+null\s*;", text))
+        missing = set(re.findall(r"([\w-]+)\s*=\s*pkgs\.[\w-]+\s+or\s+null\s*;", text))
         # Also look for inherits that would fail
         print(f"Using {len(missing)} existing or-null markers as missing set.")
 
