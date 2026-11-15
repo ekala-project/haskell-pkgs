@@ -13,7 +13,12 @@ BRANCH=hackage
 
 echo "Fetching latest commit from $OWNER/$REPO ($BRANCH branch)…"
 
-response=$(curl -s "https://api.github.com/repos/$OWNER/$REPO/branches/$BRANCH")
+# Prefer the authenticated gh CLI; anonymous API requests are easily rate-limited.
+if command -v gh >/dev/null && gh auth status >/dev/null 2>&1; then
+  response=$(gh api "repos/$OWNER/$REPO/branches/$BRANCH")
+else
+  response=$(curl -s "https://api.github.com/repos/$OWNER/$REPO/branches/$BRANCH")
+fi
 commit=$(echo "$response" | jq -r '.commit.sha')
 msg=$(echo "$response" | jq -r '.commit.commit.message')
 
