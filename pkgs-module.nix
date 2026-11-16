@@ -26,7 +26,7 @@ let
   toplevelOverlay = import ./top-level.nix;
   aliasesOverlay = import ./aliases.nix;
   ghcOverlay = final: prev: {
-    haskellPackages = final.haskell.packages.ghc9103Binary;
+    haskellPackages = final.haskell.packages.${import ./compiler.nix};
   };
 in
 {
