@@ -1,11 +1,15 @@
-# Validates system dependency references in hackage-packages.nix.
+# Validates hard system dependency references in hackage-packages.nix.
 #
-# hackage-packages.nix uses `inherit (pkgs) name` for hard system deps.
-# With aliases disabled, any reference to a renamed corepkgs attribute
-# will be detected as missing.
+# hackage2ekapkgs emits three forms of system dependency:
+#   {inherit (pkgs) name;}         resolved against corepkgs at generation time
+#   {inherit (pkgs.set) name;}     injected by PostProcess hooks
+#   {name = pkgs.some.path;}       from configuration-hackage2nix/system-dependency-paths.yaml
+#   {name = pkgs.name or null;}    unresolved; the package carries
+#                                  `broken = !(pkgs ? name)`, so this is safe
 #
-# Known-missing deps (packages not yet ported to corepkgs) are listed
-# in ci/known-missing-sysdeps.nix and excluded from the check.
+# The first two must exist in corepkgs with aliases disabled. If one is
+# missing, corepkgs renamed or removed it since the last regeneration: add a
+# system-dependency-paths entry (or drop the stale one) and regenerate.
 #
 # Usage:
 #   nix-instantiate --eval --strict ci/eval.nix
@@ -36,52 +40,32 @@ let
 
   inherit (pkgs) lib;
 
-  # ── System dependency validation ──────────────────────────────────
-  #
-  # hackage-packages.nix uses two patterns for system deps:
-  #   {inherit (pkgs) name;}          — hard dependency, fails if missing
-  #   {name = pkgs.name or null;}     — optional dependency, safe
-  #
-  # We only care about hard deps (the `inherit` pattern).
-
   hackageSrc = builtins.readFile ../hackage-packages.nix;
 
-  # Extract all `inherit (pkgs) name1 name2 ...;` references.
-  inheritMatches = builtins.split "inherit \\(pkgs\\) ([^;]+);" hackageSrc;
+  # builtins.split returns non-matches interleaved with lists of capture groups.
+  captures = regex: lib.concatMap lib.toList (builtins.filter builtins.isList (builtins.split regex hackageSrc));
 
-  # builtins.split returns a flat list alternating non-matches and
-  # match groups (which are lists of capture groups).
-  extractNames =
-    parts:
+  words = s: lib.filter (n: n != "") (lib.splitString " " s);
+
+  # `inherit (pkgs) a b;` and `inherit (pkgs.some.set) a b;` (from PostProcess hooks)
+  inheritedNames = lib.concatMap words (captures "inherit \\(pkgs\\) ([^;]+);");
+  inheritedNested =
     let
-      go =
-        acc: xs:
-        if xs == [ ] then
-          acc
-        else
-          let
-            head = builtins.head xs;
-            tail = builtins.tail xs;
-          in
-          if builtins.isList head then
-            go (acc ++ builtins.filter (s: s != "") (builtins.split " |\n" (builtins.head head))) tail
-          else
-            go acc tail;
+      m = builtins.filter builtins.isList (
+        builtins.split "inherit \\(pkgs\\.([A-Za-z0-9_.'-]+)\\) ([^;]+);" hackageSrc
+      );
     in
-    go [ ] parts;
+    lib.concatMap (g: map (n: "${builtins.elemAt g 0}.${n}") (words (builtins.elemAt g 1))) m;
 
-  inheritedNames = extractNames inheritMatches;
+  # `= pkgs.<path>;` (an `or null` fallback never ends directly in `;`)
+  explicitPaths = captures "[A-Za-z0-9_'-]+ = pkgs\\.([A-Za-z0-9_.'-]+);";
 
-  # Deduplicate
-  uniqueNames = builtins.attrNames (
-    builtins.listToAttrs (map (n: { name = n; value = true; }) inheritedNames)
-  );
+  references = lib.unique (inheritedNames ++ inheritedNested ++ explicitPaths);
 
-  # Check which names are missing from pkgs
-  missingNames = builtins.filter (n: !(builtins.hasAttr n pkgs)) uniqueNames;
+  missing = lib.filter (p: !(lib.hasAttrByPath (lib.splitString "." p) pkgs)) references;
 in
 {
-  inherit uniqueNames missingNames;
-  totalDeps = builtins.length uniqueNames;
-  missingCount = builtins.length missingNames;
+  inherit references missing;
+  # Forces hackage-packages.nix to be parsed (e.g. catches duplicate bindings).
+  packageCount = builtins.length (builtins.attrNames pkgs.haskellPackages);
 }

@@ -5,15 +5,25 @@ Finds all executable Haskell packages with mainProgram set that are
 non-broken, fully supported, and non-versioned, then generates a
 top-level.nix that exposes each via justStaticExecutables.
 
-All attribute names are normalized to lowercase kebab-case.
+All attribute names are normalized to lowercase kebab-case. Names that
+corepkgs already defines (aliases disabled) are skipped so that the
+overlay never shadows a corepkgs package, unless RENAMES gives the
+executable another top-level name.
 """
 
+import json
 import re
+import subprocess
 import sys
 from pathlib import Path
 
 BLOCKLIST = {
     "zip",
+}
+
+# Top-level names for executables whose own name is taken by corepkgs.
+RENAMES = {
+    "asciidoc": "hasciidoc",
 }
 
 SCRIPT_DIR = Path(__file__).parent
@@ -108,6 +118,19 @@ def scan_custom_packages() -> list[tuple[str, str]]:
     return packages
 
 
+def corepkgs_names() -> set[str]:
+    """Top-level attribute names of the pinned corepkgs, aliases disabled."""
+    expr = (
+        "builtins.attrNames (import (import ./pins.nix).corepkgs"
+        " { config.aliases.nixpkgs = false; })"
+    )
+    out = subprocess.run(
+        ["nix-instantiate", "--eval", "--strict", "--json", "-E", expr],
+        cwd=REPO_DIR, check=True, capture_output=True, text=True,
+    ).stdout
+    return set(json.loads(out))
+
+
 def main():
     content = HACKAGE_PACKAGES.read_text()
     packages = parse_packages(content)
@@ -117,7 +140,16 @@ def main():
     custom_kebabs = {k for k, _ in custom}
     packages = [(k, h) for k, h in packages if k not in custom_kebabs]
     packages.extend(custom)
-    packages.sort(key=lambda x: x[0])
+
+    taken = corepkgs_names()
+    resolved = []
+    for kebab, name in packages:
+        kebab = RENAMES.get(kebab, kebab)
+        if kebab in taken:
+            print(f"  skipping {kebab}: provided by corepkgs", file=sys.stderr)
+            continue
+        resolved.append((kebab, name))
+    packages = sorted(resolved, key=lambda x: x[0])
 
     output = generate_top_level(packages)
     TOP_LEVEL.write_text(output)

@@ -24,13 +24,14 @@ if grep -q '^warning:' "$stderr"; then
   exit 1
 fi
 
-# Print any trace output (e.g. newly-available deps notices).
+# Print any other trace output.
 if [ -s "$stderr" ]; then
   cat "$stderr" >&2
 fi
 
 # Extract fields from the JSON result.
 checked="$(echo "$result" | sed -E 's/.*"systemDepsChecked":([0-9]+).*/\1/')"
-missing="$(echo "$result" | sed -E 's/.*"knownMissing":([0-9]+).*/\1/')"
 
-echo "Checked $checked system dependencies ($missing known-missing, all others resolved)."
+count="$(echo "$result" | sed -E 's/.*"packageCount":([0-9]+).*/\1/')"
+
+echo "haskellPackages: $count attributes; checked $checked system dependency references, all resolved."

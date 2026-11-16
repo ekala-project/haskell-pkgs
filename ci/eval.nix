@@ -1,53 +1,29 @@
-# Validates that hackage-packages.nix system dependency references
-# resolve against the canonical corepkgs attribute set (aliases disabled).
-#
-# Missing deps are checked against ci/known-missing-sysdeps.nix.
-# Any dep that is missing AND not in the whitelist is a renamed
-# or removed attribute — a real bug that must be fixed.
+# Validates that every hard system dependency reference in
+# hackage-packages.nix resolves against corepkgs (aliases disabled).
+# See ci/packages.nix for the reference forms.
 #
 # Usage:
 #   nix-instantiate --eval --strict ci/eval.nix
 #   nix-instantiate --eval --strict --json ci/eval.nix
 
 let
-  packages = import ./packages.nix { };
-  inherit (packages) missingNames totalDeps;
-
-  knownMissing = import ./known-missing-sysdeps.nix;
-  knownSet = builtins.listToAttrs (map (n: { name = n; value = true; }) knownMissing);
-
-  # Names that are missing AND not in the known-missing whitelist.
-  # These are likely renamed attributes that need updating.
-  unexpectedMissing = builtins.filter (n: !(builtins.hasAttr n knownSet)) missingNames;
-
-  # Names in the whitelist that are no longer missing (newly ported to corepkgs).
-  newlyAvailable = builtins.filter (n: !(builtins.elem n missingNames)) knownMissing;
+  inherit (import ./packages.nix { }) references missing packageCount;
 in
 assert
-  unexpectedMissing == [ ]
+  missing == [ ]
   || builtins.throw ''
-    The following system dependencies referenced via `inherit (pkgs) name`
-    in hackage-packages.nix do not exist in corepkgs (with aliases disabled):
+    The following system dependencies referenced by hackage-packages.nix do
+    not exist in corepkgs (with aliases disabled):
 
-      ${builtins.concatStringsSep "\n  " unexpectedMissing}
+      ${builtins.concatStringsSep "\n  " missing}
 
-    These are NOT in ci/known-missing-sysdeps.nix, so they were likely
-    renamed or removed.  Fix by updating the references in
-    hackage-packages.nix to use the canonical attribute name.
-
-    If the package genuinely does not exist in corepkgs, add it to
-    ci/known-missing-sysdeps.nix instead.
+    corepkgs renamed or removed them since hackage-packages.nix was last
+    regenerated. Map the generator's name to the canonical attribute path in
+    configuration-hackage2nix/system-dependency-paths.yaml (or drop a stale
+    entry), then run scripts/regenerate-hackage-packages.sh.
   '';
-assert
-  newlyAvailable == [ ]
-  || builtins.trace ''
-    Note: the following system deps are now available in corepkgs.
-    Consider removing them from ci/known-missing-sysdeps.nix:
-
-      ${builtins.concatStringsSep "\n  " newlyAvailable}
-  '' true;
 {
-  systemDepsChecked = totalDeps;
-  knownMissing = builtins.length missingNames;
+  inherit packageCount;
+  systemDepsChecked = builtins.length references;
   ok = true;
 }

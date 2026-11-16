@@ -320,6 +320,7 @@ in
   hackage-plot = justStaticExecutables hp.hackage-plot;
   hackage-repo-tool = justStaticExecutables hp.hackage-repo-tool;
   hackage-sparks = justStaticExecutables hp.hackage-sparks;
+  hackage2ekapkgs = justStaticExecutables hp.hackage2ekapkgs;
   hackertyper = justStaticExecutables hp.hackertyper;
   hackport = justStaticExecutables hp.hackport;
   hadolint = justStaticExecutables hp.hadolint;
