@@ -1,136 +1,115 @@
 #!/usr/bin/env bash
-# Regenerate per-package hackage Nix expressions using hackage2ekapkgs.
+# Regenerate hackage-packages.nix and top-level.nix from pinned inputs:
 #
-# This script bootstraps hackage2ekapkgs and generates per-package .nix
-# files under hackage/ for the haskell-packages repo.
+#   - data/hackage/pin.json               Hackage snapshot (all-cabal-hashes)
+#   - pins.nix                            corepkgs, used for system dep resolution
+#   - pkgs/hackage2ekapkgs                the generator, built from this repo
+#   - configuration-hackage2nix/*.yaml    version pins, broken lists,
+#                                         system-dependency-paths, compiler config
 #
-# Prerequisites:
-#   - nixpkgs checkout at $NIXPKGS_PATH (for building the tool)
-#   - nix-build available
+# Running this on an unmodified checkout must produce no diff; CI relies on
+# that, so never hand-edit the generated files.
 #
 # Usage:
-#   ./scripts/regenerate-hackage-packages.sh [--nixpkgs PATH]
+#   scripts/regenerate-hackage-packages.sh [--hackage2ekapkgs PATH]
+#
+#   --hackage2ekapkgs PATH  build the generator from a local checkout instead
+#                           of the pinned source (for generator development)
+#   HACKAGE2EKAPKGS=BIN     use an already-built generator binary
 
 set -euo pipefail
 
 REPO_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
-NIXPKGS_PATH="${NIXPKGS_PATH:-/home/jon/projects/nixpkgs}"
-HACKAGE2EKAPKGS_URL="https://github.com/ekala-project/hackage2ekapkgs.git"
-HACKAGE2EKAPKGS_SRC=""
+CONFIG_DIR="$REPO_ROOT/configuration-hackage2nix"
+H2E_SRC=""
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
-    --nixpkgs)
-      NIXPKGS_PATH="$2"
-      shift 2
-      ;;
     --hackage2ekapkgs)
-      HACKAGE2EKAPKGS_SRC="$2"
+      H2E_SRC="$(realpath "$2")"
       shift 2
       ;;
-    --help|-h)
-      echo "Usage: $0 [--nixpkgs PATH] [--hackage2ekapkgs PATH]"
-      echo ""
-      echo "  --nixpkgs PATH           Path to nixpkgs checkout (default: $NIXPKGS_PATH)"
-      echo "  --hackage2ekapkgs PATH   Local path to hackage2ekapkgs (default: fetched from GitHub)"
+    --help | -h)
+      sed -n '2,/^$/p' "$0" | sed 's/^# \{0,1\}//'
       exit 0
       ;;
     *)
-      echo "Unknown argument: $1"
+      echo "Unknown argument: $1" >&2
       exit 1
       ;;
   esac
 done
 
-if [[ ! -d "$NIXPKGS_PATH/pkgs" ]]; then
-  echo "Error: nixpkgs not found at $NIXPKGS_PATH"
-  echo "Set NIXPKGS_PATH or use --nixpkgs"
+cd "$REPO_ROOT"
+
+configs=(
+  "$CONFIG_DIR/compiler.yaml"
+  "$CONFIG_DIR/main.yaml"
+  "$CONFIG_DIR/stackage.yaml"
+  "$CONFIG_DIR/broken.yaml"
+  "$CONFIG_DIR/transitive-broken.yaml"
+  "$CONFIG_DIR/system-dependency-paths.yaml"
+)
+for f in "${configs[@]}"; do
+  [[ -f "$f" ]] || { echo "Error: missing config file $f" >&2; exit 1; }
+done
+
+echo "=== Checking compiler config ==="
+# Read the compiler directly, not via haskellPackages: that would parse the
+# hackage-packages.nix this script is about to replace.
+ghc_version=$(nix-instantiate --eval --json -E '(import ./. { }).haskell.compiler.${import ./compiler.nix}.version' | tr -d '"')
+if ! grep -qx "compiler: ghc-$ghc_version" "$CONFIG_DIR/compiler.yaml"; then
+  echo "Error: compiler.yaml does not match haskellPackages.ghc ($ghc_version)." >&2
+  echo "Run scripts/generate-compiler-config.sh first." >&2
   exit 1
 fi
 
-CONFIG_DIR="$REPO_ROOT/configuration-hackage2nix"
-
-for f in main.yaml stackage.yaml broken.yaml transitive-broken.yaml; do
-  if [[ ! -f "$CONFIG_DIR/$f" ]]; then
-    echo "Error: Missing config file: $CONFIG_DIR/$f"
-    exit 1
-  fi
-done
-
-echo "=== Step 1: Building hackage2ekapkgs ==="
-
-if [[ -n "$HACKAGE2EKAPKGS_SRC" ]]; then
-  echo "  Using local source: $HACKAGE2EKAPKGS_SRC"
-  HACKAGE2EKAPKGS_BIN=$(nix-build --no-out-link -I nixpkgs="$NIXPKGS_PATH" -E "
-    let nixpkgs = import <nixpkgs> {};
-    in nixpkgs.haskellPackages.callCabal2nix \"hackage2ekapkgs\" $HACKAGE2EKAPKGS_SRC {}
-  ")/bin/hackage2ekapkgs
+echo "=== Building hackage2ekapkgs ==="
+if [[ -n "${HACKAGE2EKAPKGS:-}" ]]; then
+  H2E_BIN="$HACKAGE2EKAPKGS"
+elif [[ -n "$H2E_SRC" ]]; then
+  H2E_BIN="$(nix-build --no-out-link --arg src "$H2E_SRC" -E '
+    { src }:
+    let pkgs = import ./. { };
+    in pkgs.haskell.lib.compose.overrideSrc { src = pkgs.lib.cleanSource src; }
+         pkgs.haskellPackages.hackage2ekapkgs
+  ')/bin/hackage2ekapkgs"
 else
-  echo "  Fetching from $HACKAGE2EKAPKGS_URL"
-  HACKAGE2EKAPKGS_BIN=$(nix-build --no-out-link -I nixpkgs="$NIXPKGS_PATH" -E "
-    let
-      nixpkgs = import <nixpkgs> {};
-      src = builtins.fetchGit {
-        url = \"$HACKAGE2EKAPKGS_URL\";
-      };
-    in nixpkgs.haskellPackages.callCabal2nix \"hackage2ekapkgs\" src {}
-  ")/bin/hackage2ekapkgs
+  H2E_BIN="$(nix-build --no-out-link -A haskellPackages.hackage2ekapkgs)/bin/hackage2ekapkgs"
 fi
+echo "  $H2E_BIN"
 
-echo "  Using: $HACKAGE2EKAPKGS_BIN"
+echo "=== Fetching Hackage snapshot ==="
+# builtins.fetchTarball needs no stdenv, and pin.json holds the unpacked hash.
+# --read-write-mode makes sure the tree is actually written to the store.
+HACKAGE="$(nix-instantiate --read-write-mode --eval --json -E '
+  let pin = builtins.fromJSON (builtins.readFile ./data/hackage/pin.json);
+  in "${builtins.fetchTarball { inherit (pin) url sha256; }}"
+' | tr -d '"')"
+echo "  $HACKAGE ($(jq -r .msg data/hackage/pin.json))"
 
-echo "=== Step 2: Obtaining Hackage data ==="
+echo "=== Running hackage2ekapkgs ==="
+OUT="$(mktemp -d)"
+trap 'rm -rf "$OUT"' EXIT
 
-UNPACKED_HACKAGE=$(nix-build --no-out-link -I nixpkgs="$NIXPKGS_PATH" -E "
-  let
-    nixpkgs = import <nixpkgs> {};
-    pin = builtins.fromJSON (builtins.readFile $REPO_ROOT/data/hackage/pin.json);
-    tarball = nixpkgs.fetchurl {
-      url = pin.url;
-      sha256 = pin.sha256;
-      name = \"all-cabal-hashes.tar.gz\";
-    };
-  in
-  nixpkgs.runCommandLocal \"unpacked-cabal-hashes\" { }
-    \"tar xf \${tarball} --strip-components=1 --one-top-level=\\\$out\"
-")
+config_args=()
+for f in "${configs[@]}"; do config_args+=(--config "$f"); done
 
-echo "  Hackage data: $UNPACKED_HACKAGE"
+# Resolve system deps against corepkgs itself with aliases disabled, so that
+# only canonical attribute names are emitted.
+"$H2E_BIN" \
+  --hackage "$HACKAGE" \
+  --preferred-versions <(for n in "$HACKAGE"/*/preferred-versions; do cat "$n"; echo; done) \
+  --pkgs-path "(import $REPO_ROOT/pins.nix).corepkgs" \
+  --pkgs-args '{ config.aliases.nixpkgs = false; }' \
+  --output-dir "$OUT/hackage" \
+  "${config_args[@]}"
 
-echo "=== Step 3: Generating compiler configuration ==="
+echo "=== Assembling hackage-packages.nix ==="
+python3 -I "$REPO_ROOT/scripts/assemble-hackage-packages.py" "$OUT/hackage" "$REPO_ROOT/hackage-packages.nix"
 
-COMPILER_CONFIG=$(nix-build --no-out-link -I nixpkgs="$NIXPKGS_PATH" -E "
-  let nixpkgs = import <nixpkgs> {};
-  in nixpkgs.haskellPackages.cabal2nix-unstable.compilerConfig
-")
+echo "=== Regenerating top-level.nix ==="
+python3 -I "$REPO_ROOT/scripts/generate-top-level.py"
 
-echo "  Compiler config: $COMPILER_CONFIG"
-
-echo "=== Step 4: Running hackage2ekapkgs ==="
-
-# Resolve the ekapkgs package set path for system dep resolution
-EKAPKGS_PATH=$(nix-instantiate --eval --json -E '(import ./pins.nix).corepkgs.outPath' 2>/dev/null | tr -d '"' || echo ".")
-
-"$HACKAGE2EKAPKGS_BIN" \
-  --hackage "$UNPACKED_HACKAGE" \
-  --preferred-versions <(for n in "$UNPACKED_HACKAGE"/*/preferred-versions; do cat "$n"; echo; done) \
-  --pkgs-path "$EKAPKGS_PATH" \
-  --output-dir "$REPO_ROOT/hackage" \
-  --config "$COMPILER_CONFIG" \
-  --config "$CONFIG_DIR/main.yaml" \
-  --config "$CONFIG_DIR/stackage.yaml" \
-  --config "$CONFIG_DIR/broken.yaml" \
-  --config "$CONFIG_DIR/transitive-broken.yaml"
-
-echo ""
-echo "=== Step 5: Post-processing hackage-packages.nix ==="
-
-# Replace `inherit (pkgs) <name>;` with `<name> = pkgs.<name> or null;`
-# for system deps missing from corepkgs, and set
-# `broken = !(pkgs ? <name>);` on each affected package.
-python3 "$REPO_ROOT/scripts/postprocess-hackage-packages.py"
-
-echo ""
 echo "=== Done ==="
-echo "Per-package Nix files generated in $REPO_ROOT/hackage/"
-echo "Packages: $(find "$REPO_ROOT/hackage" -name default.nix -not -path "$REPO_ROOT/hackage/default.nix" | wc -l)"
+git -C "$REPO_ROOT" diff --stat -- hackage-packages.nix top-level.nix | tail -1

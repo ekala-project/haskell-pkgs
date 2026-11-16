@@ -1,0 +1,98 @@
+# System dependencies whose corepkgs attribute differs from the name
+# hackage2ekapkgs derives from the .cabal file (its libNixName table still
+# follows nixpkgs naming), or that live in a nested attribute set.
+#
+# Keys are the Nix argument names the generator produces; values are attribute
+# paths relative to `pkgs`. The generated code keeps the key as the argument
+# name and binds it, e.g. `{ SDL2 = pkgs.sdl2-compat; }`.
+#
+# A `null` value binds the dependency to null without marking the package
+# broken; use it for libraries provided by libc or the compiler toolchain.
+#
+# Add an entry when a corepkgs rename makes a package's system dependency
+# unresolvable (it shows up as `broken = !(pkgs ? <name>)` after
+# regeneration). Remove entries once the generator's own table catches up.
+#
+system-dependency-paths:
+  apr-util: aprutil
+  archive: libarchive
+  atk: at-spi2-core
+  atomic: null  # GCC libatomic
+  bfd: libbfd
+  blkid: util-linux
+  bluetooth: bluez
+  boost_filesystem: boost
+  boost_program_options: boost
+  brotlidec: brotli
+  brotlienc: brotli
+  c: null  # libc
+  cdio: libcdio
+  EGL: libGL
+  egl: libGL
+  ev: libev
+  event: libevent
+  exif: libexif
+  ffi: libffi
+  fftwFloat: fftw.float
+  fuse3: fuse
+  gcc_s: null  # GCC runtime
+  gcrypt: libgcrypt
+  GLESv2: libGL
+  gmpxx: gmp.withCxx
+  gomp: null  # GCC OpenMP runtime
+  gssapi_krb5: krb5
+  gst-editing-services: gstreamer.editing-services
+  gst-plugins-base: gstreamer.plugins-base
+  gstreamer-app: gstreamer.plugins-base
+  gstreamer-pbutils: gstreamer.plugins-base
+  gstreamer-tag: gstreamer.plugins-base
+  jdk: java
+  lcms: lcms2
+  libavcodec: ffmpeg
+  libavdevice: ffmpeg
+  libavformat: ffmpeg
+  libclang: llvmPackages.libclang
+  libftdi: libftdi1
+  libidn2: libidn.v2
+  libkmod: kmod
+  libmysqlclient: mariadb-connector-c
+  libpq: postgresql
+  libpulse: libpulseaudio
+  libpulse-simple: libpulseaudio
+  libswresample: ffmpeg
+  libswscale: ffmpeg
+  libsystemd-daemon: systemd
+  libusb: libusb1
+  LLVM: llvm
+  lua5_4: lua.v5_4
+  mp3lame: lame
+  mpdec: mpdecimal
+  mysqlclient: mariadb-connector-c
+  nix-build: nix
+  nix-env: nix
+  nix-hash: nix
+  nix-instantiate: nix
+  nix-store: nix
+  ogg: libogg
+  opcodes: libopcodes
+  opus: libopus
+  resolv: null  # libc
+  rustls: rustls-ffi
+  samplerate: libsamplerate
+  SDL: sdl12-compat
+  SDL2: sdl2-compat
+  seccomp: libseccomp
+  selinux: libselinux
+  stemmer: libstemmer
+  systemd-daemon: systemd
+  theora: libtheora
+  tiff: libtiff
+  unixodbc: unixODBC
+  util: null  # libc
+  xcb: libxcb
+  Xdamage: libxdamage
+  xdmcp: libxdmcp
+  xext: libxext
+  Xfixes: libxfixes
+  xslt: libxslt
+  xxHash: xxhash
