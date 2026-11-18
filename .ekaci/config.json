@@ -1,0 +1,7 @@
+{
+  "jobs": {
+    "haskell-pkgs": {
+      "file": "/ci/ci-jobs.nix"
+    }
+  }
+}
