@@ -34,4 +34,6 @@ checked="$(echo "$result" | sed -E 's/.*"systemDepsChecked":([0-9]+).*/\1/')"
 
 count="$(echo "$result" | sed -E 's/.*"packageCount":([0-9]+).*/\1/')"
 
-echo "haskellPackages: $count attributes; checked $checked system dependency references, all resolved."
+jobs="$(echo "$result" | sed -E 's/.*"jobsChecked":([0-9]+).*/\1/')"
+
+echo "haskellPackages: $count attributes; checked $checked system dependency references, all resolved; $jobs CI jobs evaluate."

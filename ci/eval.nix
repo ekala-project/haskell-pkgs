@@ -8,6 +8,11 @@
 
 let
   inherit (import ./packages.nix { }) references missing packageCount;
+
+  # Every override and pkgs/ package must evaluate (e.g. an override that
+  # selects a versioned attribute the generator no longer emits).
+  jobs = import ./ci-jobs.nix;
+  jobDrvs = map (name: jobs.${name}.drvPath) (builtins.attrNames jobs);
 in
 assert
   missing == [ ]
@@ -22,8 +27,9 @@ assert
     configuration-hackage2nix/system-dependency-paths.yaml (or drop a stale
     entry), then run scripts/regenerate-hackage-packages.sh.
   '';
-{
+builtins.deepSeq jobDrvs {
   inherit packageCount;
+  jobsChecked = builtins.length jobDrvs;
   systemDepsChecked = builtins.length references;
   ok = true;
 }
