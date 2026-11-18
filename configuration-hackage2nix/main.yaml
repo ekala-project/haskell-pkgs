@@ -111,6 +111,7 @@ extra-packages:
   - hasql-transaction < 1.1.1           # 2025-01-19: Needed for building postgrest
   - hlint == 3.6.*                      # 2025-04-14: needed for hls with ghc-lib-parser 9.6
   - hlint == 3.8.*                      # 2025-09-21: needed for hls with ghc-lib-parser 9.8
+  - hnix-store-core == 0.8.0.0          # 2026-11-18: 0.9 requires crypton >= 1.1, Stackage has 1.0.6
   - hpack == 0.39.1                     # 2026-03-15: to match upstream stack-3.9.3
   - language-javascript == 0.7.0.0      # required by purescript
   - network-run == 0.4.0                # 2024-10-20: for GHC 9.10/network == 3.1.*
