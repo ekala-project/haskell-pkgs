@@ -1,0 +1,55 @@
+name: Nix
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  eval:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: cachix/install-nix-action@v25
+      with:
+        extra_nix_config: |
+          extra-substituters = https://ekala-corepkgs.cachix.org
+          extra-trusted-public-keys = ekala-corepkgs.cachix.org-1:DcZV+vegWoEzacbSdXFXU4S7728C0eS9RfGpKeyHd6w=
+    - name: Check system dependency references
+      run: ./ci/eval.sh
+    - name: Check for packages shadowing corepkgs
+      run: |
+        shadowed="$(nix-instantiate --eval --strict --json ci/shadowed-packages.nix -A all)"
+        echo "$shadowed"
+        test "$shadowed" = "[]"
+
+  # Building hackage2ekapkgs is expensive, so only check regeneration when an
+  # input or output of it changes.
+  regeneration:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: dorny/paths-filter@v3
+      id: changes
+      with:
+        filters: |
+          generation:
+            - 'hackage-packages.nix'
+            - 'top-level.nix'
+            - 'compiler.nix'
+            - 'pins.nix'
+            - 'configuration-hackage2nix/**'
+            - 'data/hackage/**'
+            - 'pkgs/**'
+            - 'overrides/hackage2ekapkgs.nix'
+            - 'scripts/**'
+    - uses: cachix/install-nix-action@v25
+      if: steps.changes.outputs.generation == 'true'
+      with:
+        extra_nix_config: |
+          extra-substituters = https://ekala-corepkgs.cachix.org
+          extra-trusted-public-keys = ekala-corepkgs.cachix.org-1:DcZV+vegWoEzacbSdXFXU4S7728C0eS9RfGpKeyHd6w=
+    - name: Check that generated files are up to date
+      if: steps.changes.outputs.generation == 'true'
+      run: ./ci/check-regeneration.sh
