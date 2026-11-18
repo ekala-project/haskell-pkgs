@@ -2,7 +2,8 @@
 """Generate top-level.nix from hackage-packages.nix.
 
 Finds all executable Haskell packages with mainProgram set that are
-non-broken, fully supported, and non-versioned, then generates a
+non-broken, fully supported, and non-versioned (plus pkgs/ packages and
+overrides/ files that set mainProgram), then generates a
 top-level.nix that exposes each via justStaticExecutables.
 
 All attribute names are normalized to lowercase kebab-case. Names that
@@ -30,6 +31,7 @@ SCRIPT_DIR = Path(__file__).parent
 REPO_DIR = SCRIPT_DIR.parent
 HACKAGE_PACKAGES = REPO_DIR / "hackage-packages.nix"
 PKGS_DIR = REPO_DIR / "pkgs"
+OVERRIDES_DIR = REPO_DIR / "overrides"
 TOP_LEVEL = REPO_DIR / "top-level.nix"
 
 
@@ -118,6 +120,20 @@ def scan_custom_packages() -> list[tuple[str, str]]:
     return packages
 
 
+def scan_overrides() -> list[tuple[str, str]]:
+    """Scan overrides/ for overrides that set mainProgram (for packages with
+    several executables, which hackage2ekapkgs leaves without one)."""
+    packages = []
+    for path in sorted(OVERRIDES_DIR.glob("*.nix")):
+        if path.name.startswith("_") or "mainProgram" not in path.read_text():
+            continue
+        name = path.stem
+        kebab = normalize_name(name)
+        if kebab not in BLOCKLIST:
+            packages.append((kebab, name))
+    return packages
+
+
 def corepkgs_names() -> set[str]:
     """Top-level attribute names of the pinned corepkgs, aliases disabled."""
     expr = (
@@ -135,8 +151,9 @@ def main():
     content = HACKAGE_PACKAGES.read_text()
     packages = parse_packages(content)
 
-    # Add custom packages from pkgs/, overriding hackage entries
-    custom = scan_custom_packages()
+    # Add custom packages from pkgs/ and overrides that set mainProgram,
+    # overriding hackage entries
+    custom = list(dict.fromkeys(scan_custom_packages() + scan_overrides()))
     custom_kebabs = {k for k, _ in custom}
     packages = [(k, h) for k, h in packages if k not in custom_kebabs]
     packages.extend(custom)
