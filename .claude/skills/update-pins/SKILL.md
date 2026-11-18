@@ -1,96 +1,97 @@
 ---
 name: update-pins
-description: Update corepkgs pin and fix any haskell packages that reference renamed/removed attributes
+description: Update corepkgs pin, regenerate the Haskell package set against it, and map any renamed system dependencies
 disable-model-invocation: true
-allowed-tools: Bash(nix *) Bash(git *) Bash(rm *) Bash(ls *) Bash(chmod *) Read Edit Glob Grep
+allowed-tools: Bash(nix *) Bash(nix-build *) Bash(nix-instantiate *) Bash(git *) Bash(jq *) Bash(bash ci/*) Bash(ci/*) Bash(scripts/*) Bash(python3 *) Read Edit Glob Grep
 ---
 
 ## Overview
 
-Update the corepkgs pin (both flake.lock and pins.nix), then run
-`ci/eval.sh` to detect haskell packages that reference renamed or removed
-corepkgs attributes. Fix any failures by updating the attribute references
-in `hackage-packages.nix`, `haskell-packages.nix`, `aliases.nix`,
-`top-level.nix`, or files under `pkgs/`.
+Update the corepkgs pin (both `flake.lock` and `pins.nix`), regenerate
+`hackage-packages.nix` and `top-level.nix` against it, and fix fallout.
+
+System dependencies are resolved at generation time against corepkgs with
+aliases disabled. A dependency corepkgs renamed shows up after regeneration
+as `broken = !(pkgs ? <name>)` on packages that used to build; map the old
+name in `configuration-hackage2nix/system-dependency-paths.yaml` instead of
+editing generated files.
 
 ## Steps
 
-### 1. Update flake input
+### 1. Update the pin
 
 ```
-nix flake update
+nix flake update corepkgs
+rev=$(jq -r '.nodes.corepkgs.locked.rev' flake.lock)
+sed -i "s/rev = \"[0-9a-f]\{40\}\"/rev = \"$rev\"/" pins.nix
 ```
 
-### 2. Sync pins.nix
+### 2. Check the compiler
 
-Extract the corepkgs rev from `flake.lock` and update `pins.nix` to match:
-
-```
-nix-instantiate --eval -E 'builtins.fromJSON (builtins.readFile ./flake.lock)' --json \
-  | jq -r '.nodes.corepkgs.locked.rev'
-```
-
-Update the `rev` field in `pins.nix` to this value.
-
-### 3. Run eval check
+`compiler.nix` names the default GHC. If corepkgs removed or renamed it,
+update `compiler.nix`. If the compiler's version changed, refresh its boot
+package list:
 
 ```
-bash ci/eval.sh
+scripts/generate-compiler-config.sh
 ```
 
-If it passes, skip to step 6.
+(The regenerate script fails if `configuration-hackage2nix/compiler.yaml`
+doesn't match the compiler's version.)
 
-### 4. Fix missing attribute errors
-
-When eval fails with `attribute 'foo' missing`, it means a haskell package
-references a system dependency name that no longer exists in corepkgs
-(aliases are disabled during eval).
-
-Check the corepkgs aliases file to find the canonical name:
+### 3. Regenerate
 
 ```
-grep 'foo' /path/to/corepkgs/aliases/nixpkgs.nix
+scripts/regenerate-hackage-packages.sh
 ```
 
-The alias entry has the form:
-```nix
-foo = renamed "foo" "bar.baz" bar.baz;
+This takes several minutes; run it in the background.
+
+### 4. Review the diff
+
+```
+git diff --stat hackage-packages.nix top-level.nix
 ```
 
-This means `foo` was renamed to `bar.baz`.
+Look for packages whose `broken` changed from absent to
+`!(pkgs ? <name>)`. For each newly missing `<name>`, find the corepkgs
+attribute that replaced it (aliases list renames):
 
-In `hackage-packages.nix`, the pattern is:
-```nix
-  somePackage = callPackage
-    ({ mkDerivation, ..., foo, ... }:
-     mkDerivation {
-       ...
-       librarySystemDepends = [ foo ];
-       ...
-     }) {inherit (pkgs) foo;};
+```
+grep -rn '<name>' "$(nix-instantiate --eval --read-write-mode -E '"${(import ./pins.nix).corepkgs}"' | tr -d '"')"/aliases/
 ```
 
-Fix by:
-1. Renaming the function parameter to a valid Nix identifier
-   (e.g. `foo` → `bar-baz` using hyphens for dots)
-2. Updating all uses of the old name inside the body
-3. Changing the call argument from `inherit (pkgs) foo;` to
-   `bar-baz = pkgs.bar.baz;`
+Add `<name>: <attr.path>` to `system-dependency-paths.yaml` (keep it sorted
+case-insensitively; use `null` with a comment for libraries provided by libc
+or the toolchain), then regenerate again. Remove entries whose target no
+longer exists, or that the generator now resolves on its own.
 
-**Make a separate commit for each renamed attribute** (not each file —
-group all occurrences of the same rename into one commit).
+Also look for packages that became buildable (`broken` dropped) — they are
+expected when corepkgs gains a dependency.
 
-### 5. Re-run eval
+### 5. Run the checks
 
 ```
 bash ci/eval.sh
+nix-instantiate --eval --strict ci/shadowed-packages.nix -A all --json
+nix-build ci/ci-jobs.nix
 ```
 
-Repeat steps 4–5 until eval passes.
+`ci/eval.sh` must pass and the shadowed list must be empty (for a
+`pkgs/` package that corepkgs now provides, delete it from `pkgs/`). Fix
+build failures in the smoke set with `overrides/<attr>.nix` files (see
+AGENTS.md).
 
-### 6. Summary
+### 6. Commit
 
-Print a summary:
-- Updated corepkgs pin revision
-- Number of packages that evaluate successfully
-- Any attribute renames that were applied
+- `corepkgs: update pin`, including the regenerated files and
+  `system-dependency-paths.yaml` changes needed for the bump.
+- Separate commits for unrelated fixes (e.g. `<pkg>: <message>` for an
+  override).
+
+### 7. Summary
+
+Print:
+- Old and new corepkgs revision
+- Packages that became broken or buildable, and the mappings added
+- Smoke-set build results
