@@ -85,6 +85,7 @@ extra-packages:
   - extensions == 0.1.0.1               # 2025-09-21: needed for Cabal 3.10 (fourmolo/ormolu with ghc 9.8)
   - fourmolu == 0.14.0.0                # 2023-11-13: for ghc-lib-parser 9.6 compat
   - fourmolu == 0.15.0.0                # 2025-09-21: for ghc-lib-parser 9.8 compat
+  - fourmolu == 0.19.0.1                # 2026-11-18: for ghc-lib-parser 9.12 compat (haskell-language-server)
   - fuzzyset == 0.2.4                   # 2023-12-20: Needed for building postgrest > 10
   - ghc-exactprint == 1.6.*             # 2023-03-30: needed for GHC == 9.4
   - ghc-exactprint == 1.7.*             # 2025-03-09: needed for GHC == 9.6
@@ -117,6 +118,7 @@ extra-packages:
   - network-run == 0.4.0                # 2024-10-20: for GHC 9.10/network == 3.1.*
   - ormolu == 0.7.2.0                   # 2023-11-13: for ghc-lib-parser 9.6 compat
   - ormolu == 0.7.4.0                   # 2023-09-21: for ghc-lib-parser 9.8 compat
+  - ormolu == 0.8.0.2                   # 2026-11-18: for ghc-lib-parser 9.12 compat (haskell-language-server)
   - path == 0.9.5                       # 2025-09-21: Pin for hls on ghc 9.4
   - postgresql-binary < 0.14            # 2025-01-19: Needed for building postgrest
   - shake-cabal < 0.2.2.3               # 2023-07-01: last version to support Cabal 3.6.*

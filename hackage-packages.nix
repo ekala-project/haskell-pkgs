@@ -123312,6 +123312,43 @@ self: {
        mainProgram = "fourmolu";
      }) {};
 
+  fourmolu_0_19_0_1 = callPackage
+    ({ mkDerivation, aeson, ansi-terminal, array, base, binary
+     , bytestring, Cabal-syntax, choice, containers, Diff, directory
+     , file-embed, filepath, ghc-lib-parser, hspec, hspec-discover
+     , hspec-megaparsec, megaparsec, MemoTrie, mtl, optparse-applicative
+     , path, path-io, pretty, process, QuickCheck, scientific, syb
+     , temporary, terminal-size, text, th-env, unliftio, yaml
+     }:
+     mkDerivation {
+       pname = "fourmolu";
+       version = "0.19.0.1";
+       sha256 = "1xawjckgf1jsdkdscmfnlqazx0lidbpwy3qjf94by48ld3vpyywm";
+       revision = "1";
+       editedCabalFile = "0lzbxm7qz5yg187mzhw05acpa96fjfln35j1s9skvgs2209zjii3";
+       isLibrary = true;
+       isExecutable = true;
+       libraryHaskellDepends = [
+         aeson ansi-terminal array base binary bytestring Cabal-syntax
+         choice containers Diff directory file-embed filepath ghc-lib-parser
+         megaparsec MemoTrie mtl scientific syb text
+       ];
+       executableHaskellDepends = [
+         base Cabal-syntax containers directory filepath ghc-lib-parser
+         optparse-applicative terminal-size text th-env unliftio yaml
+       ];
+       testHaskellDepends = [
+         base bytestring Cabal-syntax choice containers Diff directory
+         filepath ghc-lib-parser hspec hspec-megaparsec megaparsec path
+         path-io pretty process QuickCheck temporary text yaml
+       ];
+       testToolDepends = [ hspec-discover ];
+       description = "A formatter for Haskell source code";
+       license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
+       hydraPlatforms = lib.platforms.none;
+       mainProgram = "fourmolu";
+     }) {};
+
   fourmolu = callPackage
     ({ mkDerivation, aeson, ansi-terminal, array, base, binary
      , bytestring, Cabal-syntax, choice, containers, Diff, directory
@@ -254892,6 +254929,42 @@ self: {
          base Cabal-syntax containers directory filepath ghc-lib-parser
          hspec hspec-megaparsec megaparsec path path-io QuickCheck temporary
          text
+       ];
+       testToolDepends = [ hspec-discover ];
+       description = "A formatter for Haskell source code";
+       license = lib.meta.getLicenseFromSpdxId "BSD-3-Clause";
+       hydraPlatforms = lib.platforms.none;
+       mainProgram = "ormolu";
+     }) {};
+
+  ormolu_0_8_0_2 = callPackage
+    ({ mkDerivation, ansi-terminal, array, base, binary, bytestring
+     , Cabal-syntax, choice, containers, Diff, directory, file-embed
+     , filepath, ghc-lib-parser, hspec, hspec-discover, hspec-megaparsec
+     , megaparsec, MemoTrie, mtl, optparse-applicative, path, path-io
+     , QuickCheck, syb, temporary, text, th-env, unliftio
+     }:
+     mkDerivation {
+       pname = "ormolu";
+       version = "0.8.0.2";
+       sha256 = "1fh2m4sy8vzxvm1qm9413apzblqf4sla3454mx64ngkwx0pgi2ad";
+       revision = "2";
+       editedCabalFile = "0sqxf4rrz48v6fgvwnkkbfis2b0qwjr7j64x4knkkvy9l5vganj0";
+       isLibrary = true;
+       isExecutable = true;
+       libraryHaskellDepends = [
+         ansi-terminal array base binary bytestring Cabal-syntax choice
+         containers Diff directory file-embed filepath ghc-lib-parser
+         megaparsec MemoTrie mtl syb text
+       ];
+       executableHaskellDepends = [
+         base Cabal-syntax containers directory filepath ghc-lib-parser
+         optparse-applicative text th-env unliftio
+       ];
+       testHaskellDepends = [
+         base Cabal-syntax choice containers directory filepath
+         ghc-lib-parser hspec hspec-megaparsec megaparsec path path-io
+         QuickCheck temporary text
        ];
        testToolDepends = [ hspec-discover ];
        description = "A formatter for Haskell source code";
